@@ -1,19 +1,47 @@
 grammar NoTTeX;
 
-tag:  TAG_NAME '{'(function|tag|text_line|forbiden_symbols)*'}';
+
+// Everything user writes in NoTTeX is in the tag: ,,tag{}
+tag:  IDENT LBRACE content* RBRACE;
+
+// Tag may consist of another tag or function or text
+content: tag                                                    # ContentAsTag
+       | function                                               # ContentAsFunction
+       | text                                                   # ContentAsText
+       ;
+
+// ::function(arg1;;arg2)
+function: IDENT LPAREN function_args RPAREN;
 
 
+function_args: function_arg? (ARG_SEPARATOR function_arg)*;
 
-function: FUNCTION_NAME '(' WS* function_arg? WS* (';;' WS* function_arg WS*)* ')';
-function_arg: tag | function | text_line;
 
-text_line: forbiden_symbols? TEXT forbiden_symbols? ;
+function_arg: tag                                               # ArgTag
+            |function                                           # ArgFunction
+            |text                                               # ArgText
+            ;
 
-forbiden_symbols: (','|' '|'('|')'|'{'|'}'|':'|';')+;
+text: number+
+     |string+;
 
-TAG_NAME: ',,'[a-zA-Z0-9_]+ ;
-FUNCTION_NAME: '::'[a-zA-Z0-9_]+;
-TEXT: ~[,{}:();]+;
+number:NUMBER;
 
-WS : (' '| '\t' | '\r' | '\n')
-   ;
+string: LETTER+;
+
+
+TAG: ',,';
+FUN: '::';
+LBRACE: '{';
+RBRACE: '}';
+LPAREN: '(';
+RPAREN: WS*')';
+ARG_SEPARATOR: WS* ';;' WS*;
+
+
+IDENT: (FUN|TAG) [a-zA-Z0-9_]+;
+NUMBER: (([0-9]+'.'[0-9]+)|[0-9]|[1-9][0-9]+);
+LETTER:  .;//~[,;:];
+
+
+WS: [ \t\r\n]+ -> skip;
