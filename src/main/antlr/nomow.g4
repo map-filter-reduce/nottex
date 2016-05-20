@@ -1,8 +1,0 @@
-grammar nomow;
-
-
-
-
-func : '::' IDENTIFIER '{'
-
-
