@@ -2,7 +2,7 @@ grammar NoTTeX;
 
 
 // Everything user writes in NoTTeX is in the tag: ,,tag{}
-tag:  IDENT LBRACE content* RBRACE;
+tag:  TAG_IDENT LBRACE content* RBRACE;
 
 // Tag may consist of another tag or function or text
 content: tag                                                    # ContentAsTag
@@ -11,7 +11,7 @@ content: tag                                                    # ContentAsTag
        ;
 
 // ::function(arg1;;arg2)
-function: IDENT LPAREN function_args RPAREN;
+function: FUN_IDENT LPAREN function_args RPAREN;
 
 
 function_args: function_arg? (ARG_SEPARATOR function_arg)*;
@@ -38,8 +38,8 @@ LPAREN: '(';
 RPAREN: WS*')';
 ARG_SEPARATOR: WS* ';;' WS*;
 
-
-IDENT: (FUN|TAG) [a-zA-Z0-9_]+;
+FUN_IDENT:FUN [a-zA-Z0-9_]+ (WS* ',' WS*[a-zA-Z0-9_]+)* WS*;
+TAG_IDENT: TAG [a-zA-Z0-9_]+ (WS* ',' WS*[a-zA-Z0-9_]+)* WS*;
 NUMBER: (([0-9]+'.'[0-9]+)|[0-9]|[1-9][0-9]+);
 LETTER:  .;//~[,;:];
 

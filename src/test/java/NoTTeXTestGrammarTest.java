@@ -18,7 +18,9 @@ public class NoTTeXTestGrammarTest {
         legal(",,tag{testin tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
         legal(",,tag{  testin  tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
         legal(",,tag{ %%&//\\ \n  testin : tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
-        illegal(",,tag{ %%&//\\ \n  testin : tagi   ,,tag\n{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
+        legal(",,tag,tag4,rag{ %%&//\\ \n  testin : tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
+        legal(",,tag, tag4 , rag{ %%&//\\ \n  testin : tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
+        legal(",,tag{ %%&//\\ \n  testin : tagi   ,,tag\n{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
         illegal(",,tag{  testin  tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}");
         illegal(",,tag  testin  tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}");
     }
