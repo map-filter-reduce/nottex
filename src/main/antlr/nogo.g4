@@ -7,6 +7,7 @@ markup_text : word (' '+ word)*
 
 word : tag_use
      | function_call
+     | NL
      | plain
      ;
 
@@ -17,8 +18,9 @@ tag_use : ',,' 'iden' '{' markup_text '}'
         ;
 
 
-plain : 'a'*?
+plain : 'a'+?
       ;
 
 
-NL : '\n'
+NL : '\n'+
+   ;

@@ -16,7 +16,8 @@ public class nogoParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
+		NL=10;
 	public static final int
 		RULE_markup_text = 0, RULE_word = 1, RULE_function_call = 2, RULE_tag_use = 3, 
 		RULE_plain = 4;
@@ -28,6 +29,7 @@ public class nogoParser extends Parser {
 		null, "' '", "';;'", "'iden'", "'('", "')'", "',,'", "'{'", "'}'", "'a'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
+		null, null, null, null, null, null, null, null, null, null, "NL"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -104,7 +106,6 @@ public class nogoParser extends Parser {
 		enterRule(_localctx, 0, RULE_markup_text);
 		int _la;
 		try {
-			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(10);
@@ -117,24 +118,18 @@ public class nogoParser extends Parser {
 				{
 				setState(12); 
 				_errHandler.sync(this);
-				_alt = 1;
+				_la = _input.LA(1);
 				do {
-					switch (_alt) {
-					case 1:
-						{
-						{
-						setState(11);
-						match(T__0);
-						}
-						}
-						break;
-					default:
-						throw new NoViableAltException(this);
+					{
+					{
+					setState(11);
+					match(T__0);
+					}
 					}
 					setState(14); 
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
-				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+					_la = _input.LA(1);
+				} while ( _la==T__0 );
 				setState(16);
 				word();
 				}
@@ -163,6 +158,7 @@ public class nogoParser extends Parser {
 		public Function_callContext function_call() {
 			return getRuleContext(Function_callContext.class,0);
 		}
+		public TerminalNode NL() { return getToken(nogoParser.NL, 0); }
 		public PlainContext plain() {
 			return getRuleContext(PlainContext.class,0);
 		}
@@ -184,7 +180,7 @@ public class nogoParser extends Parser {
 		WordContext _localctx = new WordContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_word);
 		try {
-			setState(25);
+			setState(26);
 			switch (_input.LA(1)) {
 			case T__5:
 				enterOuterAlt(_localctx, 1);
@@ -200,13 +196,17 @@ public class nogoParser extends Parser {
 				function_call();
 				}
 				break;
-			case T__0:
-			case T__4:
-			case T__7:
-			case T__8:
+			case NL:
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(24);
+				match(NL);
+				}
+				break;
+			case T__8:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(25);
 				plain();
 				}
 				break;
@@ -249,15 +249,15 @@ public class nogoParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(27);
-			match(T__1);
 			setState(28);
-			match(T__2);
+			match(T__1);
 			setState(29);
-			match(T__3);
+			match(T__2);
 			setState(30);
-			markup_text();
+			match(T__3);
 			setState(31);
+			markup_text();
+			setState(32);
 			match(T__4);
 			}
 		}
@@ -296,15 +296,15 @@ public class nogoParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(33);
-			match(T__5);
 			setState(34);
-			match(T__2);
+			match(T__5);
 			setState(35);
-			match(T__6);
+			match(T__2);
 			setState(36);
-			markup_text();
+			match(T__6);
 			setState(37);
+			markup_text();
+			setState(38);
 			match(T__7);
 			}
 		}
@@ -341,22 +341,26 @@ public class nogoParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(42);
+			setState(41); 
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
-			while ( _alt!=1 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1+1 ) {
+			_alt = 1+1;
+			do {
+				switch (_alt) {
+				case 1+1:
 					{
 					{
-					setState(39);
+					setState(40);
 					match(T__8);
 					}
-					} 
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
 				}
-				setState(44);
+				setState(43); 
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
-			}
+			} while ( _alt!=1 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 			}
 		}
 		catch (RecognitionException re) {
@@ -371,19 +375,19 @@ public class nogoParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\13\60\4\2\t\2\4\3"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\f\60\4\2\t\2\4\3"+
 		"\t\3\4\4\t\4\4\5\t\5\4\6\t\6\3\2\3\2\6\2\17\n\2\r\2\16\2\20\3\2\7\2\24"+
-		"\n\2\f\2\16\2\27\13\2\3\3\3\3\3\3\5\3\34\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3"+
-		"\5\3\5\3\5\3\5\3\5\3\5\3\6\7\6+\n\6\f\6\16\6.\13\6\3\6\3,\2\7\2\4\6\b"+
-		"\n\2\2/\2\f\3\2\2\2\4\33\3\2\2\2\6\35\3\2\2\2\b#\3\2\2\2\n,\3\2\2\2\f"+
+		"\n\2\f\2\16\2\27\13\2\3\3\3\3\3\3\3\3\5\3\35\n\3\3\4\3\4\3\4\3\4\3\4\3"+
+		"\4\3\5\3\5\3\5\3\5\3\5\3\5\3\6\6\6,\n\6\r\6\16\6-\3\6\3-\2\7\2\4\6\b\n"+
+		"\2\2\60\2\f\3\2\2\2\4\34\3\2\2\2\6\36\3\2\2\2\b$\3\2\2\2\n+\3\2\2\2\f"+
 		"\25\5\4\3\2\r\17\7\3\2\2\16\r\3\2\2\2\17\20\3\2\2\2\20\16\3\2\2\2\20\21"+
 		"\3\2\2\2\21\22\3\2\2\2\22\24\5\4\3\2\23\16\3\2\2\2\24\27\3\2\2\2\25\23"+
-		"\3\2\2\2\25\26\3\2\2\2\26\3\3\2\2\2\27\25\3\2\2\2\30\34\5\b\5\2\31\34"+
-		"\5\6\4\2\32\34\5\n\6\2\33\30\3\2\2\2\33\31\3\2\2\2\33\32\3\2\2\2\34\5"+
-		"\3\2\2\2\35\36\7\4\2\2\36\37\7\5\2\2\37 \7\6\2\2 !\5\2\2\2!\"\7\7\2\2"+
-		"\"\7\3\2\2\2#$\7\b\2\2$%\7\5\2\2%&\7\t\2\2&\'\5\2\2\2\'(\7\n\2\2(\t\3"+
-		"\2\2\2)+\7\13\2\2*)\3\2\2\2+.\3\2\2\2,-\3\2\2\2,*\3\2\2\2-\13\3\2\2\2"+
-		".,\3\2\2\2\6\20\25\33,";
+		"\3\2\2\2\25\26\3\2\2\2\26\3\3\2\2\2\27\25\3\2\2\2\30\35\5\b\5\2\31\35"+
+		"\5\6\4\2\32\35\7\f\2\2\33\35\5\n\6\2\34\30\3\2\2\2\34\31\3\2\2\2\34\32"+
+		"\3\2\2\2\34\33\3\2\2\2\35\5\3\2\2\2\36\37\7\4\2\2\37 \7\5\2\2 !\7\6\2"+
+		"\2!\"\5\2\2\2\"#\7\7\2\2#\7\3\2\2\2$%\7\b\2\2%&\7\5\2\2&\'\7\t\2\2\'("+
+		"\5\2\2\2()\7\n\2\2)\t\3\2\2\2*,\7\13\2\2+*\3\2\2\2,-\3\2\2\2-.\3\2\2\2"+
+		"-+\3\2\2\2.\13\3\2\2\2\6\20\25\34-";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
