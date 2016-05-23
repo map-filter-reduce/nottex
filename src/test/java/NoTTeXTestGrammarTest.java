@@ -13,6 +13,8 @@ public class NoTTeXTestGrammarTest {
     @Test
     public void tags_Basic() {
         legal(",,tag{testin}");
+        legal(",,tag{testin},,tag { t e s t i n}");
+        legal(",,tag{testin} tekst");
         legal(",,tag{test,in}");
         legal(",,tag{t,e,s,t,i,n}");
         illegal(",, tag{testin} 423ge");
@@ -26,6 +28,7 @@ public class NoTTeXTestGrammarTest {
     @Test
     public void tags_spaces() {
         legal(",,tag { t e s t i n}");
+        legal(",,tag { t e s t i n} ,,tag { t e s t i n}");
         illegal(",, tag{testin}");
         illegal(", , tag{testin}");
     }
@@ -33,17 +36,22 @@ public class NoTTeXTestGrammarTest {
     @Test
     public void tags_line_separators() {
         legal(",,tag \n { \n t \n\ne s t i n\n}");
-        illegal(",,tag \n { \n t \n\ne s t i n\n} \n ");
+        legal(",,tag \n { \n t \n\ne s t i n\n} \n ");
+        illegal(",,tag \n { \n t \n\ne s t i n\n \n ");
     }
 
     @Test
     public void multiple_tags() {
         legal(",,tag,tag3,tag4{testin}");
+        legal(",,tag,tag3,tag4{testin} text");
+        legal(",,tag,tag3,tag4{testin} text");
     }
 
     @Test
     public void tags_multiple_ws() {
         legal(",,tag , tag3, tag4{tes t in}");
+        legal(",,tag , tag3, tag4{tes t in} text");
+        legal(",,tag , tag3, tag4{tes t in} text,,tag , tag3, tag4{tes t in} text");
         legal(",,tag , tag3, tag4 {tes ti n}");
         legal(",,tag , \n tag3,\t tag4 {\ntestin}");
         illegal(",, tag , tag3, tag4 {testin}");
@@ -55,6 +63,7 @@ public class NoTTeXTestGrammarTest {
         legal(",,tag{,,tag2{test}}");
         legal(",,tag{,,tag2{t e s t}}");
         legal(",,tag{,,tag2{t e s t} f,erwf}");
+        legal(",,tag{,,tag2{t e s t} f,erwf} text ,,tag{,,tag2{t e s t} f,erwf}");
         legal(",,tag{,,tag2{t e s t} ferwf , , , fekw}");
         legal(",,tag{,,tag2{t e s t},,tag{testin},,tag{testin}}");
         legal(",,tag{,,tag2{t \ne s t} ferwf fekw}");
@@ -65,6 +74,20 @@ public class NoTTeXTestGrammarTest {
 
     @Test
     public void functions_basic() {
+        legal("::fun()");
+        legal("::fun() text");
+        legal("::fun\n()");
+        illegal(":: fun()");
+        illegal("::f un()");
+        illegal("::fun(");
+        illegal("::fun(,)");
+        illegal("::fun(arg1)");
+        illegal("::fun(arg1,arg2)");
+
+    }
+
+    @Test
+    public void functions_in_tags() {
         legal(",,tag{::fun()}");
         legal(",,tag{::fun\n()}");
         illegal(",,tag{:: fun()}");
@@ -78,6 +101,15 @@ public class NoTTeXTestGrammarTest {
 
     @Test
     public void functions_string_arg() {
+        legal("::fun()");
+        legal("::fun1(\"arg1\")");
+        legal("::fun1(\"arg1\",\"arg2\")");
+        legal("::fun1(\n\"arg1\"\n,\n\"arg2\"\n)");
+        illegal("::fun1(  \"arg1\"  ,   \"arg2\"    ");
+    }
+
+    @Test
+    public void functions_string_arg_in_tags() {
         legal(",,tag{::fun()}");
         legal(",,tag{::fun1(\"arg1\")}");
         legal(",,tag{::fun1(\"arg1\",\"arg2\")}");
@@ -95,6 +127,17 @@ public class NoTTeXTestGrammarTest {
         illegal(",,tag{::fun1(::fun(\"d\"f),\"arg2\")}");
         illegal(",,tag{::fun1(::fun(f),\"arg2\")}");
         illegal(",,tag{::fun(,,tag1{3})}");
+    }
+
+    @Test
+    public void functions_args_tags() {
+        legal("::fun()");
+        legal("::fun1(::fun(\"arg1\"),::fun2())");
+        legal("::fun1( ::fun(\"arg1\") \n)");
+        legal("::fun1(\"::fun))\",\"arg2\")");
+        illegal("::fun1(::fun(\"d\"f),\"arg2\")");
+        illegal("::fun1(::fun(f),\"arg2\")");
+        illegal("::fun(,,tag1{3})");
     }
 
 
