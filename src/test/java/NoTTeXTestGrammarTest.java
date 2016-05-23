@@ -10,47 +10,118 @@ public class NoTTeXTestGrammarTest {
     public static String successMessage = null;
 
 
-
-
     @Test
-    public void test_tags() {
-        legal(",,tag{testin tagi}");
-        legal(",,tag{testin tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
-        legal(",,tag{  testin  tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
-        legal(",,tag{ %%&//\\ \n  testin : tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
-        legal(",,tag,tag4,rag{ %%&//\\ \n  testin : tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
-        legal(",,tag, tag4 , rag{ %%&//\\ \n  testin : tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
-        legal(",,tag{ %%&//\\ \n  testin : tagi   ,,tag\n{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}");
-        illegal(",,tag{  testin  tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}");
-        illegal(",,tag  testin  tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}");
+    public void tags_Basic() {
+        legal(",,tag{testin}");
+        legal(",,tag{test,in}");
+        legal(",,tag{t,e,s,t,i,n}");
+        illegal(",, tag{testin} 423ge");
+        illegal(", , tag{testin} 423ge");
+        illegal(",,t ag{testiin} 423ge");
+        illegal(",,tag{testiin 423ge");
+        illegal(",,tag{");
+        illegal(",tag{");
     }
 
     @Test
-    public void test_functions() {
-        legal(",,tag{testin tagi ::d()}");
-        legal(",,tag{testin tagi ::d(::d())}");
-        legal(",,tag{testin tagi ::d(::d();;fwefew)}");
-        legal(",,tag{testin 234234.234 32432,423 tagi ::d(       ::d() \n     ;; fwefew             )}");
-        legal(",,tag{testin tagi ::d(       ::d() \n     ;; fwefew   ;; ,,tag{ %%&//\\ \n" +
-                "  testin : tagi   ,,tag{    tes ti   n tagi,,tag{testin tagi,,tag{testin tagi,,tag{testin tagi}}}}}          )}");
+    public void tags_spaces() {
+        legal(",,tag { t e s t i n}");
+        illegal(",, tag{testin}");
+        illegal(", , tag{testin}");
+    }
+
+    @Test
+    public void tags_line_separators() {
+        legal(",,tag \n { \n t \n\ne s t i n\n}");
+        illegal(",,tag \n { \n t \n\ne s t i n\n} \n ");
+    }
+
+    @Test
+    public void multiple_tags() {
+        legal(",,tag,tag3,tag4{testin}");
+    }
+
+    @Test
+    public void tags_multiple_ws() {
+        legal(",,tag , tag3, tag4{tes t in}");
+        legal(",,tag , tag3, tag4 {tes ti n}");
+        legal(",,tag , \n tag3,\t tag4 {\ntestin}");
+        illegal(",, tag , tag3, tag4 {testin}");
+        illegal(", , tag , tag3, tag4 {testin}");
+    }
+
+    @Test
+    public void tag_inside() {
+        legal(",,tag{,,tag2{test}}");
+        legal(",,tag{,,tag2{t e s t}}");
+        legal(",,tag{,,tag2{t e s t} f,erwf}");
+        legal(",,tag{,,tag2{t e s t} ferwf , , , fekw}");
+        legal(",,tag{,,tag2{t e s t},,tag{testin},,tag{testin}}");
+        legal(",,tag{,,tag2{t \ne s t} ferwf fekw}");
+        legal(",,tag{,,tag2,tag3{t \ne s t} ferwf fekw}");
+        illegal(",,tag{,,tag2,tag3{t \ne s t} ferwf fekw");
+    }
+
+
+    @Test
+    public void functions_basic() {
+        legal(",,tag{::fun()}");
+        legal(",,tag{::fun\n()}");
+        illegal(",,tag{:: fun()}");
+        illegal(",,tag{::f un()}");
+        illegal(",,tag{::fun(}");
+        illegal(",,tag{::fun(,)}");
+        illegal(",,tag{::fun(arg1)}");
+        illegal(",,tag{::fun(arg1,arg2)}");
 
     }
 
     @Test
-    public void test_symbols() {
-        legal(",,tag{testin ta,:g:i, .%¤£ ::d( testin ta,:g:i, .%¤£ )}");
+    public void functions_string_arg() {
+        legal(",,tag{::fun()}");
+        legal(",,tag{::fun1(\"arg1\")}");
+        legal(",,tag{::fun1(\"arg1\",\"arg2\")}");
+        legal(",,tag{  ::fun1(\n\"arg1\"\n,\n\"arg2\"\n)}");
+        illegal(",,tag{::fun1(  \"arg1\"  ,   \"arg2\"    ");
     }
 
 
     @Test
-    public void test_illegals() {
-        illegal(",, tag{}");
-        illegal("dedfwe ,,tag{}");
-        illegal("::d(),,tag{}");
-        illegal(",,tag{::}");
-        illegal(",,tag{}::d()");
+    public void functions_args() {
+        legal(",,tag{::fun()}");
+        legal(",,tag{::fun1(::fun(\"arg1\"),::fun2())}");
+        legal(",,tag{::fun1( ::fun(\"arg1\") \n)}");
+        legal(",,tag{::fun1(\"::fun))\",\"arg2\")}");
+        illegal(",,tag{::fun1(::fun(\"d\"f),\"arg2\")}");
+        illegal(",,tag{::fun1(::fun(f),\"arg2\")}");
+        illegal(",,tag{::fun(,,tag1{3})}");
     }
 
+
+    @Test
+    public void parentheses() {
+        legal(",,tag{{}{}testin}");
+        legal(",,tag{{}{()}testin}");
+        legal(",,tag{  }testin}");
+        legal(",,tag{  }  testin}");
+        legal(",,tag{  (  testin}");
+        legal(",,tag{  ){  testin}");
+        legal(",,tag{  fkp){  tes\ntin}");
+        legal(",,tag{  fkp)}  ((((((\n(((((((((((((((testin)}");
+        illegal(",,tag{  fkp)}  testin");
+    }
+
+
+    @Test
+    public void limited_symbols() {
+        legal(",,tag{, : ( { ) } }");
+    }
+
+
+    @Test
+    public void utf_symbols() {
+        legal(",,tag{#¤%&/?!+-_.<>}");
+    }
 
     @Test
     public void test_code1() {
