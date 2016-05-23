@@ -52,6 +52,27 @@ public class NoTTeXTestGrammarTest {
     }
 
 
+    @Test
+    public void test_code1() {
+        legal(",,document{\n" +
+                "\n" +
+                "    ,,code{\n" +
+                "        if some:\n" +
+                "            print(\"some\")\n" +
+                "        elif 1 % 2:\n" +
+                "            pass;\n" +
+                "    }\n" +
+                "\n" +
+                "}");
+    }
+
+    @Test
+    public void test_symbols() {
+        legal(",,tag{testin ta,:g:i, .%¤£ ::d( testin ta,:g:i, .%¤£ )}");
+    }
+
+
+
 
     private void legal(String program) {
         check(program, true);
