@@ -135,18 +135,6 @@ public class NoTTeXBaseListener implements NoTTeXListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumber(NoTTeXParser.NumberContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNumber(NoTTeXParser.NumberContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterString(NoTTeXParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -154,6 +142,18 @@ public class NoTTeXBaseListener implements NoTTeXListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitString(NoTTeXParser.StringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLimited(NoTTeXParser.LimitedContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLimited(NoTTeXParser.LimitedContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -119,16 +119,6 @@ public interface NoTTeXListener extends ParseTreeListener {
 	 */
 	void exitText(NoTTeXParser.TextContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link NoTTeXParser#number}.
-	 * @param ctx the parse tree
-	 */
-	void enterNumber(NoTTeXParser.NumberContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link NoTTeXParser#number}.
-	 * @param ctx the parse tree
-	 */
-	void exitNumber(NoTTeXParser.NumberContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link NoTTeXParser#string}.
 	 * @param ctx the parse tree
 	 */
@@ -138,4 +128,14 @@ public interface NoTTeXListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitString(NoTTeXParser.StringContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link NoTTeXParser#limited}.
+	 * @param ctx the parse tree
+	 */
+	void enterLimited(NoTTeXParser.LimitedContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link NoTTeXParser#limited}.
+	 * @param ctx the parse tree
+	 */
+	void exitLimited(NoTTeXParser.LimitedContext ctx);
 }

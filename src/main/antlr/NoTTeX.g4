@@ -2,7 +2,7 @@ grammar NoTTeX;
 
 
 // Everything user writes in NoTTeX is in the tag: ,,tag{}
-tag:  TAG_IDENT LBRACE content* RBRACE;
+tag:  TAG_IDENT LBRACE WS* content* WS* RBRACE;
 
 // Tag may consist of another tag or function or text
 content: tag                                                    # ContentAsTag
@@ -11,24 +11,25 @@ content: tag                                                    # ContentAsTag
        ;
 
 // ::function(arg1;;arg2)
-function: FUN_IDENT LPAREN function_args RPAREN;
+function: FUN_IDENT LPAREN WS* function_args WS* RPAREN;
 
 
 function_args: function_arg? (ARG_SEPARATOR function_arg)*;
 
 
 function_arg: tag                                               # ArgTag
-            |function                                           # ArgFunction
-            |text                                               # ArgText
+            | function                                           # ArgFunction
+            | (','|';'|':')* WORD+ (','|';'|':')* function_arg*                                              # ArgText
             ;
 
-text: number+
-     |string+;
+text: string+;
 
-number:NUMBER;
 
-string: LETTER+;
 
+string:  (WORD|limited)+
+      ;
+
+limited: LPAREN|RPAREN|','|';'|':';
 
 TAG: ',,';
 FUN: '::';
@@ -40,8 +41,7 @@ ARG_SEPARATOR: WS* ';;' WS*;
 
 FUN_IDENT:FUN [a-zA-Z0-9_]+ (WS* ',' WS*[a-zA-Z0-9_]+)* WS*;
 TAG_IDENT: TAG [a-zA-Z0-9_]+ (WS* ',' WS*[a-zA-Z0-9_]+)* WS*;
-NUMBER: (([0-9]+'.'[0-9]+)|[0-9]|[1-9][0-9]+);
-LETTER:  .;//~[,;:];
+WORD:  ~[,;:(){}]+;
 
 
 WS: [ \t\r\n]+ -> skip;
