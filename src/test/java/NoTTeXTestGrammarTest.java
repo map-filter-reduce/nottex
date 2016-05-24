@@ -1,3 +1,5 @@
+import grammar.nottexLexer;
+import grammar.nottexParser;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.junit.Assert;
@@ -15,7 +17,7 @@ public class NoTTeXTestGrammarTest {
         legal(",,tag{testin}");
         legal(",,tag{testin},,tag { t e s t i n}");
         legal(",,tag{testin} tekst");
-        legal(",,tag{test,in}");
+        legal(",,tag{grammar,in}");
         legal(",,tag{t,e,s,t,i,n}");
         illegal(",, tag{testin} 423ge");
         legal(", , tag{testin} 423ge");
@@ -60,7 +62,7 @@ public class NoTTeXTestGrammarTest {
 
     @Test
     public void tag_inside() {
-        legal(",,tag{,,tag2{test}}");
+        legal(",,tag{,,tag2{grammar}}");
         legal(",,tag{,,tag2{t e s t}}");
         legal(",,tag{,,tag2{t e s t} f,erwf}");
         legal(",,tag{,,tag2{t e s t} f,erwf} text ,,tag{,,tag2{t e s t} f,erwf}");
@@ -236,7 +238,7 @@ public class NoTTeXTestGrammarTest {
 
     private static ParseTree parseWithExceptions(String program) {
         ANTLRInputStream input = new ANTLRInputStream(program);
-        NoTTeXLexer lexer = new NoTTeXLexer(input);
+        nottexLexer lexer = new nottexLexer(input);
         lexer.addErrorListener(new BaseErrorListener() {
             @Override
             public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line,
@@ -246,7 +248,7 @@ public class NoTTeXTestGrammarTest {
         });
 
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        NoTTeXParser parser = new NoTTeXParser(tokens);
+        nottexParser parser = new nottexParser(tokens);
 
         parser.addErrorListener(new BaseErrorListener() {
             @Override
@@ -256,7 +258,7 @@ public class NoTTeXTestGrammarTest {
             }
         });
 
-        ParseTree parseTree = parser.tag();
+        ParseTree parseTree = parser.markup_text();
         if (parseTree == null
                 || parseTree.getChildCount() == 0
                 || parser.getNumberOfSyntaxErrors() != 0

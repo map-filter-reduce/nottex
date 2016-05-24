@@ -25,12 +25,15 @@ dependencies {
 }
 
 ext.antlr = [
-        generatedDir:   'src/gen',
-        destinationDir: 'src/gen/java'
+        generatedDir  : 'src/gen',
+        destinationDir: 'src/gen/java/grammar',
+        grammarpackage: 'grammar',
+        classPathDir     : 'src/gen/java'
 ]
 
 generateGrammarSource {
     outputDirectory = file(antlr.destinationDir)
+    arguments += ["-visitor", "-package", antlr.grammarpackage]
 }
 
 task run(type: JavaExec, dependsOn: classes) {
@@ -40,7 +43,7 @@ task run(type: JavaExec, dependsOn: classes) {
 
 sourceSets {
     main.java.srcDir 'src/main/java'
-    main.java.srcDir antlr.destinationDir
+    main.java.srcDir 'src/gen/java'
     test.java.srcDir 'src/test/java'
 }
 
@@ -50,7 +53,7 @@ clean {
 
 idea {
     module {
-        sourceDirs += file(antlr.destinationDir)
+        sourceDirs += file(antlr.classPathDir)
     }
 }
 

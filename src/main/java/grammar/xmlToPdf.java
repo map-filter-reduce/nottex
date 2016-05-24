@@ -1,4 +1,4 @@
-package test;
+package grammar;
 
 public class xmlToPdf {
 }
