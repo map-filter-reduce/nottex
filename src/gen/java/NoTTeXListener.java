@@ -17,97 +17,35 @@ public interface NoTTeXListener extends ParseTreeListener {
 	 */
 	void exitTag(NoTTeXParser.TagContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ContentAsTag}
-	 * labeled alternative in {@link NoTTeXParser#content}.
+	 * Enter a parse tree produced by {@link NoTTeXParser#element}.
 	 * @param ctx the parse tree
 	 */
-	void enterContentAsTag(NoTTeXParser.ContentAsTagContext ctx);
+	void enterElement(NoTTeXParser.ElementContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ContentAsTag}
-	 * labeled alternative in {@link NoTTeXParser#content}.
+	 * Exit a parse tree produced by {@link NoTTeXParser#element}.
 	 * @param ctx the parse tree
 	 */
-	void exitContentAsTag(NoTTeXParser.ContentAsTagContext ctx);
+	void exitElement(NoTTeXParser.ElementContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ContentAsFunction}
-	 * labeled alternative in {@link NoTTeXParser#content}.
+	 * Enter a parse tree produced by {@link NoTTeXParser#function_call}.
 	 * @param ctx the parse tree
 	 */
-	void enterContentAsFunction(NoTTeXParser.ContentAsFunctionContext ctx);
+	void enterFunction_call(NoTTeXParser.Function_callContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ContentAsFunction}
-	 * labeled alternative in {@link NoTTeXParser#content}.
+	 * Exit a parse tree produced by {@link NoTTeXParser#function_call}.
 	 * @param ctx the parse tree
 	 */
-	void exitContentAsFunction(NoTTeXParser.ContentAsFunctionContext ctx);
+	void exitFunction_call(NoTTeXParser.Function_callContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ContentAsText}
-	 * labeled alternative in {@link NoTTeXParser#content}.
+	 * Enter a parse tree produced by {@link NoTTeXParser#tag_use}.
 	 * @param ctx the parse tree
 	 */
-	void enterContentAsText(NoTTeXParser.ContentAsTextContext ctx);
+	void enterTag_use(NoTTeXParser.Tag_useContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ContentAsText}
-	 * labeled alternative in {@link NoTTeXParser#content}.
+	 * Exit a parse tree produced by {@link NoTTeXParser#tag_use}.
 	 * @param ctx the parse tree
 	 */
-	void exitContentAsText(NoTTeXParser.ContentAsTextContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link NoTTeXParser#function}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunction(NoTTeXParser.FunctionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link NoTTeXParser#function}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunction(NoTTeXParser.FunctionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link NoTTeXParser#function_args}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunction_args(NoTTeXParser.Function_argsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link NoTTeXParser#function_args}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunction_args(NoTTeXParser.Function_argsContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code ArgTag}
-	 * labeled alternative in {@link NoTTeXParser#function_arg}.
-	 * @param ctx the parse tree
-	 */
-	void enterArgTag(NoTTeXParser.ArgTagContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code ArgTag}
-	 * labeled alternative in {@link NoTTeXParser#function_arg}.
-	 * @param ctx the parse tree
-	 */
-	void exitArgTag(NoTTeXParser.ArgTagContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code ArgFunction}
-	 * labeled alternative in {@link NoTTeXParser#function_arg}.
-	 * @param ctx the parse tree
-	 */
-	void enterArgFunction(NoTTeXParser.ArgFunctionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code ArgFunction}
-	 * labeled alternative in {@link NoTTeXParser#function_arg}.
-	 * @param ctx the parse tree
-	 */
-	void exitArgFunction(NoTTeXParser.ArgFunctionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code ArgText}
-	 * labeled alternative in {@link NoTTeXParser#function_arg}.
-	 * @param ctx the parse tree
-	 */
-	void enterArgText(NoTTeXParser.ArgTextContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code ArgText}
-	 * labeled alternative in {@link NoTTeXParser#function_arg}.
-	 * @param ctx the parse tree
-	 */
-	void exitArgText(NoTTeXParser.ArgTextContext ctx);
+	void exitTag_use(NoTTeXParser.Tag_useContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link NoTTeXParser#text}.
 	 * @param ctx the parse tree
@@ -119,6 +57,36 @@ public interface NoTTeXListener extends ParseTreeListener {
 	 */
 	void exitText(NoTTeXParser.TextContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link NoTTeXParser#args}.
+	 * @param ctx the parse tree
+	 */
+	void enterArgs(NoTTeXParser.ArgsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link NoTTeXParser#args}.
+	 * @param ctx the parse tree
+	 */
+	void exitArgs(NoTTeXParser.ArgsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link NoTTeXParser#arg}.
+	 * @param ctx the parse tree
+	 */
+	void enterArg(NoTTeXParser.ArgContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link NoTTeXParser#arg}.
+	 * @param ctx the parse tree
+	 */
+	void exitArg(NoTTeXParser.ArgContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link NoTTeXParser#tags}.
+	 * @param ctx the parse tree
+	 */
+	void enterTags(NoTTeXParser.TagsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link NoTTeXParser#tags}.
+	 * @param ctx the parse tree
+	 */
+	void exitTags(NoTTeXParser.TagsContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link NoTTeXParser#string}.
 	 * @param ctx the parse tree
 	 */
@@ -129,13 +97,13 @@ public interface NoTTeXListener extends ParseTreeListener {
 	 */
 	void exitString(NoTTeXParser.StringContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link NoTTeXParser#limited}.
+	 * Enter a parse tree produced by {@link NoTTeXParser#ws}.
 	 * @param ctx the parse tree
 	 */
-	void enterLimited(NoTTeXParser.LimitedContext ctx);
+	void enterWs(NoTTeXParser.WsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link NoTTeXParser#limited}.
+	 * Exit a parse tree produced by {@link NoTTeXParser#ws}.
 	 * @param ctx the parse tree
 	 */
-	void exitLimited(NoTTeXParser.LimitedContext ctx);
+	void exitWs(NoTTeXParser.WsContext ctx);
 }

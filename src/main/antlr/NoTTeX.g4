@@ -1,47 +1,48 @@
 grammar NoTTeX;
 
 
-// Everything user writes in NoTTeX is in the tag: ,,tag{}
-tag:  TAG_IDENT LBRACE WS* content* WS* RBRACE;
 
-// Tag may consist of another tag or function or text
-content: tag                                                    # ContentAsTag
-       | function                                               # ContentAsFunction
-       | text                                                   # ContentAsText
-       ;
-
-// ::function(arg1;;arg2)
-function: FUN_IDENT LPAREN WS* function_args WS* RPAREN;
-
-
-function_args: function_arg? (ARG_SEPARATOR function_arg)*;
-
-
-function_arg: tag                                               # ArgTag
-            | function                                           # ArgFunction
-            | (','|';'|':')* WORD+ (','|';'|':')* function_arg*                                              # ArgText
+tag : element+
             ;
 
-text: string+;
+element : function_call
+        | tag_use
+        | text
+        ;
 
+function_call : DOUBLE_COLON ELSE ws LPAREN ws args? ws RPAREN
+              ;
 
+tag_use : DOUBLE_COMMA tags ws LBRACE tag? RBRACE
+        ;
 
-string:  (WORD|limited)+
-      ;
+text : (ELSE|COMMA|COLON|QUOTE|LPAREN|RPAREN|LBRACE|RBRACE|WS)+
+     ;
 
-limited: LPAREN|RPAREN|','|';'|':';
+args : arg (ws COMMA ws arg)*;
 
-TAG: ',,';
-FUN: '::';
-LBRACE: '{';
-RBRACE: '}';
-LPAREN: '(';
-RPAREN: WS*')';
-ARG_SEPARATOR: WS* ';;' WS*;
+arg : string
+    | function_call
+    ;
 
-FUN_IDENT:FUN [a-zA-Z0-9_]+ (WS* ',' WS*[a-zA-Z0-9_]+)* WS*;
-TAG_IDENT: TAG [a-zA-Z0-9_]+ (WS* ',' WS*[a-zA-Z0-9_]+)* WS*;
-WORD:  ~[,;:(){}]+;
+tags : ELSE (ws COMMA ws ELSE)*
+     ;
 
+string : QUOTE (ELSE|DOUBLE_COMMA|COMMA|DOUBLE_COLON|COLON|LPAREN|RPAREN|LBRACE|RBRACE|WS)* QUOTE
+       ;
 
-WS: [ \t\r\n]+ -> skip;
+ws : WS*
+   ;
+
+DOUBLE_COMMA : ',,';
+COMMA : ',';
+DOUBLE_COLON : '::';
+COLON : ':';    // This is needed because ELSE can't match a single colon; this must be matched separately
+LPAREN : '(';
+RPAREN : ')';
+LBRACE : '{';
+RBRACE : '}';
+QUOTE : '"';
+WS : [ \n\r\t];
+ELSE : ~(','|':'|'('|')'|'{'|'}'|'"'|' '|'\n'|'\r'|'\t')+;
+

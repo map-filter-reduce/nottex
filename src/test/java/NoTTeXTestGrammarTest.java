@@ -18,11 +18,11 @@ public class NoTTeXTestGrammarTest {
         legal(",,tag{test,in}");
         legal(",,tag{t,e,s,t,i,n}");
         illegal(",, tag{testin} 423ge");
-        illegal(", , tag{testin} 423ge");
+        legal(", , tag{testin} 423ge");
         illegal(",,t ag{testiin} 423ge");
         illegal(",,tag{testiin 423ge");
         illegal(",,tag{");
-        illegal(",tag{");
+        legal(",tag{");
     }
 
     @Test
@@ -30,7 +30,7 @@ public class NoTTeXTestGrammarTest {
         legal(",,tag { t e s t i n}");
         legal(",,tag { t e s t i n} ,,tag { t e s t i n}");
         illegal(",, tag{testin}");
-        illegal(", , tag{testin}");
+        legal(", , tag{testin}");
     }
 
     @Test
@@ -55,7 +55,7 @@ public class NoTTeXTestGrammarTest {
         legal(",,tag , tag3, tag4 {tes ti n}");
         legal(",,tag , \n tag3,\t tag4 {\ntestin}");
         illegal(",, tag , tag3, tag4 {testin}");
-        illegal(", , tag , tag3, tag4 {testin}");
+        legal(", , tag , tag3, tag4 {testin}");
     }
 
     @Test
@@ -151,7 +151,7 @@ public class NoTTeXTestGrammarTest {
         legal(",,tag{  ){  testin}");
         legal(",,tag{  fkp){  tes\ntin}");
         legal(",,tag{  fkp)}  ((((((\n(((((((((((((((testin)}");
-        illegal(",,tag{  fkp)}  testin");
+        legal(",,tag{  fkp)}  testin");
     }
 
 
@@ -182,7 +182,7 @@ public class NoTTeXTestGrammarTest {
 
     @Test
     public void test_symbols() {
-        legal(",,tag{testin ta,:g:i, .%¤£ ::d( testin ta,:g:i, .%¤£ )}");
+        legal(",,tag{testin ta,:g:i, .%¤£ ::d( \"testin ta\",\":g:i, .%¤£ \")}");
     }
 
 

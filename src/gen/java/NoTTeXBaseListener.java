@@ -27,97 +27,37 @@ public class NoTTeXBaseListener implements NoTTeXListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterContentAsTag(NoTTeXParser.ContentAsTagContext ctx) { }
+	@Override public void enterElement(NoTTeXParser.ElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitContentAsTag(NoTTeXParser.ContentAsTagContext ctx) { }
+	@Override public void exitElement(NoTTeXParser.ElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterContentAsFunction(NoTTeXParser.ContentAsFunctionContext ctx) { }
+	@Override public void enterFunction_call(NoTTeXParser.Function_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitContentAsFunction(NoTTeXParser.ContentAsFunctionContext ctx) { }
+	@Override public void exitFunction_call(NoTTeXParser.Function_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterContentAsText(NoTTeXParser.ContentAsTextContext ctx) { }
+	@Override public void enterTag_use(NoTTeXParser.Tag_useContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitContentAsText(NoTTeXParser.ContentAsTextContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFunction(NoTTeXParser.FunctionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunction(NoTTeXParser.FunctionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFunction_args(NoTTeXParser.Function_argsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunction_args(NoTTeXParser.Function_argsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArgTag(NoTTeXParser.ArgTagContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArgTag(NoTTeXParser.ArgTagContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArgFunction(NoTTeXParser.ArgFunctionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArgFunction(NoTTeXParser.ArgFunctionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArgText(NoTTeXParser.ArgTextContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArgText(NoTTeXParser.ArgTextContext ctx) { }
+	@Override public void exitTag_use(NoTTeXParser.Tag_useContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -135,6 +75,42 @@ public class NoTTeXBaseListener implements NoTTeXListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterArgs(NoTTeXParser.ArgsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArgs(NoTTeXParser.ArgsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArg(NoTTeXParser.ArgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArg(NoTTeXParser.ArgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTags(NoTTeXParser.TagsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTags(NoTTeXParser.TagsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterString(NoTTeXParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -147,13 +123,13 @@ public class NoTTeXBaseListener implements NoTTeXListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLimited(NoTTeXParser.LimitedContext ctx) { }
+	@Override public void enterWs(NoTTeXParser.WsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLimited(NoTTeXParser.LimitedContext ctx) { }
+	@Override public void exitWs(NoTTeXParser.WsContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
