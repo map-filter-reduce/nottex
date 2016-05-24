@@ -4,6 +4,8 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
+
+
 public class TreeTest {
 
     private static TreeNode traverseTree(String code) {
@@ -14,20 +16,17 @@ public class TreeTest {
         nottexLexer nottexLexer = new nottexLexer(antlrInput);
         CommonTokenStream tokens = new CommonTokenStream(nottexLexer);
         nottexParser parser = new nottexParser(tokens);
-        ParseTree tree = parser.markup_text();
+        ParseTree tree = parser.markupText();
         return traverseTree(tree);
     }
 
     private static TreeNode traverseTree(ParseTree node) {
 
-        if (node instanceof nottexParser.Markup_textContext) {
-            nottexParser.Markup_textContext markupText = (nottexParser.Markup_textContext) node;
 
-
-        }
-        
-        
+        return null;
     }
 
-
+    public static void main(String[] args) {
+        traverseTree("::suvaline(\"\", ::suv())");
+    }
 }

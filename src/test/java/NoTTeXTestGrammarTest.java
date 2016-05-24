@@ -258,7 +258,7 @@ public class NoTTeXTestGrammarTest {
             }
         });
 
-        ParseTree parseTree = parser.markup_text();
+        ParseTree parseTree = parser.markupText();
         if (parseTree == null
                 || parseTree.getChildCount() == 0
                 || parser.getNumberOfSyntaxErrors() != 0
