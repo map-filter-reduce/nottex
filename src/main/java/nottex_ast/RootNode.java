@@ -18,6 +18,6 @@ public class RootNode extends Node {
 
     @Override
     public String prettyPrint(int n) {
-        return children.stream().map(arg -> arg.prettyPrint(n + 1)).collect(Collectors.joining(",\n"));
+        return children.stream().map(arg -> arg.prettyPrint(n + INDENT_SIZE)).collect(Collectors.joining(",\n"));
     }
 }

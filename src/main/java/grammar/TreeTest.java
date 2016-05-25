@@ -24,6 +24,7 @@ public class TreeTest {
 
     private static Node traverseTree(ParseTree node) {
 
+        if (node == null) return null;
 
         if (node instanceof nottexParser.MarkupTextContext) {
             nottexParser.MarkupTextContext markupText = (nottexParser.MarkupTextContext) node;
@@ -49,7 +50,7 @@ public class TreeTest {
 
                 for (Node argAsNode : argsAsNodes) {
                     if (argAsNode instanceof StringNode)
-                        functionCall.addArgument(new FunctionArgNode(((StringNode) argAsNode).getValue()));
+                        functionCall.addArgument(new FunctionArgNode((StringNode) argAsNode));
                     else if (argAsNode instanceof FunctionCallNode)
                         functionCall.addArgument(new FunctionArgNode((FunctionCallNode) argAsNode));
                     else throw new AssertionError();
@@ -68,7 +69,6 @@ public class TreeTest {
 
             nottexParser.MarkupTextContext content = ((nottexParser.TagUseContext) node).content;
 
-            //TODO broken
             return new TagUseNode(traverseTree(content), tagNames);
 
         } else if (node instanceof nottexParser.TextContext) {
@@ -97,20 +97,22 @@ public class TreeTest {
         }
 
         else {
-            System.err.print(node);
-            throw new AssertionError();
+            throw new AssertionError(node.getClass().getName());
         }
 
     }
 
     public static void main(String[] args) {
 
-        //System.out.println(traverseTree("::suvaline(\"\")").prettyPrint(0));
-        System.out.println(traverseTree(",,tag1{}").prettyPrint(0));
+        System.out.println(traverseTree("::suvaline(\"abc\")").prettyPrint());
+        System.out.println(traverseTree("::suvaline(\"\")").prettyPrint());
+        System.out.println(traverseTree("::suvaline(\"\", ::f())").prettyPrint());
+        System.out.println(traverseTree("::suvaline(\"\", ::f(\"\"))").prettyPrint());
+        //System.out.println(traverseTree(",,tag1{}").prettyPrint(0));
         //traverseTree("::suvaline(\"arg1\",::d())");
-        //traverseTree(",,tag1 , tag2 {}");
-        //traverseTree(",,tag1 , tag2 {twetwesdtsd}");
+        //System.out.println(traverseTree(",,tag1 , tag2 {}").prettyPrint(0));
+        //System.out.println(traverseTree(",,tag1 , tag2 {twetwesdtsd}").prettyPrint(0));
         //traverseTree(",,tag1 , tag2 {::suvaline(\"arg1\",::d(::suvaline(\"arg1\",::d())))} ,,tag1 , tag2 {::suvaline(\"arg1\",::d(::suvaline(\"arg1\",::d())))} wfewefw");
-        //traverseTree(" kfpowe wf we f, fwe ,  : wfefweefw");
+        //System.out.println(traverseTree(" kfpowe wf we f, fwe ,  : wfefweefw").prettyPrint(0));
     }
 }

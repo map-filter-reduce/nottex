@@ -2,7 +2,7 @@ package nottex_ast;
 
 public class FunctionArgNode extends Node {
 
-    private final String stringArg;
+    private final StringNode stringArg;
     private final FunctionCallNode funArg;
 
     public FunctionArgNode(FunctionCallNode funArg) {
@@ -10,7 +10,7 @@ public class FunctionArgNode extends Node {
         this.stringArg = null;
     }
 
-    public FunctionArgNode(String stringArg) {
+    public FunctionArgNode(StringNode stringArg) {
         this.stringArg = stringArg;
         this.funArg = null;
     }
@@ -23,9 +23,9 @@ public class FunctionArgNode extends Node {
 
     @Override
     public String prettyPrint(int n) {
-        return repeatString(" ", n) + "Arg: " +
+        return repeatString(" ", n) + "Arg: " + "\n" +
                 (isFunctionCall() ?
-                        "\n" + funArg.prettyPrint(n + 1) : stringArg);
+                        funArg.prettyPrint(n + INDENT_SIZE) : stringArg.prettyPrint(n + INDENT_SIZE));
     }
 
 }

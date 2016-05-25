@@ -15,7 +15,8 @@ public class TagUseNode extends Node {
 
     @Override
     public String prettyPrint(int n) {
-        return repeatString(" ", n) + "Tag: " + names + '{' + "\n" +
-                repeatString(" ", n) + content.prettyPrint(n + 1) + '}';
+        return repeatString(" ", n) + "Tag: " + names + '{' +
+                    (content != null ? ("\n" + repeatString(" ", n) + content.prettyPrint(n + INDENT_SIZE)) : "") +
+                '}';
     }
 }
