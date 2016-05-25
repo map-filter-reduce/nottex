@@ -1,6 +1,7 @@
 package nottex_ast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,11 @@ public class FunctionCallNode extends Node {
     public FunctionCallNode(String name) {
         this.name = name;
         this.arguments = new ArrayList<>();
+    }
+
+    public FunctionCallNode(String name, FunctionArgNode... arguments) {
+        this.name = name;
+        this.arguments = Arrays.asList(arguments);
     }
 
     public void addArgument(FunctionArgNode arg) {
