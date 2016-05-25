@@ -1,4 +1,5 @@
-// Generated from C:/Users/Kaspar/Dropbox/CODE/Java/akt2016/nottex/src/main/antlr\nottex.g4 by ANTLR 4.5.1
+// Generated from nottex.g4 by ANTLR 4.5.3
+package grammar;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class nottexParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.5.3", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -113,6 +114,11 @@ public class nottexParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitMarkupText(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitMarkupText(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final MarkupTextContext markupText() throws RecognitionException {
@@ -210,6 +216,11 @@ public class nottexParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitFunctionCall(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitFunctionCall(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FunctionCallContext functionCall() throws RecognitionException {
@@ -282,6 +293,11 @@ public class nottexParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitTagUse(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitTagUse(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TagUseContext tagUse() throws RecognitionException {
@@ -299,6 +315,7 @@ public class nottexParser extends Parser {
 			setState(39);
 			match(LBRACE);
 			setState(41);
+			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				{
@@ -350,6 +367,11 @@ public class nottexParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitTagIdens(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitTagIdens(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -459,6 +481,11 @@ public class nottexParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitText(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitText(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TextContext text() throws RecognitionException {
@@ -540,6 +567,11 @@ public class nottexParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitFuncArgs(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitFuncArgs(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FuncArgsContext funcArgs() throws RecognitionException {
@@ -606,6 +638,11 @@ public class nottexParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitFuncArg(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitFuncArg(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -713,6 +750,11 @@ public class nottexParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitString(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitString(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final StringContext string() throws RecognitionException {
@@ -776,6 +818,11 @@ public class nottexParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitWs(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitWs(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
