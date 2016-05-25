@@ -20,6 +20,25 @@ public class FunctionCallNode extends Node {
 
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FunctionCallNode that = (FunctionCallNode) o;
+
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        return arguments != null ? arguments.equals(that.arguments) : that.arguments == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String prettyPrint(int n) {
         String args = arguments.stream().map(arg -> "\n" + arg.prettyPrint(n + INDENT_SIZE)).collect(Collectors.joining(","));
         return repeatString(" ", n) + String.format("Function: %s (%s) ", name, args + "\n" + repeatString(" ", n));

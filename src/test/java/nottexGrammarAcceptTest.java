@@ -7,7 +7,7 @@ import org.junit.Test;
 
 
 @SuppressWarnings("Duplicates")
-public class NoTTeXTestGrammarTest {
+public class nottexGrammarAcceptTest {
     public static String lastTestDescription = null;
     public static String successMessage = null;
 

@@ -1,6 +1,7 @@
 package nottex_ast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,26 @@ public class RootNode extends Node {
 
     public void addChild(Node node) {
         children.add(node);
+    }
+
+    public RootNode(Node... children) {
+        this.children = new ArrayList<>(Arrays.asList(children));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RootNode rootNode = (RootNode) o;
+
+        return children != null ? children.equals(rootNode.children) : rootNode.children == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return children != null ? children.hashCode() : 0;
     }
 
     @Override

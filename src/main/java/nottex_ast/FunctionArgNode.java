@@ -22,6 +22,25 @@ public class FunctionArgNode extends Node {
 
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FunctionArgNode that = (FunctionArgNode) o;
+
+        if (stringArg != null ? !stringArg.equals(that.stringArg) : that.stringArg != null) return false;
+        return funArg != null ? funArg.equals(that.funArg) : that.funArg == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = stringArg != null ? stringArg.hashCode() : 0;
+        result = 31 * result + (funArg != null ? funArg.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String prettyPrint(int n) {
         return repeatString(" ", n) + "Arg: " + "\n" +
                 (isFunctionCall() ?

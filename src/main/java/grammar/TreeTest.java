@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class TreeTest {
 
-    private static Node traverseTree(String code) {
+    public static Node traverseTree(String code) {
         // TODO
         ANTLRInputStream antlrInput = new ANTLRInputStream(code);
         nottexLexer nottexLexer = new nottexLexer(antlrInput);

@@ -21,6 +21,22 @@ public class TextNode extends Node {
 
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TextNode textNode = (TextNode) o;
+
+        return paragraphs != null ? paragraphs.equals(textNode.paragraphs) : textNode.paragraphs == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return paragraphs != null ? paragraphs.hashCode() : 0;
+    }
+
+    @Override
     public String prettyPrint(int n) {
         return repeatString(" ", n) + "Text: " + paragraphs;
     }
