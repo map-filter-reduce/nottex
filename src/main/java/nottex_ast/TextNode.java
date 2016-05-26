@@ -7,12 +7,14 @@ import java.util.stream.Collectors;
 
 public class TextNode extends NottexNode {
 
-    public List<String> paragraphs;
+    private List<String> paragraphs;
+    private String rawText;
 
     public TextNode(String content) {
         this.paragraphs = new ArrayList<>();
         // Parse into paragraphs
         // TODO: "asd\n\nasdasdasdasd\n\n\n\n" should leave 2 empty paragraphs in the end
+        this.rawText = content;
         this.paragraphs = Arrays.asList(content.split("\n\n"))
                 .stream()
                 .map(str -> str.replace("\n", ""))
@@ -21,6 +23,10 @@ public class TextNode extends NottexNode {
 
     public TextNode(List<String> paragraphs) {
         this.paragraphs = paragraphs;
+    }
+
+    public String getRawText() {
+        return rawText;
     }
 
     public List<String> getParagraphs() {

@@ -49,10 +49,10 @@ public class FunctionReducer {
 
     private static NottexNode evaluate(FunctionCallNode node) {
 
-        Object[] evaldArgs = node.getArguments()
+        List<NottexNode> evaldArgs = node.getArguments()
                 .stream()
                 .map(FunctionReducer::evaluateArgument)
-                .collect(Collectors.toSet()).toArray();
+                .collect(Collectors.toList());
 
         String functionName = node.getName();
         List<Method> methods = Arrays.asList(FunctionEvaluation.class.getDeclaredMethods());
@@ -65,10 +65,9 @@ public class FunctionReducer {
                         .map(Type::getTypeName)
                         .collect(Collectors.toList())
                         .equals(
-                                node.getArguments()
+                                evaldArgs
                                         .stream()
-                                        .map(argNode -> argNode.isFunctionCall() ?
-                                                FunctionCallNode.class.getName() : StringNode.class.getName())
+                                        .map(argNode -> argNode.getClass().getName())
                                         .collect(Collectors.toList())
                         )
                 )
@@ -80,7 +79,7 @@ public class FunctionReducer {
         Method method = potentialMethods.get(0);
 
         try {
-            return (NottexNode) method.invoke(null, evaldArgs);
+            return (NottexNode) method.invoke(null, evaldArgs.toArray());
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }

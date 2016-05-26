@@ -101,8 +101,12 @@ public class AstParser {
 
     public static void main(String[] args) {
 
+        Integer a = 2;
+        System.out.println(a.getClass().getTypeName());
+        System.out.println(((Object) a).getClass().getTypeName());
+
+        System.out.println(FunctionReducer.reduceFunctions(parse("::don(\"2\", ::don(\"1\", \"3\"))")).prettyPrint());
 //        System.out.println(parse("::suvaline(\"abc\")").prettyPrint());
-        System.out.println(parse(" ,,tagg{::f(\"str\", ::m())}abc").prettyPrint());
 //        System.out.println(parse("::suvaline(\"\")").prettyPrint());
 //        System.out.println(parse("::suvaline(\"\", ::f())").prettyPrint());
         //System.out.println(FunctionReducer.reduceFunctions(parse("::don(\"-1\", \"-1\")")).prettyPrint());

@@ -7,16 +7,24 @@ import nottex_ast.TextNode;
 public class FunctionEvaluation {
 
     //
+    // TODO: up for debate
     // NB! All methods
     //      1) must be static
     //      2) must have a return type of NottexNode
     //      3) must have parameters of type: (StringNode | BlockNode)
     //
 
+    public static NottexNode don(StringNode string1, TextNode string2) {
+        return new TextNode(String.valueOf(
+                Integer.parseInt(string1.getValue()) +
+                        Integer.parseInt(string2.getRawText())));
+    }
+
     public static NottexNode don(StringNode string1, StringNode string2) {
         return new TextNode(String.valueOf(
                 Integer.parseInt(string1.getValue()) +
                         Integer.parseInt(string2.getValue())));
     }
+
 
 }
