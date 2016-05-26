@@ -2,7 +2,7 @@ import nottex_ast.BlockNode;
 import nottex_ast.TextNode;
 import org.junit.Test;
 
-import static grammar.NotNotttecParser.parse;
+import static grammar.AstParser.parse;
 
 public class nottexAstTextTest {
 

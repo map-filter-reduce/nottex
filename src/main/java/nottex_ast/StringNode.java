@@ -30,8 +30,8 @@ public class StringNode extends NottexNode {
     }
 
     @Override
-    public String prettyPrint(int n) {
-        return repeatString(" ", n) + "String: " + "\"" + value + "\"";
+    public String prettyPrint(String n) {
+        return n + "String: " + "\"" + value + "\"";
     }
 
 

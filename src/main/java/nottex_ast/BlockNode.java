@@ -43,8 +43,11 @@ public class BlockNode extends NottexNode implements ChildrenBearable {
     }
 
     @Override
-    public String prettyPrint(int n) {
-        return children.stream().map(arg -> arg.prettyPrint(n + INDENT_SIZE)).collect(Collectors.joining(",\n"));
+    public String prettyPrint(String indent) {
+        return children
+                .stream()
+                .map(arg -> arg.prettyPrint(indent + INDENT))
+                .collect(Collectors.joining(",\n"));
     }
 
     @Override

@@ -44,8 +44,8 @@ public class TextNode extends NottexNode {
     }
 
     @Override
-    public String prettyPrint(int n) {
-        return repeatString(" ", n) + "Text: " + paragraphs;
+    public String prettyPrint(String n) {
+        return n + "Text: " + paragraphs;
     }
 
 }

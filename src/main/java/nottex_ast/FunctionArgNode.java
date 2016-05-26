@@ -50,10 +50,10 @@ public class FunctionArgNode extends NottexNode {
     }
 
     @Override
-    public String prettyPrint(int n) {
-        return repeatString(" ", n) + "Arg: " + "\n" +
+    public String prettyPrint(String indent) {
+        return indent + "Arg: " + "\n" +
                 (isFunctionCall() ?
-                        funArg.prettyPrint(n + INDENT_SIZE) : stringArg.prettyPrint(n + INDENT_SIZE));
+                        funArg.prettyPrint(indent + INDENT) : stringArg.prettyPrint(indent + INDENT));
     }
 
 }

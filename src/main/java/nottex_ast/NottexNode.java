@@ -2,21 +2,16 @@ package nottex_ast;
 
 public abstract class NottexNode {
 
-    int INDENT_SIZE = 4;
+    protected final String INDENT = "    ";
 
+    public abstract boolean equals(Object o);
 
-    abstract String prettyPrint(int n);
+    public abstract int hashCode();
+
+    abstract String prettyPrint(String indent);
 
     public String prettyPrint() {
-        return prettyPrint(0);
+        return prettyPrint("");
     }
 
-
-    public String repeatString(String str, int n) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            sb.append(str);
-        }
-        return sb.toString();
-    }
 }

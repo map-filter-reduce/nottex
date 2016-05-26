@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class NotNotttecParser {
+public class AstParser {
 
     public static NottexNode parse(String code) {
         // TODO
@@ -23,8 +23,6 @@ public class NotNotttecParser {
     }
 
     private static NottexNode parse(ParseTree node) {
-
-        if (node == null) return null;
 
         if (node instanceof nottexParser.MarkupTextContext) {
             nottexParser.MarkupTextContext markupText = (nottexParser.MarkupTextContext) node;
@@ -45,7 +43,7 @@ public class NotNotttecParser {
                         .argumentsNode
                         .argumentNodes
                         .stream()
-                        .map(NotNotttecParser::parse)
+                        .map(AstParser::parse)
                         .collect(Collectors.toList());
 
                 for (NottexNode argAsNode : argsAsNodes) {
@@ -66,10 +64,11 @@ public class NotNotttecParser {
                     .map(Token::getText)
                     .collect(Collectors.toList());
 
-
             nottexParser.MarkupTextContext content = ((nottexParser.TagUseContext) node).content;
-
-            return new TagUseNode(parse(content), tagNames);
+            if (content == null)
+                return new TagUseNode(null, tagNames);
+            else
+                return new TagUseNode(((BlockNode) parse(content)).getChildren(), tagNames);
 
         } else if (node instanceof nottexParser.TextContext) {
             return new TextNode(
@@ -94,9 +93,7 @@ public class NotNotttecParser {
         } else if (node instanceof nottexParser.FuncArgContext) {
             nottexParser.FuncArgContext argContext = (nottexParser.FuncArgContext) node;
             return parse(argContext.getChild(0));
-        }
-
-        else {
+        } else {
             throw new AssertionError(node.getClass().getName());
         }
 
@@ -105,10 +102,10 @@ public class NotNotttecParser {
     public static void main(String[] args) {
 
 //        System.out.println(parse("::suvaline(\"abc\")").prettyPrint());
-        System.out.println(parse(",,tagg{}").prettyPrint());
+        System.out.println(parse(" ,,tagg{::f(\"str\", ::m())}abc").prettyPrint());
 //        System.out.println(parse("::suvaline(\"\")").prettyPrint());
 //        System.out.println(parse("::suvaline(\"\", ::f())").prettyPrint());
-        //System.out.println(NottexFunctionReducer.reduceFunctions(parse("::don(\"-1\", \"-1\")")).prettyPrint());
+        //System.out.println(FunctionReducer.reduceFunctions(parse("::don(\"-1\", \"-1\")")).prettyPrint());
         //System.out.println(parse(",,tag1{}").prettyPrint(0));
         //parse("::suvaline(\"arg1\",::d())");
         //System.out.println(parse(",,tag1 , tag2 {}").prettyPrint(0));

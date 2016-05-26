@@ -3,7 +3,7 @@ package grammar;
 import nottex_ast.NottexNode;
 import xml_ast.XNode;
 
-public class NottexXmlTranslator {
+public class XmlTranslator {
 
     public XNode translate(NottexNode nottexNode) {
 
