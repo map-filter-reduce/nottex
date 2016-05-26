@@ -6,15 +6,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 // TODO: Refactor to BlockNode or something
-public class RootNode extends NottexNode implements ChildrenBearable {
+public class BlockNode extends NottexNode implements ChildrenBearable {
 
     private List<NottexNode> children;
 
-    public RootNode() {
+    public BlockNode() {
         this.children = new ArrayList<>();
     }
 
-    public RootNode(List<NottexNode> children) {
+    public BlockNode(List<NottexNode> children) {
         this.children = children;
     }
 
@@ -22,7 +22,7 @@ public class RootNode extends NottexNode implements ChildrenBearable {
         children.add(node);
     }
 
-    public RootNode(NottexNode... children) {
+    public BlockNode(NottexNode... children) {
         this.children = Arrays.asList(children);
     }
 
@@ -31,9 +31,9 @@ public class RootNode extends NottexNode implements ChildrenBearable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RootNode rootNode = (RootNode) o;
+        BlockNode blockNode = (BlockNode) o;
 
-        return children != null ? children.equals(rootNode.children) : rootNode.children == null;
+        return children != null ? children.equals(blockNode.children) : blockNode.children == null;
 
     }
 

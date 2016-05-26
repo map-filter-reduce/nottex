@@ -28,7 +28,7 @@ public class NotNotttecParser {
 
         if (node instanceof nottexParser.MarkupTextContext) {
             nottexParser.MarkupTextContext markupText = (nottexParser.MarkupTextContext) node;
-            RootNode root = new RootNode();
+            BlockNode root = new BlockNode();
             for (int i = 0; i < markupText.getChildCount(); i++) {
                 root.addChild(
                         parse(markupText.getChild(i)));

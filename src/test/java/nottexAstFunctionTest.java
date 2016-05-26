@@ -1,5 +1,5 @@
+import nottex_ast.BlockNode;
 import nottex_ast.FunctionCallNode;
-import nottex_ast.RootNode;
 import org.junit.Test;
 
 import static grammar.NotNotttecParser.parse;
@@ -10,7 +10,7 @@ public class nottexAstFunctionTest {
     @Test
     public void testSimpleNoArgs() {
         String input = "::func()";
-        RootNode expected = new RootNode(
+        BlockNode expected = new BlockNode(
                 new FunctionCallNode("func")
         );
         testUtil.assertEquals(expected, parse(input));
@@ -20,7 +20,7 @@ public class nottexAstFunctionTest {
     @Test
     public void testSimpleArgs1() {
         String input1 = "::func(\"\")";
-        RootNode expected1 = new RootNode(
+        BlockNode expected1 = new BlockNode(
                 new FunctionCallNode("func", testUtil.stringArg(""))
         );
         testUtil.assertEquals(expected1, parse(input1));
@@ -30,7 +30,7 @@ public class nottexAstFunctionTest {
     @Test
     public void testSimpleArgs2() {
         String input2 = "::func(\"abc\")";
-        RootNode expected2 = new RootNode(
+        BlockNode expected2 = new BlockNode(
                 new FunctionCallNode("func",
                         testUtil.stringArg("abc"))
         );
@@ -41,7 +41,7 @@ public class nottexAstFunctionTest {
     @Test
     public void testSimpleArgs3() {
         String input3 = "::func(\"mam\", \"\")";
-        RootNode expected3 = new RootNode(
+        BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
                         testUtil.stringArg("mam"),
                         testUtil.stringArg(""))
@@ -53,7 +53,7 @@ public class nottexAstFunctionTest {
     @Test
     public void testSimpleArgs4() {
         String input3 = "::func(::fa())";
-        RootNode expected3 = new RootNode(
+        BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
                         testUtil.funcArg(new FunctionCallNode("fa")))
         );
@@ -63,7 +63,7 @@ public class nottexAstFunctionTest {
     @Test
     public void testSimpleArgs5() {
         String input3 = "::func(::fa(), \"af\")";
-        RootNode expected3 = new RootNode(
+        BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
                         testUtil.funcArg(new FunctionCallNode("fa")),
                         testUtil.stringArg("af"))
@@ -74,7 +74,7 @@ public class nottexAstFunctionTest {
     @Test
     public void testSimpleArgs6() {
         String input3 = "::func(::fa(\"a\"), \"af\")";
-        RootNode expected3 = new RootNode(
+        BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
                         testUtil.funcArg(
                                 new FunctionCallNode("fa",
@@ -89,7 +89,7 @@ public class nottexAstFunctionTest {
     @Test
     public void testWhitespace1() {
         String input3 = "::func  (  \"af\")";
-        RootNode expected3 = new RootNode(
+        BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
                         testUtil.stringArg("af"))
         );
@@ -100,7 +100,7 @@ public class nottexAstFunctionTest {
     @Test
     public void testWhitespace2() {
         String input3 = "::func(  \"af \" )";
-        RootNode expected3 = new RootNode(
+        BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
                         testUtil.stringArg("af "))
         );

@@ -1,4 +1,4 @@
-import nottex_ast.RootNode;
+import nottex_ast.BlockNode;
 import nottex_ast.TextNode;
 import org.junit.Test;
 
@@ -10,7 +10,7 @@ public class nottexAstTextTest {
     @Test
     public void testSimpleText() {
         String input = "text";
-        RootNode expected = new RootNode(
+        BlockNode expected = new BlockNode(
                 new TextNode(input)
         );
         testUtil.assertEquals(expected, parse(input));

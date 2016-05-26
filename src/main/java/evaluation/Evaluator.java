@@ -8,7 +8,7 @@ public class Evaluator {
 
     //
     // NB! Methods must have a return type of NottexNode and
-    // arguments must be \in {StringNode, RootNode}
+    // arguments must be \in {StringNode, BlockNode}
     //
 
     public static NottexNode don(StringNode string1, StringNode string2) {

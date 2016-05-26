@@ -1,4 +1,4 @@
-import nottex_ast.RootNode;
+import nottex_ast.BlockNode;
 import nottex_ast.TagUseNode;
 import nottex_ast.TextNode;
 import org.junit.Test;
@@ -11,7 +11,7 @@ public class nottexAstHybridTest {
     @Test
     public void testSimpleTextTag() {
         String input = "text,,tamm{}";
-        RootNode expected = new RootNode(
+        BlockNode expected = new BlockNode(
                 new TextNode("text"),
                 new TagUseNode(null, "tamm")
         );

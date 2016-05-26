@@ -5,13 +5,13 @@ import java.util.List;
 
 public class TagUseNode extends NottexNode implements ChildrenBearable {
 
-    // TODO: maybe should have List<NotteXNode> children instead of RootNode to simplify
-    private final RootNode content;
+    // TODO: maybe should have List<NotteXNode> children instead of BlockNode to simplify
+    private final BlockNode content;
     private List<String> names;
 
     public TagUseNode(NottexNode content, List<String> tagNames) {
-        if (content == null || content instanceof RootNode)
-            this.content = (RootNode) content;
+        if (content == null || content instanceof BlockNode)
+            this.content = (BlockNode) content;
         else
             throw new AssertionError();
 
@@ -23,13 +23,13 @@ public class TagUseNode extends NottexNode implements ChildrenBearable {
     }
 
     public TagUseNode(List<NottexNode> children, List<String> tagNames) {
-        this.content = new RootNode(children);
+        this.content = new BlockNode(children);
         this.names = tagNames;
     }
 
     public TagUseNode(NottexNode content, String... tagNames) {
-        if (content == null || content instanceof RootNode)
-            this.content = (RootNode) content;
+        if (content == null || content instanceof BlockNode)
+            this.content = (BlockNode) content;
         else
             throw new AssertionError();
 

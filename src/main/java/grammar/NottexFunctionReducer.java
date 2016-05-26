@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 public class NottexFunctionReducer {
 
     public static NottexNode reduceFunctions(NottexNode node) {
-        if (node instanceof RootNode) {
-            return new RootNode(
-                    ((RootNode) node).getChildren()
+        if (node instanceof BlockNode) {
+            return new BlockNode(
+                    ((BlockNode) node).getChildren()
                             .stream()
                             .map(NottexFunctionReducer::reduceFunctions)
                             .collect(Collectors.toList())

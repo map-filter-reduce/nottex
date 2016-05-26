@@ -1,5 +1,5 @@
+import nottex_ast.BlockNode;
 import nottex_ast.FunctionCallNode;
-import nottex_ast.RootNode;
 import nottex_ast.TagUseNode;
 import nottex_ast.TextNode;
 import org.junit.Test;
@@ -11,7 +11,7 @@ public class nottexAstTagTest {
 
     @Test
     public void emptyTag1() {
-        RootNode expected1 = new RootNode(
+        BlockNode expected1 = new BlockNode(
                 new TagUseNode(null, "tag")
         );
         testUtil.assertEquals(expected1, parse(",,tag{}"));
@@ -19,7 +19,7 @@ public class nottexAstTagTest {
 
     @Test
     public void emptyTag2() {
-        RootNode expected = new RootNode(
+        BlockNode expected = new BlockNode(
                 new TagUseNode(null, "tag1", "tag2", "tag3")
         );
         testUtil.assertEquals(expected, parse(",,tag1 , tag2  , \n tag3 {}"));
@@ -27,7 +27,7 @@ public class nottexAstTagTest {
 
     @Test
     public void emptyTag3() {
-        RootNode expected2 = new RootNode(
+        BlockNode expected2 = new BlockNode(
                 new TagUseNode(null, "tag1", "tag2", "tag3")
         );
         testUtil.assertEquals(expected2, parse(",,tag1,tag2,tag3{}"));
@@ -35,7 +35,7 @@ public class nottexAstTagTest {
 
     @Test
     public void emptyTag4() {
-        RootNode expected = new RootNode(
+        BlockNode expected = new BlockNode(
                 new TagUseNode(null, "tag1", "tag2", "tag3"),
                 new TagUseNode(null, "tag3", "tag5", "tag6")
         );
@@ -44,9 +44,9 @@ public class nottexAstTagTest {
 
     @Test
     public void tagsWithEmptyTags1() {
-        RootNode expected1 = new RootNode(
+        BlockNode expected1 = new BlockNode(
                 new TagUseNode(
-                        new RootNode(
+                        new BlockNode(
                                 new TagUseNode(
                                         null, "tag4", "tag5", "tag6"
                                 ))
@@ -58,9 +58,9 @@ public class nottexAstTagTest {
 
     @Test
     public void tagsWithEmptyTags2() {
-        RootNode expected2 = new RootNode(
+        BlockNode expected2 = new BlockNode(
                 new TagUseNode(
-                        new RootNode(
+                        new BlockNode(
                                 new TagUseNode(
                                         null, "tag4", "tag5", "tag6"
                                 )),
@@ -75,9 +75,9 @@ public class nottexAstTagTest {
 
     @Test
     public void testTagsWithText1() {
-        RootNode expected1 = new RootNode(
+        BlockNode expected1 = new BlockNode(
                 new TagUseNode(
-                        new RootNode(
+                        new BlockNode(
                                 new TextNode("text")), "tag1")
         );
         testUtil.assertEquals(expected1, parse(",,tag1{text}"));
@@ -85,9 +85,9 @@ public class nottexAstTagTest {
 
     @Test
     public void testTagsWithText2() {
-        RootNode expected2 = new RootNode(
+        BlockNode expected2 = new BlockNode(
                 new TagUseNode(
-                        new RootNode(
+                        new BlockNode(
                                 new TagUseNode(
                                         null, "tag4", "tag5", "tag6"
                                 ),
@@ -102,15 +102,15 @@ public class nottexAstTagTest {
 
     @Test
     public void testTagsWithText3() {
-        RootNode expected3 = new RootNode(
+        BlockNode expected3 = new BlockNode(
                 new TagUseNode(
-                        new RootNode(
+                        new BlockNode(
                                 new TagUseNode(
                                         null, "tag4", "tag5", "tag6"
                                 ),
                                 new TextNode("text"),
                                 new TagUseNode(
-                                        new RootNode(
+                                        new BlockNode(
                                                 new TextNode("s")
                                         ), "tag")),
                         "tag1", "tag2", "tag3"),
@@ -123,15 +123,15 @@ public class nottexAstTagTest {
 
     @Test
     public void testTagsWithText4() {
-        RootNode expected4 = new RootNode(
+        BlockNode expected4 = new BlockNode(
                 new TagUseNode(
-                        new RootNode(
+                        new BlockNode(
                                 new TagUseNode(
                                         null, "tag4", "tag5", "tag6"
                                 ),
                                 new TextNode("text"),
                                 new TagUseNode(
-                                        new RootNode(
+                                        new BlockNode(
                                                 new TextNode("s")
                                         ), "tag")),
                         "tag1", "tag2", "tag3"),
@@ -144,9 +144,9 @@ public class nottexAstTagTest {
 
     @Test
     public void testTagFunction1() {
-        RootNode expected1 = new RootNode(
+        BlockNode expected1 = new BlockNode(
                 new TagUseNode(
-                        new RootNode(
+                        new BlockNode(
                                 new FunctionCallNode("fun")), "tag")
         );
         testUtil.assertEquals(expected1, parse(",,tag{::fun()}"));
@@ -154,9 +154,9 @@ public class nottexAstTagTest {
 
     @Test
     public void testTagFunction2() {
-        RootNode expected2 = new RootNode(
+        BlockNode expected2 = new BlockNode(
                 new TagUseNode(
-                        new RootNode(
+                        new BlockNode(
                                 new TagUseNode(null, "tagBefore"),
                                 new FunctionCallNode("fun"),
                                 new TagUseNode(null, "tagAfter")
