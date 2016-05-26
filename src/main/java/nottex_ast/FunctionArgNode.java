@@ -2,7 +2,16 @@ package nottex_ast;
 
 public class FunctionArgNode extends NottexNode {
 
+    public StringNode getStringArg() {
+        return stringArg;
+    }
+
     private final StringNode stringArg;
+
+    public FunctionCallNode getFunArg() {
+        return funArg;
+    }
+
     private final FunctionCallNode funArg;
 
     public FunctionArgNode(FunctionCallNode funArg) {

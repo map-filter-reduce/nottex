@@ -33,6 +33,8 @@ public class StringNode extends NottexNode {
     public String prettyPrint(int n) {
         return repeatString(" ", n) + "String: " + "\"" + value + "\"";
     }
+
+
 }
 
 

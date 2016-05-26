@@ -3,18 +3,36 @@ package nottex_ast;
 import java.util.Arrays;
 import java.util.List;
 
-public class TagUseNode extends NottexNode {
+public class TagUseNode extends NottexNode implements ChildrenBearable {
 
-    private final NottexNode content;
+    // TODO: maybe should have List<NotteXNode> children instead of RootNode to simplify
+    private final RootNode content;
     private List<String> names;
 
     public TagUseNode(NottexNode content, List<String> tagNames) {
-        this.content = content;
+        if (content instanceof RootNode)
+            this.content = (RootNode) content;
+        else
+            throw new AssertionError();
+
+        this.names = tagNames;
+    }
+
+    public List<String> getNames() {
+        return names;
+    }
+
+    public TagUseNode(List<NottexNode> children, List<String> tagNames) {
+        this.content = new RootNode(children);
         this.names = tagNames;
     }
 
     public TagUseNode(NottexNode content, String... tagNames) {
-        this.content = content;
+        if (content instanceof RootNode)
+            this.content = (RootNode) content;
+        else
+            throw new AssertionError();
+
         this.names = Arrays.asList(tagNames);
     }
 
@@ -43,5 +61,15 @@ public class TagUseNode extends NottexNode {
         return repeatString(" ", n) + "Tag: " + names + '{' +
                 (content != null ? ("\n" + repeatString(" ", n) + content.prettyPrint(n + INDENT_SIZE)) : "") +
                 '}';
+    }
+
+    @Override
+    public List<NottexNode> getChildren() {
+        return content.getChildren();
+    }
+
+    @Override
+    public boolean hasChildren() {
+        return content.hasChildren();
     }
 }

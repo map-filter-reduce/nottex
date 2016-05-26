@@ -20,10 +20,21 @@ public class FunctionCallNode extends NottexNode {
         this.arguments = Arrays.asList(arguments);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getArgCount() {
+        return arguments.size();
+    }
+
     public void addArgument(FunctionArgNode arg) {
         arguments.add(arg);
     }
 
+    public List<FunctionArgNode> getArguments() {
+        return arguments;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RootNode extends NottexNode {
+// TODO: Refactor to BlockNode or something
+public class RootNode extends NottexNode implements ChildrenBearable {
 
     private List<NottexNode> children;
 
@@ -13,12 +14,16 @@ public class RootNode extends NottexNode {
         this.children = new ArrayList<>();
     }
 
+    public RootNode(List<NottexNode> children) {
+        this.children = children;
+    }
+
     public void addChild(NottexNode node) {
         children.add(node);
     }
 
     public RootNode(NottexNode... children) {
-        this.children = new ArrayList<>(Arrays.asList(children));
+        this.children = Arrays.asList(children);
     }
 
     @Override
@@ -40,5 +45,15 @@ public class RootNode extends NottexNode {
     @Override
     public String prettyPrint(int n) {
         return children.stream().map(arg -> arg.prettyPrint(n + INDENT_SIZE)).collect(Collectors.joining(",\n"));
+    }
+
+    @Override
+    public List<NottexNode> getChildren() {
+        return children;
+    }
+
+    @Override
+    public boolean hasChildren() {
+        return !children.isEmpty();
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class NottexParser {
+public class NotNotttecParser {
 
     public static NottexNode parse(String code) {
         // TODO
@@ -45,7 +45,7 @@ public class NottexParser {
                         .argumentsNode
                         .argumentNodes
                         .stream()
-                        .map(NottexParser::parse)
+                        .map(NotNotttecParser::parse)
                         .collect(Collectors.toList());
 
                 for (NottexNode argAsNode : argsAsNodes) {
@@ -107,7 +107,7 @@ public class NottexParser {
 //        System.out.println(parse("::suvaline(\"abc\")").prettyPrint());
 //        System.out.println(parse("::suvaline(\"\")").prettyPrint());
 //        System.out.println(parse("::suvaline(\"\", ::f())").prettyPrint());
-        System.out.println(parse("textabc::suvaline(\"\", ::f(\"\")),,tag{abc}").prettyPrint());
+        System.out.println(NottexFunctionReducer.reduceFunctions(parse("::don(\"abc\")")).prettyPrint());
         //System.out.println(parse(",,tag1{}").prettyPrint(0));
         //parse("::suvaline(\"arg1\",::d())");
         //System.out.println(parse(",,tag1 , tag2 {}").prettyPrint(0));

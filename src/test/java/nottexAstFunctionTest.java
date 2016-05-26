@@ -2,7 +2,7 @@ import nottex_ast.FunctionCallNode;
 import nottex_ast.RootNode;
 import org.junit.Test;
 
-import static grammar.NottexParser.parse;
+import static grammar.NotNotttecParser.parse;
 
 public class nottexAstFunctionTest {
 

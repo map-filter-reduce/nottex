@@ -4,7 +4,7 @@ import nottex_ast.TagUseNode;
 import nottex_ast.TextNode;
 import org.junit.Test;
 
-import static grammar.NottexParser.parse;
+import static grammar.NotNotttecParser.parse;
 
 
 public class nottexAstTagTest {

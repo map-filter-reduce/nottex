@@ -19,6 +19,13 @@ public class TextNode extends NottexNode {
                 .collect(Collectors.toList());
     }
 
+    public TextNode(List<String> paragraphs) {
+        this.paragraphs = paragraphs;
+    }
+
+    public List<String> getParagraphs() {
+        return paragraphs;
+    }
 
     @Override
     public boolean equals(Object o) {
