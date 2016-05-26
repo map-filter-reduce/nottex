@@ -15,7 +15,7 @@ public class nottexAstHybridTest {
                 new TextNode("text"),
                 new TagUseNode(null, "tamm")
         );
-        nottexTestingUtils.assertEqualNodes(expected, traverseTree(input));
+        testUtil.assertEquals(expected, traverseTree(input));
     }
 
 }

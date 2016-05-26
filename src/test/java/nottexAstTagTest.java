@@ -9,13 +9,12 @@ import static grammar.TreeTest.traverseTree;
 
 public class nottexAstTagTest {
 
-
     @Test
     public void emptyTag1() {
         RootNode expected1 = new RootNode(
                 new TagUseNode(null, "tag")
         );
-        nottexTestingUtils.assertEqualNodes(expected1, traverseTree(",,tag{}"));
+        testUtil.assertEquals(expected1, traverseTree(",,tag{}"));
     }
 
     @Test
@@ -23,7 +22,7 @@ public class nottexAstTagTest {
         RootNode expected = new RootNode(
                 new TagUseNode(null, "tag1", "tag2", "tag3")
         );
-        nottexTestingUtils.assertEqualNodes(expected, traverseTree(",,tag1 , tag2  , \n tag3 {}"));
+        testUtil.assertEquals(expected, traverseTree(",,tag1 , tag2  , \n tag3 {}"));
     }
 
     @Test
@@ -31,7 +30,7 @@ public class nottexAstTagTest {
         RootNode expected2 = new RootNode(
                 new TagUseNode(null, "tag1", "tag2", "tag3")
         );
-        nottexTestingUtils.assertEqualNodes(expected2, traverseTree(",,tag1,tag2,tag3{}"));
+        testUtil.assertEquals(expected2, traverseTree(",,tag1,tag2,tag3{}"));
     }
 
     @Test
@@ -40,12 +39,11 @@ public class nottexAstTagTest {
                 new TagUseNode(null, "tag1", "tag2", "tag3"),
                 new TagUseNode(null, "tag3", "tag5", "tag6")
         );
-        nottexTestingUtils.assertEqualNodes(expected, traverseTree(",,tag1 , tag2  , tag3 {},,tag3 , tag5  , tag6 {}"));
+        testUtil.assertEquals(expected, traverseTree(",,tag1 , tag2  , tag3 {},,tag3 , tag5  , tag6 {}"));
     }
 
-
     @Test
-    public void tagsWithEmptyTags1(){
+    public void tagsWithEmptyTags1() {
         RootNode expected1 = new RootNode(
                 new TagUseNode(
                         new RootNode(
@@ -54,10 +52,9 @@ public class nottexAstTagTest {
                                 ))
                         , "tag1", "tag2", "tag3")
         );
-        nottexTestingUtils.assertEqualNodes(expected1, traverseTree(",,tag1,tag2,tag3{,,tag4,tag5,tag6{}}"));
+        testUtil.assertEquals(expected1, traverseTree(",,tag1,tag2,tag3{,,tag4,tag5,tag6{}}"));
 
     }
-
 
     @Test
     public void tagsWithEmptyTags2() {
@@ -72,20 +69,22 @@ public class nottexAstTagTest {
                         null, "second"
                 )
         );
-        nottexTestingUtils.assertEqualNodes(expected2, traverseTree(",,tag1,tag2,tag3{,,tag4,tag5,tag6{}},,second{}"));
+        testUtil.assertEquals(expected2, traverseTree(",,tag1,tag2,tag3{,,tag4,tag5,tag6{}},,second{}"));
     }
 
 
     @Test
-    public void testTagsWithText() {
+    public void testTagsWithText1() {
         RootNode expected1 = new RootNode(
                 new TagUseNode(
                         new RootNode(
                                 new TextNode("text")), "tag1")
         );
-        nottexTestingUtils.assertEqualNodes(expected1, traverseTree(",,tag1{text}"));
+        testUtil.assertEquals(expected1, traverseTree(",,tag1{text}"));
+    }
 
-
+    @Test
+    public void testTagsWithText2() {
         RootNode expected2 = new RootNode(
                 new TagUseNode(
                         new RootNode(
@@ -98,8 +97,11 @@ public class nottexAstTagTest {
                         null, "second"
                 )
         );
-        nottexTestingUtils.assertEqualNodes(expected2, traverseTree(",,tag1,tag2,tag3{,,tag4,tag5,tag6{}text},,second{}"));
+        testUtil.assertEquals(expected2, traverseTree(",,tag1,tag2,tag3{,,tag4,tag5,tag6{}text},,second{}"));
+    }
 
+    @Test
+    public void testTagsWithText3() {
         RootNode expected3 = new RootNode(
                 new TagUseNode(
                         new RootNode(
@@ -116,9 +118,11 @@ public class nottexAstTagTest {
                         null, "second"
                 )
         );
-        nottexTestingUtils.assertEqualNodes(expected3, traverseTree(",,tag1,tag2,tag3 \n{,,tag4 , tag5,tag6{}text,,tag{s}},,second{}"));
+        testUtil.assertEquals(expected3, traverseTree(",,tag1,tag2,tag3 \n{,,tag4 , tag5,tag6{}text,,tag{s}},,second{}"));
+    }
 
-
+    @Test
+    public void testTagsWithText4() {
         RootNode expected4 = new RootNode(
                 new TagUseNode(
                         new RootNode(
@@ -135,30 +139,30 @@ public class nottexAstTagTest {
                         null, "second"
                 )
         );
-        nottexTestingUtils.assertEqualNodes(expected4, traverseTree(",,tag1,tag2,tag3 \n{,,tag4 , tag5,tag6{}text,,tag{s}},,second{}"));
+        testUtil.assertEquals(expected4, traverseTree(",,tag1,tag2,tag3 \n{,,tag4 , tag5,tag6{}text,,tag{s}},,second{}"));
     }
 
-
     @Test
-    public void testTagFunction() {
-
+    public void testTagFunction1() {
         RootNode expected1 = new RootNode(
                 new TagUseNode(
                         new RootNode(
                                 new FunctionCallNode("fun")), "tag")
         );
-        nottexTestingUtils.assertEqualNodes(expected1, traverseTree(",,tag{::fun()}"));
+        testUtil.assertEquals(expected1, traverseTree(",,tag{::fun()}"));
+    }
 
+    @Test
+    public void testTagFunction2() {
         RootNode expected2 = new RootNode(
                 new TagUseNode(
                         new RootNode(
-                                new TagUseNode(null, "tagBefore"), new FunctionCallNode("fun"), new TagUseNode(null, "tagAfter")
+                                new TagUseNode(null, "tagBefore"),
+                                new FunctionCallNode("fun"),
+                                new TagUseNode(null, "tagAfter")
                         )
                         , "tag"));
-        nottexTestingUtils.assertEqualNodes(expected2, traverseTree(",,tag{,,tagBefore{}::fun(),,tagAfter{}}"));
-
-
+        testUtil.assertEquals(expected2, traverseTree(",,tag{,,tagBefore{}::fun(),,tagAfter{}}"));
     }
-
 
 }

@@ -13,7 +13,7 @@ public class nottexAstTextTest {
         RootNode expected = new RootNode(
                 new TextNode(input)
         );
-        nottexTestingUtils.assertEqualNodes(expected, traverseTree(input));
+        testUtil.assertEquals(expected, traverseTree(input));
     }
 
 

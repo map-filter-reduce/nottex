@@ -13,7 +13,7 @@ public class nottexAstFunctionTest {
         RootNode expected = new RootNode(
                 new FunctionCallNode("func")
         );
-        nottexTestingUtils.assertEqualNodes(expected, traverseTree(input));
+        testUtil.assertEquals(expected, traverseTree(input));
     }
 
 
@@ -21,9 +21,9 @@ public class nottexAstFunctionTest {
     public void testSimpleArgs1() {
         String input1 = "::func(\"\")";
         RootNode expected1 = new RootNode(
-                new FunctionCallNode("func", nottexTestingUtils.stringArg(""))
+                new FunctionCallNode("func", testUtil.stringArg(""))
         );
-        nottexTestingUtils.assertEqualNodes(expected1, traverseTree(input1));
+        testUtil.assertEquals(expected1, traverseTree(input1));
     }
 
 
@@ -32,9 +32,9 @@ public class nottexAstFunctionTest {
         String input2 = "::func(\"abc\")";
         RootNode expected2 = new RootNode(
                 new FunctionCallNode("func",
-                        nottexTestingUtils.stringArg("abc"))
+                        testUtil.stringArg("abc"))
         );
-        nottexTestingUtils.assertEqualNodes(expected2, traverseTree(input2));
+        testUtil.assertEquals(expected2, traverseTree(input2));
     }
 
 
@@ -43,10 +43,10 @@ public class nottexAstFunctionTest {
         String input3 = "::func(\"mam\", \"\")";
         RootNode expected3 = new RootNode(
                 new FunctionCallNode("func",
-                        nottexTestingUtils.stringArg("mam"),
-                        nottexTestingUtils.stringArg(""))
+                        testUtil.stringArg("mam"),
+                        testUtil.stringArg(""))
         );
-        nottexTestingUtils.assertEqualNodes(expected3, traverseTree(input3));
+        testUtil.assertEquals(expected3, traverseTree(input3));
     }
 
 
@@ -55,9 +55,9 @@ public class nottexAstFunctionTest {
         String input3 = "::func(::fa())";
         RootNode expected3 = new RootNode(
                 new FunctionCallNode("func",
-                        nottexTestingUtils.funcArg(new FunctionCallNode("fa")))
+                        testUtil.funcArg(new FunctionCallNode("fa")))
         );
-        nottexTestingUtils.assertEqualNodes(expected3, traverseTree(input3));
+        testUtil.assertEquals(expected3, traverseTree(input3));
     }
 
     @Test
@@ -65,10 +65,10 @@ public class nottexAstFunctionTest {
         String input3 = "::func(::fa(), \"af\")";
         RootNode expected3 = new RootNode(
                 new FunctionCallNode("func",
-                        nottexTestingUtils.funcArg(new FunctionCallNode("fa")),
-                        nottexTestingUtils.stringArg("af"))
+                        testUtil.funcArg(new FunctionCallNode("fa")),
+                        testUtil.stringArg("af"))
         );
-        nottexTestingUtils.assertEqualNodes(expected3, traverseTree(input3));
+        testUtil.assertEquals(expected3, traverseTree(input3));
     }
 
     @Test
@@ -76,13 +76,13 @@ public class nottexAstFunctionTest {
         String input3 = "::func(::fa(\"a\"), \"af\")";
         RootNode expected3 = new RootNode(
                 new FunctionCallNode("func",
-                        nottexTestingUtils.funcArg(
+                        testUtil.funcArg(
                                 new FunctionCallNode("fa",
-                                        nottexTestingUtils.stringArg("a"))
+                                        testUtil.stringArg("a"))
                         ),
-                        nottexTestingUtils.stringArg("af"))
+                        testUtil.stringArg("af"))
         );
-        nottexTestingUtils.assertEqualNodes(expected3, traverseTree(input3));
+        testUtil.assertEquals(expected3, traverseTree(input3));
     }
 
 
@@ -91,9 +91,9 @@ public class nottexAstFunctionTest {
         String input3 = "::func  (  \"af\")";
         RootNode expected3 = new RootNode(
                 new FunctionCallNode("func",
-                        nottexTestingUtils.stringArg("af"))
+                        testUtil.stringArg("af"))
         );
-        nottexTestingUtils.assertEqualNodes(expected3, traverseTree(input3));
+        testUtil.assertEquals(expected3, traverseTree(input3));
     }
 
 
@@ -102,9 +102,9 @@ public class nottexAstFunctionTest {
         String input3 = "::func(  \"af \" )";
         RootNode expected3 = new RootNode(
                 new FunctionCallNode("func",
-                        nottexTestingUtils.stringArg("af "))
+                        testUtil.stringArg("af "))
         );
-        nottexTestingUtils.assertEqualNodes(expected3, traverseTree(input3));
+        testUtil.assertEquals(expected3, traverseTree(input3));
     }
 
 }
