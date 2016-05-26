@@ -11,8 +11,10 @@ public class Evaluator {
     // arguments must be \in {StringNode, RootNode}
     //
 
-    public static NottexNode don(StringNode string) {
-        return new TextNode(string.getValue());
+    public static NottexNode don(StringNode string1, StringNode string2) {
+        return new TextNode(String.valueOf(
+                Integer.parseInt(string1.getValue()) +
+                        Integer.parseInt(string2.getValue())));
     }
 
 }

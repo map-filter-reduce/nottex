@@ -10,7 +10,7 @@ public class TagUseNode extends NottexNode implements ChildrenBearable {
     private List<String> names;
 
     public TagUseNode(NottexNode content, List<String> tagNames) {
-        if (content instanceof RootNode)
+        if (content == null || content instanceof RootNode)
             this.content = (RootNode) content;
         else
             throw new AssertionError();
@@ -28,7 +28,7 @@ public class TagUseNode extends NottexNode implements ChildrenBearable {
     }
 
     public TagUseNode(NottexNode content, String... tagNames) {
-        if (content instanceof RootNode)
+        if (content == null || content instanceof RootNode)
             this.content = (RootNode) content;
         else
             throw new AssertionError();

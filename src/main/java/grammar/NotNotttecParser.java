@@ -105,9 +105,10 @@ public class NotNotttecParser {
     public static void main(String[] args) {
 
 //        System.out.println(parse("::suvaline(\"abc\")").prettyPrint());
+        System.out.println(parse(",,tagg{}").prettyPrint());
 //        System.out.println(parse("::suvaline(\"\")").prettyPrint());
 //        System.out.println(parse("::suvaline(\"\", ::f())").prettyPrint());
-        System.out.println(NottexFunctionReducer.reduceFunctions(parse("::don(\"abc\")")).prettyPrint());
+        //System.out.println(NottexFunctionReducer.reduceFunctions(parse("::don(\"-1\", \"-1\")")).prettyPrint());
         //System.out.println(parse(",,tag1{}").prettyPrint(0));
         //parse("::suvaline(\"arg1\",::d())");
         //System.out.println(parse(",,tag1 , tag2 {}").prettyPrint(0));
