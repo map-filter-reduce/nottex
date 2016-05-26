@@ -2,7 +2,7 @@ import nottex_ast.RootNode;
 import nottex_ast.TextNode;
 import org.junit.Test;
 
-import static grammar.TreeTest.traverseTree;
+import static grammar.AstParser.parse;
 
 public class nottexAstTextTest {
 
@@ -13,7 +13,7 @@ public class nottexAstTextTest {
         RootNode expected = new RootNode(
                 new TextNode(input)
         );
-        testUtil.assertEquals(expected, traverseTree(input));
+        testUtil.assertEquals(expected, parse(input));
     }
 
 

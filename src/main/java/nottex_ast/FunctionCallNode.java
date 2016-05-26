@@ -47,7 +47,7 @@ public class FunctionCallNode extends Node {
     @Override
     public String prettyPrint(int n) {
         String args = arguments.stream().map(arg -> "\n" + arg.prettyPrint(n + INDENT_SIZE)).collect(Collectors.joining(","));
-        return repeatString(" ", n) + String.format("Function: %s (%s) ", name, args + "\n" + repeatString(" ", n));
+        return repeatString(" ", n) + String.format("Function: %s (%s)", name, args + "\n" + repeatString(" ", n));
     }
 
 

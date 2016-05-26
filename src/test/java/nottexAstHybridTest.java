@@ -3,7 +3,7 @@ import nottex_ast.TagUseNode;
 import nottex_ast.TextNode;
 import org.junit.Test;
 
-import static grammar.TreeTest.traverseTree;
+import static grammar.AstParser.parse;
 
 public class nottexAstHybridTest {
 
@@ -15,7 +15,7 @@ public class nottexAstHybridTest {
                 new TextNode("text"),
                 new TagUseNode(null, "tamm")
         );
-        testUtil.assertEquals(expected, traverseTree(input));
+        testUtil.assertEquals(expected, parse(input));
     }
 
 }
