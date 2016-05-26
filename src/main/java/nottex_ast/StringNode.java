@@ -1,6 +1,6 @@
 package nottex_ast;
 
-public class StringNode extends Node {
+public class StringNode extends NottexNode {
 
     private final String value;
 

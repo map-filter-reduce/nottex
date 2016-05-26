@@ -1,6 +1,6 @@
 package nottex_ast;
 
-public class FunctionArgNode extends Node {
+public class FunctionArgNode extends NottexNode {
 
     private final StringNode stringArg;
     private final FunctionCallNode funArg;

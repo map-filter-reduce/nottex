@@ -1,6 +1,6 @@
 package nottex_ast;
 
-public abstract class Node {
+public abstract class NottexNode {
 
     int INDENT_SIZE = 4;
 

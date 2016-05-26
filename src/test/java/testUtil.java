@@ -1,12 +1,12 @@
 import nottex_ast.FunctionArgNode;
 import nottex_ast.FunctionCallNode;
-import nottex_ast.Node;
+import nottex_ast.NottexNode;
 import nottex_ast.StringNode;
 import org.junit.Assert;
 
 public class testUtil {
 
-    public static void assertEquals(Node expected, Node actual) {
+    public static void assertEquals(NottexNode expected, NottexNode actual) {
         Assert.assertTrue(expected.equals(actual));
     }
 

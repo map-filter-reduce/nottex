@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FunctionCallNode extends Node {
+public class FunctionCallNode extends NottexNode {
 
     private final String name;
     private List<FunctionArgNode> arguments;

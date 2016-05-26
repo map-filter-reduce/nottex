@@ -3,17 +3,17 @@ package nottex_ast;
 import java.util.Arrays;
 import java.util.List;
 
-public class TagUseNode extends Node {
+public class TagUseNode extends NottexNode {
 
-    private final Node content;
+    private final NottexNode content;
     private List<String> names;
 
-    public TagUseNode(Node content, List<String> tagNames) {
+    public TagUseNode(NottexNode content, List<String> tagNames) {
         this.content = content;
         this.names = tagNames;
     }
 
-    public TagUseNode(Node content, String... tagNames) {
+    public TagUseNode(NottexNode content, String... tagNames) {
         this.content = content;
         this.names = Arrays.asList(tagNames);
     }

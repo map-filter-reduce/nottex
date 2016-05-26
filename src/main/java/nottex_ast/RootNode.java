@@ -5,19 +5,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RootNode extends Node {
+public class RootNode extends NottexNode {
 
-    private List<Node> children;
+    private List<NottexNode> children;
 
     public RootNode() {
         this.children = new ArrayList<>();
     }
 
-    public void addChild(Node node) {
+    public void addChild(NottexNode node) {
         children.add(node);
     }
 
-    public RootNode(Node... children) {
+    public RootNode(NottexNode... children) {
         this.children = new ArrayList<>(Arrays.asList(children));
     }
 

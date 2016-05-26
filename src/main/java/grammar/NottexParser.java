@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class AstParser {
+public class NottexParser {
 
-    public static Node parse(String code) {
+    public static NottexNode parse(String code) {
         // TODO
         ANTLRInputStream antlrInput = new ANTLRInputStream(code);
         nottexLexer nottexLexer = new nottexLexer(antlrInput);
@@ -22,7 +22,7 @@ public class AstParser {
         return parse(tree);
     }
 
-    private static Node parse(ParseTree node) {
+    private static NottexNode parse(ParseTree node) {
 
         if (node == null) return null;
 
@@ -41,14 +41,14 @@ public class AstParser {
 
             if (functionContext.argumentsNode != null) {
                 // Add arguments if there are any
-                List<Node> argsAsNodes = functionContext
+                List<NottexNode> argsAsNodes = functionContext
                         .argumentsNode
                         .argumentNodes
                         .stream()
-                        .map(AstParser::parse)
+                        .map(NottexParser::parse)
                         .collect(Collectors.toList());
 
-                for (Node argAsNode : argsAsNodes) {
+                for (NottexNode argAsNode : argsAsNodes) {
                     if (argAsNode instanceof StringNode)
                         functionCall.addArgument(new FunctionArgNode((StringNode) argAsNode));
                     else if (argAsNode instanceof FunctionCallNode)
