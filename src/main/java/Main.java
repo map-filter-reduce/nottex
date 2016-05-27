@@ -13,7 +13,14 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException, DocumentException {
-        String input = ",,tag{Testin funktsiooni::testAdd(2,3)}";
+
+        //TODO: lineseparators not working.
+        String input =
+                ",,header{NoTTeX GRAMMAR TEST}\n\n" +
+                        " 5 + 2 = ::testAdd(5,2)\n\n" +
+                        ",,footer{ 2016}";
+
+
         NottexNode astTree = AstParser.parse(input);
         NottexNode reducedTree = FunctionReducer.reduceFunctions(astTree);
         Document xmlDocument = createDocument(reducedTree);

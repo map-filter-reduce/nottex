@@ -12,6 +12,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.util.stream.Collectors;
 
+/**
+ * Class for translating AST into XML tree.
+ */
 public class XmlTranslator {
 
     public static Document createDocument(NottexNode node) {
