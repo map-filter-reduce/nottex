@@ -15,18 +15,30 @@ public class FunctionEvaluation {
     //      2) must have a return type of NottexNode or its subclass
     //
 
-    public static NottexNode upperCase(StringNode string) {
+
+
+
+
+
+
+
+
+
+    // TEST FUNCTIONS
+
+
+    public static NottexNode testUpperCase(StringNode string) {
         return new StringNode(string.getValue().toUpperCase());
     }
 
-    public static NottexNode add(IntNode number1, IntNode number2) {
-            return new IntNode(
-                    number1.getNumberValue().intValue() +
-                    number2.getNumberValue().intValue()
-            );
+    public static NottexNode testAdd(IntNode number1, IntNode number2) {
+        return new IntNode(
+                number1.getNumberValue().intValue() +
+                        number2.getNumberValue().intValue()
+        );
     }
 
-    public static NottexNode repeat(StringNode string, IntNode integer){
+    public static NottexNode testRepeat(StringNode string, IntNode integer) {
         return new StringNode(Collections.nCopies(integer.getValue(), string.getValue())
                 .stream()
                 .collect(Collectors.joining()));

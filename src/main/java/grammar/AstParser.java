@@ -112,7 +112,7 @@ public class AstParser {
 
     public static void main(String[] args) {
 
-        System.out.println(FunctionReducer.reduceFunctions(parse("::repeat(\"s\",::add(1,::add(1,5)))")).prettyPrint());
+        System.out.println(FunctionReducer.reduceFunctions(parse("::testRepeat(\"s\",::add(1,::add(1,5)))")).prettyPrint());
 //        System.out.println(parse("::suvaline(\"abc\")").prettyPrint());
 //        System.out.println(parse("::suvaline(\"\")").prettyPrint());
 //        System.out.println(parse("::suvaline(\"\", ::f())").prettyPrint());
