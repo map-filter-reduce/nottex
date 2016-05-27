@@ -31,7 +31,11 @@ public class DoubleNode extends NumberNode {
     }
 
     @Override
-    public Number getValue() {
+    public Number getNumberValue() {
+        return value;
+    }
+
+    public Double getValue() {
         return value;
     }
 }

@@ -2,7 +2,7 @@ package nottex_ast.literals;
 
 public abstract class NumberNode extends LiteralNode {
 
-    public abstract Number getValue();
+    public abstract Number getNumberValue();
 
     public static NumberNode numberNode(String numericalValue) {
         try {

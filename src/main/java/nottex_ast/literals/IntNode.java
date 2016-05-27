@@ -33,7 +33,12 @@ public class IntNode extends NumberNode {
     }
 
     @Override
-    public Number getValue() {
+    public Number getNumberValue() {
+        return value;
+    }
+
+
+    public Integer getValue() {
         return value;
     }
 }
