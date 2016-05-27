@@ -1,8 +1,6 @@
 package evaluation;
 
-import nottex_ast.NottexNode;
-import nottex_ast.StringNode;
-import nottex_ast.TextNode;
+import nottex_ast.*;
 
 public class FunctionEvaluation {
 
@@ -26,5 +24,18 @@ public class FunctionEvaluation {
                         Integer.parseInt(string2.getValue())));
     }
 
+    public static NottexNode don(IntNode int1, IntNode int2) {
+        return new TextNode(String.valueOf(int1.getValue().intValue() + int2.getValue().intValue()));
+    }
+
+    public static NottexNode don(DoubleNode int1, DoubleNode int2) {
+        return new TextNode(String.valueOf(int1.getValue().doubleValue() + int2.getValue().doubleValue()));
+    }
+
+    public static NottexNode m(DoubleNode d1, DoubleNode d2, StringNode s1) {
+        return new TextNode(
+                s1.getValue()
+        );
+    }
 
 }

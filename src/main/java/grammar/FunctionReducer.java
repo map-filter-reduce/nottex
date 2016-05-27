@@ -74,7 +74,7 @@ public class FunctionReducer {
                 .collect(Collectors.toList());
 
         if (potentialMethods.size() != 1)
-            throw new AssertionError();
+            throw new AssertionError("Found wrong number of methods: " + potentialMethods.size());
 
         Method method = potentialMethods.get(0);
 
@@ -87,7 +87,7 @@ public class FunctionReducer {
 
     private static NottexNode evaluateArgument(FunctionArgNode argument) {
         return argument.isFunctionCall() ?
-                evaluate(argument.getFunArg()) : new StringNode(argument.getStringArg().getValue());
+                evaluate(argument.getFunArg()) : LiteralNode.copy(argument.getLiteralArg());
     }
 
 }

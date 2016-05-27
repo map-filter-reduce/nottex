@@ -35,7 +35,11 @@ public class AstParser {
 
         } else if (node instanceof nottexParser.FunctionCallContext) {
             nottexParser.FunctionCallContext functionContext = (nottexParser.FunctionCallContext) node;
-            FunctionCallNode functionCall = new FunctionCallNode(functionContext.name.getText());
+            FunctionCallNode functionCall = new FunctionCallNode(
+                    functionContext.name
+                            .stream()
+                            .map(Token::getText)
+                            .collect(Collectors.joining()));
 
             if (functionContext.argumentsNode != null) {
                 // Add arguments if there are any
@@ -47,8 +51,8 @@ public class AstParser {
                         .collect(Collectors.toList());
 
                 for (NottexNode argAsNode : argsAsNodes) {
-                    if (argAsNode instanceof StringNode)
-                        functionCall.addArgument(new FunctionArgNode((StringNode) argAsNode));
+                    if (argAsNode instanceof LiteralNode)
+                        functionCall.addArgument(new FunctionArgNode((LiteralNode) argAsNode));
                     else if (argAsNode instanceof FunctionCallNode)
                         functionCall.addArgument(new FunctionArgNode((FunctionCallNode) argAsNode));
                     else throw new AssertionError();
@@ -83,14 +87,18 @@ public class AstParser {
             if (content == null)
                 return new StringNode("");
 
-
             return new StringNode(content
                     .stream()
                     .map(Token::getText)
                     .collect(Collectors.joining())
             );
 
-        } else if (node instanceof nottexParser.FuncArgContext) {
+        } else if (node instanceof nottexParser.NumberArgContext) {
+            String numberArg = node.getText();
+            return NumberNode.numberNode(numberArg);
+        }
+
+        else if (node instanceof nottexParser.FuncArgContext) {
             nottexParser.FuncArgContext argContext = (nottexParser.FuncArgContext) node;
             return parse(argContext.getChild(0));
         } else {
@@ -101,11 +109,7 @@ public class AstParser {
 
     public static void main(String[] args) {
 
-        Integer a = 2;
-        System.out.println(a.getClass().getTypeName());
-        System.out.println(((Object) a).getClass().getTypeName());
-
-        System.out.println(FunctionReducer.reduceFunctions(parse("::don(\"2\", ::don(\"1\", \"3\"))")).prettyPrint());
+        System.out.println(FunctionReducer.reduceFunctions(parse("::m(2.1, 1.8, \"a\")")).prettyPrint());
 //        System.out.println(parse("::suvaline(\"abc\")").prettyPrint());
 //        System.out.println(parse("::suvaline(\"\")").prettyPrint());
 //        System.out.println(parse("::suvaline(\"\", ::f())").prettyPrint());

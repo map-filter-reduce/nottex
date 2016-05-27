@@ -7,27 +7,28 @@ markupText : (functionCall
         | text)+
         ;
 
-functionCall : FUNCTION_MARKER name=NOTHING_TO_SEE_HERE ws LPAREN ws argumentsNode=funcArgs? ws RPAREN
+functionCall : FUNCTION_MARKER name+=ALPHA(ALPHA|NUMBER)* ws LPAREN ws argumentsNode=funcArgs? ws RPAREN
              ;
 
 tagUse : TAG_MARKER namesNode=tagIdens ws LBRACE content=markupText? RBRACE
        ;
 
-tagIdens : names+=NOTHING_TO_SEE_HERE (ws COMMA ws names+=NOTHING_TO_SEE_HERE)*
+tagIdens : names+=ALPHA(ALPHA|NUMBER)* (ws COMMA ws names+=ALPHA(ALPHA|NUMBER)*)*
          ;
 
-text : content+=(NOTHING_TO_SEE_HERE|COMMA|COLON|QUOTE|LPAREN|RPAREN|LBRACE|RBRACE|WS)+
+text : content+=(ALPHA|NUMBER|COMMA|COLON|QUOTE|LPAREN|RPAREN|LBRACE|RBRACE|WS)+
      ;
 
 funcArgs : argumentNodes+=funcArg (ws COMMA ws argumentNodes+=funcArg)*
          ;
 
-funcArg : string
-         | functionCall
-         ;
+funcArg : string        # StringArg
+        | NUMBER        # NumberArg
+        | functionCall  # FunctionCallArg
+        ;
 
 // TODO: add escaping
-string : QUOTE content+=(NOTHING_TO_SEE_HERE|TAG_MARKER|COMMA|FUNCTION_MARKER|COLON|LPAREN|RPAREN|LBRACE|RBRACE|WS)* QUOTE
+string : QUOTE content+=(ALPHA|NUMBER|TAG_MARKER|COMMA|FUNCTION_MARKER|COLON|LPAREN|RPAREN|LBRACE|RBRACE|WS)* QUOTE
        ;
 
 ws : WS*
@@ -43,5 +44,6 @@ LBRACE : '{';
 RBRACE : '}';
 QUOTE : '"';
 WS : [ \n\r\t];
-NOTHING_TO_SEE_HERE : ~(','|':'|'('|')'|'{'|'}'|'"'|' '|'\n'|'\r'|'\t')+;
+NUMBER : ('0'|[1-9][0-9]*)('.'[0-9]+)?;
+ALPHA : ~(','|':'|'('|')'|'{'|'}'|'"'|' '|'\n'|'\r'|'\t')+;
 

@@ -68,15 +68,41 @@ public interface nottexListener extends ParseTreeListener {
 	 */
 	void exitFuncArgs(nottexParser.FuncArgsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link nottexParser#funcArg}.
+	 * Enter a parse tree produced by the {@code StringArg}
+	 * labeled alternative in {@link nottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 */
-	void enterFuncArg(nottexParser.FuncArgContext ctx);
+	void enterStringArg(nottexParser.StringArgContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link nottexParser#funcArg}.
+	 * Exit a parse tree produced by the {@code StringArg}
+	 * labeled alternative in {@link nottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 */
-	void exitFuncArg(nottexParser.FuncArgContext ctx);
+	void exitStringArg(nottexParser.StringArgContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code NumberArg}
+	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumberArg(nottexParser.NumberArgContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code NumberArg}
+	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumberArg(nottexParser.NumberArgContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code FunctionCallArg}
+	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionCallArg(nottexParser.FunctionCallArgContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code FunctionCallArg}
+	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionCallArg(nottexParser.FunctionCallArgContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link nottexParser#string}.
 	 * @param ctx the parse tree

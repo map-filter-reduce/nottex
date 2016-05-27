@@ -1,27 +1,23 @@
 package nottex_ast;
 
-public class StringNode extends LiteralNode {
+public class DoubleNode extends NumberNode {
 
-    private final String value;
+    private final Double value;
 
-    public StringNode(String value) {
+    public DoubleNode(Double value) {
+        if (value == null)
+            throw new AssertionError();
         this.value = value;
     }
-
-    public String getValue() {
-        return value;
-    }
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        StringNode that = (StringNode) o;
+        DoubleNode that = (DoubleNode) o;
 
         return value != null ? value.equals(that.value) : that.value == null;
-
     }
 
     @Override
@@ -29,11 +25,13 @@ public class StringNode extends LiteralNode {
         return value != null ? value.hashCode() : 0;
     }
 
-
     @Override
     public String toString() {
-        return "\"" + value + "\"";
+        return String.valueOf(value);
+    }
+
+    @Override
+    public Number getValue() {
+        return value;
     }
 }
-
-

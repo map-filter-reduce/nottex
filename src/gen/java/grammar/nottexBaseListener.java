@@ -88,13 +88,37 @@ public class nottexBaseListener implements nottexListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFuncArg(nottexParser.FuncArgContext ctx) { }
+	@Override public void enterStringArg(nottexParser.StringArgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFuncArg(nottexParser.FuncArgContext ctx) { }
+	@Override public void exitStringArg(nottexParser.StringArgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNumberArg(nottexParser.NumberArgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNumberArg(nottexParser.NumberArgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFunctionCallArg(nottexParser.FunctionCallArgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunctionCallArg(nottexParser.FunctionCallArgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

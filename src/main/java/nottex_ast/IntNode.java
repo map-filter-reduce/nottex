@@ -1,0 +1,39 @@
+package nottex_ast;
+
+public class IntNode extends NumberNode {
+
+    private final Integer value;
+
+    public IntNode(Integer value) {
+        if (value == null)
+            throw new AssertionError();
+
+        this.value = value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        IntNode intNode = (IntNode) o;
+
+        return value != null ? value.equals(intNode.value) : intNode.value == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return value != null ? value.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @Override
+    public Number getValue() {
+        return value;
+    }
+}

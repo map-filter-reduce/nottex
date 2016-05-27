@@ -47,11 +47,26 @@ public interface nottexVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFuncArgs(nottexParser.FuncArgsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link nottexParser#funcArg}.
+	 * Visit a parse tree produced by the {@code StringArg}
+	 * labeled alternative in {@link nottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFuncArg(nottexParser.FuncArgContext ctx);
+	T visitStringArg(nottexParser.StringArgContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code NumberArg}
+	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumberArg(nottexParser.NumberArgContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code FunctionCallArg}
+	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionCallArg(nottexParser.FunctionCallArgContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link nottexParser#string}.
 	 * @param ctx the parse tree

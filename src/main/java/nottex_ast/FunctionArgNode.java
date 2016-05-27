@@ -2,33 +2,30 @@ package nottex_ast;
 
 public class FunctionArgNode extends NottexNode {
 
-    public StringNode getStringArg() {
-        return stringArg;
+    private final LiteralNode literalArg;
+    private final FunctionCallNode funArg;
+
+    public FunctionArgNode(FunctionCallNode funArg) {
+        this.funArg = funArg;
+        this.literalArg = null;
     }
 
-    private final StringNode stringArg;
+    public FunctionArgNode(LiteralNode stringArg) {
+        this.literalArg = stringArg;
+        this.funArg = null;
+    }
+
+    public LiteralNode getLiteralArg() {
+        return literalArg;
+    }
 
     public FunctionCallNode getFunArg() {
         return funArg;
     }
 
-    private final FunctionCallNode funArg;
-
-    public FunctionArgNode(FunctionCallNode funArg) {
-        this.funArg = funArg;
-        this.stringArg = null;
-    }
-
-    public FunctionArgNode(StringNode stringArg) {
-        this.stringArg = stringArg;
-        this.funArg = null;
-    }
-
-
     public boolean isFunctionCall() {
         return funArg != null;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -37,14 +34,13 @@ public class FunctionArgNode extends NottexNode {
 
         FunctionArgNode that = (FunctionArgNode) o;
 
-        if (stringArg != null ? !stringArg.equals(that.stringArg) : that.stringArg != null) return false;
+        if (literalArg != null ? !literalArg.equals(that.literalArg) : that.literalArg != null) return false;
         return funArg != null ? funArg.equals(that.funArg) : that.funArg == null;
-
     }
 
     @Override
     public int hashCode() {
-        int result = stringArg != null ? stringArg.hashCode() : 0;
+        int result = literalArg != null ? literalArg.hashCode() : 0;
         result = 31 * result + (funArg != null ? funArg.hashCode() : 0);
         return result;
     }
@@ -53,7 +49,7 @@ public class FunctionArgNode extends NottexNode {
     public String prettyPrint(String indent) {
         return indent + "Arg: " + "\n" +
                 (isFunctionCall() ?
-                        funArg.prettyPrint(indent + INDENT) : stringArg.prettyPrint(indent + INDENT));
+                        funArg.prettyPrint(indent + INDENT) : literalArg.prettyPrint(indent + INDENT));
     }
 
 }
