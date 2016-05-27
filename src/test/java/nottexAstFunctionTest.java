@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static grammar.AstParser.parse;
 
-public class nottexAstFunctionTest {
+public class NottexAstFunctionTest {
 
 
     @Test
@@ -13,7 +13,7 @@ public class nottexAstFunctionTest {
         BlockNode expected = new BlockNode(
                 new FunctionCallNode("func")
         );
-        testUtil.assertEquals(expected, parse(input));
+        TestUtil.assertEquals(expected, parse(input));
     }
 
 
@@ -21,9 +21,9 @@ public class nottexAstFunctionTest {
     public void testSimpleArgs1() {
         String input1 = "::func(\"\")";
         BlockNode expected1 = new BlockNode(
-                new FunctionCallNode("func", testUtil.stringArg(""))
+                new FunctionCallNode("func", TestUtil.stringArg(""))
         );
-        testUtil.assertEquals(expected1, parse(input1));
+        TestUtil.assertEquals(expected1, parse(input1));
     }
 
 
@@ -32,9 +32,9 @@ public class nottexAstFunctionTest {
         String input2 = "::func(\"abc\")";
         BlockNode expected2 = new BlockNode(
                 new FunctionCallNode("func",
-                        testUtil.stringArg("abc"))
+                        TestUtil.stringArg("abc"))
         );
-        testUtil.assertEquals(expected2, parse(input2));
+        TestUtil.assertEquals(expected2, parse(input2));
     }
 
 
@@ -43,10 +43,10 @@ public class nottexAstFunctionTest {
         String input3 = "::func(\"mam\", \"\")";
         BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
-                        testUtil.stringArg("mam"),
-                        testUtil.stringArg(""))
+                        TestUtil.stringArg("mam"),
+                        TestUtil.stringArg(""))
         );
-        testUtil.assertEquals(expected3, parse(input3));
+        TestUtil.assertEquals(expected3, parse(input3));
     }
 
 
@@ -55,9 +55,9 @@ public class nottexAstFunctionTest {
         String input3 = "::func(::fa())";
         BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
-                        testUtil.funcArg(new FunctionCallNode("fa")))
+                        TestUtil.funcArg(new FunctionCallNode("fa")))
         );
-        testUtil.assertEquals(expected3, parse(input3));
+        TestUtil.assertEquals(expected3, parse(input3));
     }
 
     @Test
@@ -65,10 +65,10 @@ public class nottexAstFunctionTest {
         String input3 = "::func(::fa(), \"af\")";
         BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
-                        testUtil.funcArg(new FunctionCallNode("fa")),
-                        testUtil.stringArg("af"))
+                        TestUtil.funcArg(new FunctionCallNode("fa")),
+                        TestUtil.stringArg("af"))
         );
-        testUtil.assertEquals(expected3, parse(input3));
+        TestUtil.assertEquals(expected3, parse(input3));
     }
 
     @Test
@@ -76,13 +76,13 @@ public class nottexAstFunctionTest {
         String input3 = "::func(::fa(\"a\"), \"af\")";
         BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
-                        testUtil.funcArg(
+                        TestUtil.funcArg(
                                 new FunctionCallNode("fa",
-                                        testUtil.stringArg("a"))
+                                        TestUtil.stringArg("a"))
                         ),
-                        testUtil.stringArg("af"))
+                        TestUtil.stringArg("af"))
         );
-        testUtil.assertEquals(expected3, parse(input3));
+        TestUtil.assertEquals(expected3, parse(input3));
     }
 
 
@@ -91,9 +91,9 @@ public class nottexAstFunctionTest {
         String input3 = "::func  (  \"af\")";
         BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
-                        testUtil.stringArg("af"))
+                        TestUtil.stringArg("af"))
         );
-        testUtil.assertEquals(expected3, parse(input3));
+        TestUtil.assertEquals(expected3, parse(input3));
     }
 
 
@@ -102,9 +102,9 @@ public class nottexAstFunctionTest {
         String input3 = "::func(  \"af \" )";
         BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
-                        testUtil.stringArg("af "))
+                        TestUtil.stringArg("af "))
         );
-        testUtil.assertEquals(expected3, parse(input3));
+        TestUtil.assertEquals(expected3, parse(input3));
     }
 
 }

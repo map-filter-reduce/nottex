@@ -1,6 +1,9 @@
 package evaluation;
 
 import nottex_ast.*;
+import nottex_ast.literals.DoubleNode;
+import nottex_ast.literals.IntNode;
+import nottex_ast.literals.StringNode;
 
 public class FunctionEvaluation {
 
@@ -35,6 +38,12 @@ public class FunctionEvaluation {
     public static NottexNode m(DoubleNode d1, DoubleNode d2, StringNode s1) {
         return new TextNode(
                 s1.getValue()
+        );
+    }
+
+    public static NottexNode m() {
+        return new TextNode(
+                "asdasdasdasdadqwd"
         );
     }
 

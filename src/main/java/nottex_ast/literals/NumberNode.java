@@ -1,4 +1,4 @@
-package nottex_ast;
+package nottex_ast.literals;
 
 public abstract class NumberNode extends LiteralNode {
 

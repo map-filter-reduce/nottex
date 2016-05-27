@@ -1,4 +1,6 @@
-package nottex_ast;
+package nottex_ast.literals;
+
+import nottex_ast.NottexNode;
 
 @SuppressWarnings("ALL")
 public abstract class LiteralNode extends NottexNode {
@@ -14,7 +16,7 @@ public abstract class LiteralNode extends NottexNode {
     }
 
     @Override
-    String prettyPrint(String indent) {
+    public String prettyPrint(String indent) {
         return indent + "Literal: " + toString();
     }
 }

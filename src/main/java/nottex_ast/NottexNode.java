@@ -8,7 +8,7 @@ public abstract class NottexNode {
 
     public abstract int hashCode();
 
-    abstract String prettyPrint(String indent);
+    public abstract String prettyPrint(String indent);
 
     public String prettyPrint() {
         return prettyPrint("");

@@ -2,6 +2,7 @@ package grammar;
 
 import evaluation.FunctionEvaluation;
 import nottex_ast.*;
+import nottex_ast.literals.LiteralNode;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

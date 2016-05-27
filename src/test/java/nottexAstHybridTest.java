@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static grammar.AstParser.parse;
 
-public class nottexAstHybridTest {
+public class NottexAstHybridTest {
 
 
     @Test
@@ -15,7 +15,7 @@ public class nottexAstHybridTest {
                 new TextNode("text"),
                 new TagUseNode(null, "tamm")
         );
-        testUtil.assertEquals(expected, parse(input));
+        TestUtil.assertEquals(expected, parse(input));
     }
 
 }

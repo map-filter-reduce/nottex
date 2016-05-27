@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static grammar.AstParser.parse;
 
-public class nottexAstTextTest {
+public class NottexAstTextTest {
 
 
     @Test
@@ -13,7 +13,7 @@ public class nottexAstTextTest {
         BlockNode expected = new BlockNode(
                 new TextNode(input)
         );
-        testUtil.assertEquals(expected, parse(input));
+        TestUtil.assertEquals(expected, parse(input));
     }
 
 

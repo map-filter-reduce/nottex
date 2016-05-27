@@ -1,5 +1,7 @@
 package nottex_ast;
 
+import nottex_ast.literals.LiteralNode;
+
 public class FunctionArgNode extends NottexNode {
 
     private final LiteralNode literalArg;

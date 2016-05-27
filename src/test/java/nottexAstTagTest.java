@@ -10,14 +10,14 @@ import java.util.Collections;
 import static grammar.AstParser.parse;
 
 
-public class nottexAstTagTest {
+public class NottexAstTagTest {
 
     @Test
     public void emptyTag1() {
         BlockNode expected1 = new BlockNode(
                 new TagUseNode(null, "tag")
         );
-        testUtil.assertEquals(expected1, parse(",,tag{}"));
+        TestUtil.assertEquals(expected1, parse(",,tag{}"));
     }
 
     @Test
@@ -25,7 +25,7 @@ public class nottexAstTagTest {
         BlockNode expected = new BlockNode(
                 new TagUseNode(null, "tag1", "tag2", "tag3")
         );
-        testUtil.assertEquals(expected, parse(",,tag1 , tag2  , \n tag3 {}"));
+        TestUtil.assertEquals(expected, parse(",,tag1 , tag2  , \n tag3 {}"));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class nottexAstTagTest {
         BlockNode expected2 = new BlockNode(
                 new TagUseNode(null, "tag1", "tag2", "tag3")
         );
-        testUtil.assertEquals(expected2, parse(",,tag1,tag2,tag3{}"));
+        TestUtil.assertEquals(expected2, parse(",,tag1,tag2,tag3{}"));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class nottexAstTagTest {
                 new TagUseNode(null, "tag1", "tag2", "tag3"),
                 new TagUseNode(null, "tag3", "tag5", "tag6")
         );
-        testUtil.assertEquals(expected, parse(",,tag1 , tag2  , tag3 {},,tag3 , tag5  , tag6 {}"));
+        TestUtil.assertEquals(expected, parse(",,tag1 , tag2  , tag3 {},,tag3 , tag5  , tag6 {}"));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class nottexAstTagTest {
                                 ))
                         , "tag1", "tag2", "tag3")
         );
-        testUtil.assertEquals(expected1, parse(",,tag1,tag2,tag3{,,tag4,tag5,tag6{}}"));
+        TestUtil.assertEquals(expected1, parse(",,tag1,tag2,tag3{,,tag4,tag5,tag6{}}"));
 
     }
 
@@ -72,7 +72,7 @@ public class nottexAstTagTest {
                         null, "second"
                 )
         );
-        testUtil.assertEquals(expected2, parse(",,tag1,tag2,tag3{,,tag4,tag5,tag6{}},,second{}"));
+        TestUtil.assertEquals(expected2, parse(",,tag1,tag2,tag3{,,tag4,tag5,tag6{}},,second{}"));
     }
 
 
@@ -83,7 +83,7 @@ public class nottexAstTagTest {
                         Collections.singletonList(
                                 new TextNode("text")), "tag1")
         );
-        testUtil.assertEquals(expected1, parse(",,tag1{text}"));
+        TestUtil.assertEquals(expected1, parse(",,tag1{text}"));
     }
 
     @Test
@@ -100,7 +100,7 @@ public class nottexAstTagTest {
                         null, "second"
                 )
         );
-        testUtil.assertEquals(expected2, parse(",,tag1,tag2,tag3{,,tag4,tag5,tag6{}text},,second{}"));
+        TestUtil.assertEquals(expected2, parse(",,tag1,tag2,tag3{,,tag4,tag5,tag6{}text},,second{}"));
     }
 
     @Test
@@ -121,7 +121,7 @@ public class nottexAstTagTest {
                         null, "second"
                 )
         );
-        testUtil.assertEquals(expected3, parse(",,tag1,tag2,tag3 \n{,,tag4 , tag5,tag6{}text,,tag{s}},,second{}"));
+        TestUtil.assertEquals(expected3, parse(",,tag1,tag2,tag3 \n{,,tag4 , tag5,tag6{}text,,tag{s}},,second{}"));
     }
 
     @Test
@@ -142,7 +142,7 @@ public class nottexAstTagTest {
                         null, "second"
                 )
         );
-        testUtil.assertEquals(expected4, parse(",,tag1,tag2,tag3 \n{,,tag4 , tag5,tag6{}text,,tag{s}},,second{}"));
+        TestUtil.assertEquals(expected4, parse(",,tag1,tag2,tag3 \n{,,tag4 , tag5,tag6{}text,,tag{s}},,second{}"));
     }
 
     @Test
@@ -152,7 +152,7 @@ public class nottexAstTagTest {
                         Collections.singletonList(
                                 new FunctionCallNode("fun")), "tag")
         );
-        testUtil.assertEquals(expected1, parse(",,tag{::fun()}"));
+        TestUtil.assertEquals(expected1, parse(",,tag{::fun()}"));
     }
 
     @Test
@@ -165,7 +165,7 @@ public class nottexAstTagTest {
                                 new TagUseNode(null, "tagAfter")
                         )
                         , "tag"));
-        testUtil.assertEquals(expected2, parse(",,tag{,,tagBefore{}::fun(),,tagAfter{}}"));
+        TestUtil.assertEquals(expected2, parse(",,tag{,,tagBefore{}::fun(),,tagAfter{}}"));
     }
 
 }
