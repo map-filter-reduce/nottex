@@ -33,6 +33,11 @@ public class IntNode extends NumberNode {
     }
 
     @Override
+    public String getStringValue() {
+        return String.valueOf(value);
+    }
+
+    @Override
     public Number getNumberValue() {
         return value;
     }

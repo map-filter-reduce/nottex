@@ -16,14 +16,6 @@ public class FunctionEvaluation {
     //
 
 
-
-
-
-
-
-
-
-
     // TEST FUNCTIONS
 
 
@@ -43,5 +35,10 @@ public class FunctionEvaluation {
                 .stream()
                 .collect(Collectors.joining()));
     }
+
+    public static NottexNode testEmpty() {
+        return new StringNode("TEST");
+    }
+
 
 }

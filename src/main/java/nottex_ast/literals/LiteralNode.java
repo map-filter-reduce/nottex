@@ -7,6 +7,11 @@ public abstract class LiteralNode extends NottexNode {
 
     public abstract String toString();
 
+    public abstract String getStringValue();
+
+
+
+
     public static LiteralNode copy(LiteralNode root) {
         if (root instanceof NumberNode) {
             return NumberNode.numberNode(((NumberNode) root).getNumberValue());

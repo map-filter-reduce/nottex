@@ -34,6 +34,11 @@ public class StringNode extends LiteralNode {
     public String toString() {
         return "\"" + value + "\"";
     }
+
+    @Override
+    public String getStringValue() {
+        return value;
+    }
 }
 
 

@@ -1,11 +1,12 @@
-import grammar.FunctionReducer;
+
+
 import nottex_ast.BlockNode;
 import nottex_ast.FunctionCallNode;
 import org.junit.Test;
 
 import static grammar.AstParser.parse;
 
-public class NottexAstFunctionTest {
+public class NottexFunctionEvalTest {
 
 
     @Test
@@ -14,7 +15,7 @@ public class NottexAstFunctionTest {
         BlockNode expected = new BlockNode(
                 new FunctionCallNode("func")
         );
-        TestUtil.assertEquals(expected, FunctionReducer.reduceFunctions(parse(input)));
+        TestUtil.assertEquals(expected, parse(input));
     }
 
 
@@ -109,3 +110,5 @@ public class NottexAstFunctionTest {
     }
 
 }
+
+
