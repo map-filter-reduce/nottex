@@ -1,6 +1,5 @@
 package grammar;
 
-import com.lowagie.text.DocumentException;
 import nottex_ast.BlockNode;
 import nottex_ast.NottexNode;
 import nottex_ast.TagUseNode;
@@ -8,17 +7,9 @@ import nottex_ast.TextNode;
 import nottex_ast.literals.LiteralNode;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.xpath.XPathExpressionException;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.stream.Collectors;
 
 public class XmlTranslator {
@@ -33,24 +24,6 @@ public class XmlTranslator {
         } catch (ParserConfigurationException e) {
             throw new RuntimeException(e);
         }
-    }
-
-
-    public static void main(String[] args) throws TransformerException, ParserConfigurationException, URISyntaxException, SAXException, XPathExpressionException, DocumentException, IOException {
-        Transformer transformer = TransformerFactory.newInstance().newTransformer();
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-
-
-
-
-        Document document = createDocument(FunctionReducer.reduceFunctions(AstParser.parse(",,tag{asfkapskf::testAdd(2,3)}")));
-
-        //Create XML
-        //DOMSource source = new DOMSource(document);
-        //StreamResult result = new StreamResult(new File("C:\\Users\\Priit\\Desktop\\test.xml"));
-        //transformer.transform(source, result);
-
-        PDFCreator.convertDocumentToPDF(document, "C:\\Users\\Priit\\Desktop\\test.pdf");
     }
 
 

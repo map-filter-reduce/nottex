@@ -99,29 +99,12 @@ public class AstParser {
         } else if (node instanceof nottexParser.NumberArgContext) {
             String numberArg = node.getText();
             return NumberNode.numberNode(numberArg);
-        }
-
-        else if (node instanceof nottexParser.FuncArgContext) {
+        } else if (node instanceof nottexParser.FuncArgContext) {
             nottexParser.FuncArgContext argContext = (nottexParser.FuncArgContext) node;
             return parse(argContext.getChild(0));
         } else {
             throw new AssertionError(node.getClass().getName());
         }
 
-    }
-
-    public static void main(String[] args) {
-
-        System.out.println(FunctionReducer.reduceFunctions(parse("::testRepeat(\"s\",::add(1,::add(1,5)))")).prettyPrint());
-//        System.out.println(parse("::suvaline(\"abc\")").prettyPrint());
-//        System.out.println(parse("::suvaline(\"\")").prettyPrint());
-//        System.out.println(parse("::suvaline(\"\", ::f())").prettyPrint());
-        //System.out.println(FunctionReducer.reduceFunctions(parse("::don(\"-1\", \"-1\")")).prettyPrint());
-        //System.out.println(parse(",,tag1{}").prettyPrint(0));
-        //parse("::suvaline(\"arg1\",::d())");
-        //System.out.println(parse(",,tag1 , tag2 {}").prettyPrint(0));
-        //System.out.println(parse(",,tag1 , tag2 {twetwesdtsd}").prettyPrint(0));
-        //parse(",,tag1 , tag2 {::suvaline(\"arg1\",::d(::suvaline(\"arg1\",::d())))} ,,tag1 , tag2 {::suvaline(\"arg1\",::d(::suvaline(\"arg1\",::d())))} wfewefw");
-        //System.out.println(parse(" kfpowe wf we f, fwe ,  : wfefweefw").prettyPrint(0));
     }
 }

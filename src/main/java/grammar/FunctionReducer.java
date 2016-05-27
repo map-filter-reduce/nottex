@@ -15,9 +15,11 @@ public class FunctionReducer {
 
     /**
      * Evaluate
+     * <p>
+     * Method replaces FunctionCallNodes with their evaluated values.
      *
-     * @param node
-     * @return
+     * @param node - tree that will
+     * @return new instance of the input with evaluated nodes (type NottexNode)
      */
     public static NottexNode reduceFunctions(NottexNode node) {
         if (node instanceof BlockNode) {
@@ -44,7 +46,8 @@ public class FunctionReducer {
             return evaluate((FunctionCallNode) node);
 
         } else {
-            throw new AssertionError();
+            throw new AssertionError("Expected {BlockNode, TagUseNode, TextNode, FunctionCallNode} but got: "
+                    + node.getClass().getName());
         }
     }
 

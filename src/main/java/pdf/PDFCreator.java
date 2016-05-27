@@ -1,4 +1,4 @@
-package grammar;
+package pdf;
 
 import com.lowagie.text.DocumentException;
 import org.w3c.dom.Document;
