@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException, DocumentException {
 
-        //TODO: lineseparators not working.
+        //TODO: line separators not working.
         String input =
                 ",,header{NoTTeX GRAMMAR TEST}\n\n" +
                         " 5 + 2 = ::testAdd(5,2)\n\n" +
@@ -24,6 +24,6 @@ public class Main {
         NottexNode astTree = AstParser.parse(input);
         NottexNode reducedTree = FunctionReducer.reduceFunctions(astTree);
         Document xmlDocument = createDocument(reducedTree);
-        PDFCreator.convertDocumentToPDF(xmlDocument, "C:\\Users\\Priit\\Desktop\\test.pdf");
+        PDFCreator.convertDocumentToPDF(xmlDocument, "src\\main\\resources\\test.pdf");
     }
 }
