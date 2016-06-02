@@ -14,6 +14,7 @@ public class TextNode extends NottexNode {
         this.paragraphs = new ArrayList<>();
         // Parse into paragraphs
         // TODO: "asd\n\nasdasdasdasd\n\n\n\n" should leave 2 empty paragraphs in the end
+        // TODO: bitinikerdus
         this.rawText = content;
         this.paragraphs = Arrays.asList(content.split("\n\n"))
                 .stream()
@@ -32,6 +33,11 @@ public class TextNode extends NottexNode {
     public List<String> getParagraphs() {
         return paragraphs;
     }
+
+    public int getParagraphCount() {
+        return paragraphs.size();
+    }
+
 
     @Override
     public boolean equals(Object o) {
