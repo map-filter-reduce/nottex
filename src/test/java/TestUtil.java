@@ -1,7 +1,7 @@
-import nottex_ast.FunctionArgNode;
-import nottex_ast.FunctionCallNode;
-import nottex_ast.NottexNode;
-import nottex_ast.literals.StringNode;
+import nottexast.FunctionArgNode;
+import nottexast.FunctionCallNode;
+import nottexast.NottexNode;
+import nottexast.literals.StringNode;
 import org.junit.Assert;
 
 public class TestUtil {

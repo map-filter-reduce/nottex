@@ -1,145 +1,145 @@
-// Generated from nottex.g4 by ANTLR 4.5.3
+// Generated from Nottex.g4 by ANTLR 4.5.3
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
  * This interface defines a complete generic visitor for a parse tree produced
- * by {@link nottexParser}.
+ * by {@link NottexParser}.
  *
  * @param <T> The return type of the visit operation. Use {@link Void} for
  * operations with no return type.
  */
-public interface nottexVisitor<T> extends ParseTreeVisitor<T> {
+public interface NottexVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link nottexParser#markupText}.
+	 * Visit a parse tree produced by {@link NottexParser#markupText}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMarkupText(nottexParser.MarkupTextContext ctx);
+	T visitMarkupText(NottexParser.MarkupTextContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link nottexParser#functionCall}.
+	 * Visit a parse tree produced by {@link NottexParser#functionCall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFunctionCall(nottexParser.FunctionCallContext ctx);
+	T visitFunctionCall(NottexParser.FunctionCallContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link nottexParser#tagUse}.
+	 * Visit a parse tree produced by {@link NottexParser#tagUse}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTagUse(nottexParser.TagUseContext ctx);
+	T visitTagUse(NottexParser.TagUseContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link nottexParser#tagIdens}.
+	 * Visit a parse tree produced by {@link NottexParser#tagIdens}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTagIdens(nottexParser.TagIdensContext ctx);
+	T visitTagIdens(NottexParser.TagIdensContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link nottexParser#text}.
+	 * Visit a parse tree produced by {@link NottexParser#text}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitText(nottexParser.TextContext ctx);
+	T visitText(NottexParser.TextContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link nottexParser#funcArgs}.
+	 * Visit a parse tree produced by {@link NottexParser#funcArgs}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFuncArgs(nottexParser.FuncArgsContext ctx);
+	T visitFuncArgs(NottexParser.FuncArgsContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code StringArg}
-	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * labeled alternative in {@link NottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStringArg(nottexParser.StringArgContext ctx);
+	T visitStringArg(NottexParser.StringArgContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ExpressionArg}
-	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * labeled alternative in {@link NottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpressionArg(nottexParser.ExpressionArgContext ctx);
+	T visitExpressionArg(NottexParser.ExpressionArgContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code FunctionCallArg}
-	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * labeled alternative in {@link NottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFunctionCallArg(nottexParser.FunctionCallArgContext ctx);
+	T visitFunctionCallArg(NottexParser.FunctionCallArgContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ExprSubtract}
-	 * labeled alternative in {@link nottexParser#expr}.
+	 * labeled alternative in {@link NottexParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExprSubtract(nottexParser.ExprSubtractContext ctx);
+	T visitExprSubtract(NottexParser.ExprSubtractContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code SubExpr}
-	 * labeled alternative in {@link nottexParser#expr}.
+	 * labeled alternative in {@link NottexParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSubExpr(nottexParser.SubExprContext ctx);
+	T visitSubExpr(NottexParser.SubExprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ExprAdd}
-	 * labeled alternative in {@link nottexParser#expr}.
+	 * labeled alternative in {@link NottexParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExprAdd(nottexParser.ExprAddContext ctx);
+	T visitExprAdd(NottexParser.ExprAddContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ExprMinus}
-	 * labeled alternative in {@link nottexParser#sub}.
+	 * labeled alternative in {@link NottexParser#sub}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExprMinus(nottexParser.ExprMinusContext ctx);
+	T visitExprMinus(NottexParser.ExprMinusContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ExprDivis}
-	 * labeled alternative in {@link nottexParser#sub}.
+	 * labeled alternative in {@link NottexParser#sub}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExprDivis(nottexParser.ExprDivisContext ctx);
+	T visitExprDivis(NottexParser.ExprDivisContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code SubSubExpr}
-	 * labeled alternative in {@link nottexParser#sub}.
+	 * labeled alternative in {@link NottexParser#sub}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSubSubExpr(nottexParser.SubSubExprContext ctx);
+	T visitSubSubExpr(NottexParser.SubSubExprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ExprMultip}
-	 * labeled alternative in {@link nottexParser#sub}.
+	 * labeled alternative in {@link NottexParser#sub}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExprMultip(nottexParser.ExprMultipContext ctx);
+	T visitExprMultip(NottexParser.ExprMultipContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ExprParens}
-	 * labeled alternative in {@link nottexParser#factor}.
+	 * labeled alternative in {@link NottexParser#factor}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExprParens(nottexParser.ExprParensContext ctx);
+	T visitExprParens(NottexParser.ExprParensContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ExprNumber}
-	 * labeled alternative in {@link nottexParser#factor}.
+	 * labeled alternative in {@link NottexParser#factor}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExprNumber(nottexParser.ExprNumberContext ctx);
+	T visitExprNumber(NottexParser.ExprNumberContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link nottexParser#string}.
+	 * Visit a parse tree produced by {@link NottexParser#string}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitString(nottexParser.StringContext ctx);
+	T visitString(NottexParser.StringContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link nottexParser#ws}.
+	 * Visit a parse tree produced by {@link NottexParser#ws}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitWs(nottexParser.WsContext ctx);
+	T visitWs(NottexParser.WsContext ctx);
 }

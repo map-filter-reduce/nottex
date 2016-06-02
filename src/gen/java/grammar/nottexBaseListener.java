@@ -1,4 +1,4 @@
-// Generated from nottex.g4 by ANTLR 4.5.3
+// Generated from Nottex.g4 by ANTLR 4.5.3
 package grammar;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -6,251 +6,251 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link nottexListener},
+ * This class provides an empty implementation of {@link NottexListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-public class nottexBaseListener implements nottexListener {
+public class NottexBaseListener implements NottexListener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMarkupText(nottexParser.MarkupTextContext ctx) { }
+	@Override public void enterMarkupText(NottexParser.MarkupTextContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMarkupText(nottexParser.MarkupTextContext ctx) { }
+	@Override public void exitMarkupText(NottexParser.MarkupTextContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunctionCall(nottexParser.FunctionCallContext ctx) { }
+	@Override public void enterFunctionCall(NottexParser.FunctionCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunctionCall(nottexParser.FunctionCallContext ctx) { }
+	@Override public void exitFunctionCall(NottexParser.FunctionCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTagUse(nottexParser.TagUseContext ctx) { }
+	@Override public void enterTagUse(NottexParser.TagUseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTagUse(nottexParser.TagUseContext ctx) { }
+	@Override public void exitTagUse(NottexParser.TagUseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTagIdens(nottexParser.TagIdensContext ctx) { }
+	@Override public void enterTagIdens(NottexParser.TagIdensContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTagIdens(nottexParser.TagIdensContext ctx) { }
+	@Override public void exitTagIdens(NottexParser.TagIdensContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterText(nottexParser.TextContext ctx) { }
+	@Override public void enterText(NottexParser.TextContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitText(nottexParser.TextContext ctx) { }
+	@Override public void exitText(NottexParser.TextContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFuncArgs(nottexParser.FuncArgsContext ctx) { }
+	@Override public void enterFuncArgs(NottexParser.FuncArgsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFuncArgs(nottexParser.FuncArgsContext ctx) { }
+	@Override public void exitFuncArgs(NottexParser.FuncArgsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStringArg(nottexParser.StringArgContext ctx) { }
+	@Override public void enterStringArg(NottexParser.StringArgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStringArg(nottexParser.StringArgContext ctx) { }
+	@Override public void exitStringArg(NottexParser.StringArgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpressionArg(nottexParser.ExpressionArgContext ctx) { }
+	@Override public void enterExpressionArg(NottexParser.ExpressionArgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpressionArg(nottexParser.ExpressionArgContext ctx) { }
+	@Override public void exitExpressionArg(NottexParser.ExpressionArgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunctionCallArg(nottexParser.FunctionCallArgContext ctx) { }
+	@Override public void enterFunctionCallArg(NottexParser.FunctionCallArgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunctionCallArg(nottexParser.FunctionCallArgContext ctx) { }
+	@Override public void exitFunctionCallArg(NottexParser.FunctionCallArgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExprSubtract(nottexParser.ExprSubtractContext ctx) { }
+	@Override public void enterExprSubtract(NottexParser.ExprSubtractContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExprSubtract(nottexParser.ExprSubtractContext ctx) { }
+	@Override public void exitExprSubtract(NottexParser.ExprSubtractContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSubExpr(nottexParser.SubExprContext ctx) { }
+	@Override public void enterSubExpr(NottexParser.SubExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSubExpr(nottexParser.SubExprContext ctx) { }
+	@Override public void exitSubExpr(NottexParser.SubExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExprAdd(nottexParser.ExprAddContext ctx) { }
+	@Override public void enterExprAdd(NottexParser.ExprAddContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExprAdd(nottexParser.ExprAddContext ctx) { }
+	@Override public void exitExprAdd(NottexParser.ExprAddContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExprMinus(nottexParser.ExprMinusContext ctx) { }
+	@Override public void enterExprMinus(NottexParser.ExprMinusContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExprMinus(nottexParser.ExprMinusContext ctx) { }
+	@Override public void exitExprMinus(NottexParser.ExprMinusContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExprDivis(nottexParser.ExprDivisContext ctx) { }
+	@Override public void enterExprDivis(NottexParser.ExprDivisContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExprDivis(nottexParser.ExprDivisContext ctx) { }
+	@Override public void exitExprDivis(NottexParser.ExprDivisContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSubSubExpr(nottexParser.SubSubExprContext ctx) { }
+	@Override public void enterSubSubExpr(NottexParser.SubSubExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSubSubExpr(nottexParser.SubSubExprContext ctx) { }
+	@Override public void exitSubSubExpr(NottexParser.SubSubExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExprMultip(nottexParser.ExprMultipContext ctx) { }
+	@Override public void enterExprMultip(NottexParser.ExprMultipContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExprMultip(nottexParser.ExprMultipContext ctx) { }
+	@Override public void exitExprMultip(NottexParser.ExprMultipContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExprParens(nottexParser.ExprParensContext ctx) { }
+	@Override public void enterExprParens(NottexParser.ExprParensContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExprParens(nottexParser.ExprParensContext ctx) { }
+	@Override public void exitExprParens(NottexParser.ExprParensContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExprNumber(nottexParser.ExprNumberContext ctx) { }
+	@Override public void enterExprNumber(NottexParser.ExprNumberContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExprNumber(nottexParser.ExprNumberContext ctx) { }
+	@Override public void exitExprNumber(NottexParser.ExprNumberContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterString(nottexParser.StringContext ctx) { }
+	@Override public void enterString(NottexParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitString(nottexParser.StringContext ctx) { }
+	@Override public void exitString(NottexParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWs(nottexParser.WsContext ctx) { }
+	@Override public void enterWs(NottexParser.WsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitWs(nottexParser.WsContext ctx) { }
+	@Override public void exitWs(NottexParser.WsContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

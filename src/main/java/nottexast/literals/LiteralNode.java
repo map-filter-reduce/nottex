@@ -1,6 +1,6 @@
-package nottex_ast.literals;
+package nottexast.literals;
 
-import nottex_ast.NottexNode;
+import nottexast.NottexNode;
 
 @SuppressWarnings("ALL")
 public abstract class LiteralNode extends NottexNode {

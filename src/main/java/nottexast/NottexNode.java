@@ -1,4 +1,4 @@
-package nottex_ast;
+package nottexast;
 
 public abstract class NottexNode {
 

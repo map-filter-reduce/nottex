@@ -1,10 +1,10 @@
 package pdfgen;
 
-import nottex_ast.BlockNode;
-import nottex_ast.NottexNode;
-import nottex_ast.TagUseNode;
-import nottex_ast.TextNode;
-import nottex_ast.literals.LiteralNode;
+import nottexast.BlockNode;
+import nottexast.NottexNode;
+import nottexast.TagUseNode;
+import nottexast.TextNode;
+import nottexast.literals.LiteralNode;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

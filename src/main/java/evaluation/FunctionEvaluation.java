@@ -1,9 +1,9 @@
 package evaluation;
 
-import nottex_ast.NottexNode;
-import nottex_ast.literals.DoubleNode;
-import nottex_ast.literals.IntNode;
-import nottex_ast.literals.StringNode;
+import nottexast.NottexNode;
+import nottexast.literals.DoubleNode;
+import nottexast.literals.IntNode;
+import nottexast.literals.StringNode;
 import pdfgen.StyleManager;
 
 import java.util.Collections;

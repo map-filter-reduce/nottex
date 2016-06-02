@@ -1,7 +1,7 @@
 import com.lowagie.text.DocumentException;
 import grammar.AstParser;
 import grammar.FunctionReducer;
-import nottex_ast.NottexNode;
+import nottexast.NottexNode;
 import org.w3c.dom.Document;
 import pdfgen.PDFCreator;
 

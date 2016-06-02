@@ -1,5 +1,5 @@
-import nottex_ast.BlockNode;
-import nottex_ast.TextNode;
+import nottexast.BlockNode;
+import nottexast.TextNode;
 import org.junit.Test;
 
 import java.util.Arrays;

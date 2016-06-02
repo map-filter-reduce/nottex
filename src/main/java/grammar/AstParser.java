@@ -1,7 +1,7 @@
 package grammar;
 
-import nottex_ast.*;
-import nottex_ast.literals.*;
+import nottexast.*;
+import nottexast.literals.*;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
@@ -17,9 +17,9 @@ public class AstParser {
     public static NottexNode parse(String code) {
         // TODO
         ANTLRInputStream antlrInput = new ANTLRInputStream(code);
-        nottexLexer nottexLexer = new nottexLexer(antlrInput);
-        CommonTokenStream tokens = new CommonTokenStream(nottexLexer);
-        nottexParser parser = new nottexParser(tokens);
+        NottexLexer NottexLexer = new NottexLexer(antlrInput);
+        CommonTokenStream tokens = new CommonTokenStream(NottexLexer);
+        NottexParser parser = new NottexParser(tokens);
         ParseTree tree = parser.markupText();
         return parse(tree);
     }
@@ -27,8 +27,8 @@ public class AstParser {
 
     private static NottexNode parse(ParseTree node) {
 
-        if (node instanceof nottexParser.MarkupTextContext) {
-            nottexParser.MarkupTextContext markupText = (nottexParser.MarkupTextContext) node;
+        if (node instanceof NottexParser.MarkupTextContext) {
+            NottexParser.MarkupTextContext markupText = (NottexParser.MarkupTextContext) node;
             BlockNode root = new BlockNode();
             for (int i = 0; i < markupText.getChildCount(); i++) {
                 root.addChild(
@@ -36,8 +36,8 @@ public class AstParser {
             }
             return root;
 
-        } else if (node instanceof nottexParser.FunctionCallContext) {
-            nottexParser.FunctionCallContext functionContext = (nottexParser.FunctionCallContext) node;
+        } else if (node instanceof NottexParser.FunctionCallContext) {
+            NottexParser.FunctionCallContext functionContext = (NottexParser.FunctionCallContext) node;
             FunctionCallNode functionCall = new FunctionCallNode(
                     functionContext.name
                             .stream()
@@ -63,30 +63,30 @@ public class AstParser {
             }
             return functionCall;
 
-        } else if (node instanceof nottexParser.TagUseContext) {
-            List<String> tagNames = ((nottexParser.TagUseContext) node)
+        } else if (node instanceof NottexParser.TagUseContext) {
+            List<String> tagNames = ((NottexParser.TagUseContext) node)
                     .namesNode
                     .names
                     .stream()
                     .map(Token::getText)
                     .collect(Collectors.toList());
 
-            nottexParser.MarkupTextContext content = ((nottexParser.TagUseContext) node).content;
+            NottexParser.MarkupTextContext content = ((NottexParser.TagUseContext) node).content;
             if (content == null)
                 return new TagUseNode(null, tagNames);
             else
                 return new TagUseNode(((BlockNode) parse(content)).getChildren(), tagNames);
 
-        } else if (node instanceof nottexParser.TextContext) {
+        } else if (node instanceof NottexParser.TextContext) {
             return new TextNode(
-                    ((nottexParser.TextContext) node).content
+                    ((NottexParser.TextContext) node).content
                             .stream()
                             .map(Token::getText)
                             .collect(Collectors.joining())
             );
 
-        } else if (node instanceof nottexParser.StringContext) {
-            List<Token> content = ((nottexParser.StringContext) node).content;
+        } else if (node instanceof NottexParser.StringContext) {
+            List<Token> content = ((NottexParser.StringContext) node).content;
             if (content == null)
                 return new StringNode("");
 
@@ -95,39 +95,39 @@ public class AstParser {
                     .map(Token::getText)
                     .collect(Collectors.joining())
             );
-        } else if (node instanceof nottexParser.FuncArgContext) {
+        } else if (node instanceof NottexParser.FuncArgContext) {
             return parse(node.getChild(0));
 
-        } else if (node instanceof nottexParser.ExprAddContext) {
-            nottexParser.ExprAddContext addContext = (nottexParser.ExprAddContext) node;
+        } else if (node instanceof NottexParser.ExprAddContext) {
+            NottexParser.ExprAddContext addContext = (NottexParser.ExprAddContext) node;
             return evalExpr((NumberNode) parse(addContext.left), (NumberNode) parse(addContext.right), Operator.ADDITION);
 
-        } else if (node instanceof nottexParser.ExprSubtractContext) {
-            nottexParser.ExprSubtractContext subtractContext = (nottexParser.ExprSubtractContext) node;
+        } else if (node instanceof NottexParser.ExprSubtractContext) {
+            NottexParser.ExprSubtractContext subtractContext = (NottexParser.ExprSubtractContext) node;
             return evalExpr((NumberNode) parse(subtractContext.left), (NumberNode) parse(subtractContext.right), Operator.SUBTRACTION);
 
-        } else if (node instanceof nottexParser.SubExprContext ||
-                node instanceof nottexParser.SubSubExprContext) {
+        } else if (node instanceof NottexParser.SubExprContext ||
+                node instanceof NottexParser.SubSubExprContext) {
             return parse(node.getChild(0));
 
-        } else if (node instanceof nottexParser.ExprMultipContext) {
-            nottexParser.ExprMultipContext multipContext = (nottexParser.ExprMultipContext) node;
+        } else if (node instanceof NottexParser.ExprMultipContext) {
+            NottexParser.ExprMultipContext multipContext = (NottexParser.ExprMultipContext) node;
             return evalExpr((NumberNode) parse(multipContext.left), (NumberNode) parse(multipContext.right), Operator.MULTIPLICATION);
 
-        } else if (node instanceof nottexParser.ExprDivisContext) {
-            nottexParser.ExprDivisContext divisContext = (nottexParser.ExprDivisContext) node;
+        } else if (node instanceof NottexParser.ExprDivisContext) {
+            NottexParser.ExprDivisContext divisContext = (NottexParser.ExprDivisContext) node;
             return evalExpr((NumberNode) parse(divisContext.left), (NumberNode) parse(divisContext.right), Operator.DIVISION);
 
-        } else if (node instanceof nottexParser.ExprMinusContext) {
-            nottexParser.ExprMinusContext minusContext = (nottexParser.ExprMinusContext) node;
+        } else if (node instanceof NottexParser.ExprMinusContext) {
+            NottexParser.ExprMinusContext minusContext = (NottexParser.ExprMinusContext) node;
             return minusContext.minuses.size() % 2 == 0 ?
                     parse(minusContext.expression) :
                     evalExpr(new IntNode(-1), (NumberNode) parse(minusContext.expression), Operator.MULTIPLICATION);
-        } else if (node instanceof nottexParser.ExprParensContext) {
-            return parse(((nottexParser.ExprParensContext) node).expression);
+        } else if (node instanceof NottexParser.ExprParensContext) {
+            return parse(((NottexParser.ExprParensContext) node).expression);
 
-        } else if (node instanceof nottexParser.ExprNumberContext) {
-            nottexParser.ExprNumberContext numberContext = (nottexParser.ExprNumberContext) node;
+        } else if (node instanceof NottexParser.ExprNumberContext) {
+            NottexParser.ExprNumberContext numberContext = (NottexParser.ExprNumberContext) node;
             return NumberNode.numberNode(numberContext.getText());
 
         } else {

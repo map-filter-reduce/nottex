@@ -1,11 +1,11 @@
 
 
 import grammar.FunctionReducer;
-import nottex_ast.BlockNode;
-import nottex_ast.TagUseNode;
-import nottex_ast.TextNode;
-import nottex_ast.literals.IntNode;
-import nottex_ast.literals.StringNode;
+import nottexast.BlockNode;
+import nottexast.TagUseNode;
+import nottexast.TextNode;
+import nottexast.literals.IntNode;
+import nottexast.literals.StringNode;
 import org.junit.Test;
 
 import java.util.Arrays;

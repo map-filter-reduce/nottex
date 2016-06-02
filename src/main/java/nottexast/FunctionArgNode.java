@@ -1,6 +1,6 @@
-package nottex_ast;
+package nottexast;
 
-import nottex_ast.literals.LiteralNode;
+import nottexast.literals.LiteralNode;
 
 public class FunctionArgNode extends NottexNode {
 

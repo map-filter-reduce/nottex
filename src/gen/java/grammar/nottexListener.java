@@ -1,234 +1,234 @@
-// Generated from nottex.g4 by ANTLR 4.5.3
+// Generated from Nottex.g4 by ANTLR 4.5.3
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
  * This interface defines a complete listener for a parse tree produced by
- * {@link nottexParser}.
+ * {@link NottexParser}.
  */
-public interface nottexListener extends ParseTreeListener {
+public interface NottexListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link nottexParser#markupText}.
+	 * Enter a parse tree produced by {@link NottexParser#markupText}.
 	 * @param ctx the parse tree
 	 */
-	void enterMarkupText(nottexParser.MarkupTextContext ctx);
+	void enterMarkupText(NottexParser.MarkupTextContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link nottexParser#markupText}.
+	 * Exit a parse tree produced by {@link NottexParser#markupText}.
 	 * @param ctx the parse tree
 	 */
-	void exitMarkupText(nottexParser.MarkupTextContext ctx);
+	void exitMarkupText(NottexParser.MarkupTextContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link nottexParser#functionCall}.
+	 * Enter a parse tree produced by {@link NottexParser#functionCall}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunctionCall(nottexParser.FunctionCallContext ctx);
+	void enterFunctionCall(NottexParser.FunctionCallContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link nottexParser#functionCall}.
+	 * Exit a parse tree produced by {@link NottexParser#functionCall}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunctionCall(nottexParser.FunctionCallContext ctx);
+	void exitFunctionCall(NottexParser.FunctionCallContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link nottexParser#tagUse}.
+	 * Enter a parse tree produced by {@link NottexParser#tagUse}.
 	 * @param ctx the parse tree
 	 */
-	void enterTagUse(nottexParser.TagUseContext ctx);
+	void enterTagUse(NottexParser.TagUseContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link nottexParser#tagUse}.
+	 * Exit a parse tree produced by {@link NottexParser#tagUse}.
 	 * @param ctx the parse tree
 	 */
-	void exitTagUse(nottexParser.TagUseContext ctx);
+	void exitTagUse(NottexParser.TagUseContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link nottexParser#tagIdens}.
+	 * Enter a parse tree produced by {@link NottexParser#tagIdens}.
 	 * @param ctx the parse tree
 	 */
-	void enterTagIdens(nottexParser.TagIdensContext ctx);
+	void enterTagIdens(NottexParser.TagIdensContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link nottexParser#tagIdens}.
+	 * Exit a parse tree produced by {@link NottexParser#tagIdens}.
 	 * @param ctx the parse tree
 	 */
-	void exitTagIdens(nottexParser.TagIdensContext ctx);
+	void exitTagIdens(NottexParser.TagIdensContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link nottexParser#text}.
+	 * Enter a parse tree produced by {@link NottexParser#text}.
 	 * @param ctx the parse tree
 	 */
-	void enterText(nottexParser.TextContext ctx);
+	void enterText(NottexParser.TextContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link nottexParser#text}.
+	 * Exit a parse tree produced by {@link NottexParser#text}.
 	 * @param ctx the parse tree
 	 */
-	void exitText(nottexParser.TextContext ctx);
+	void exitText(NottexParser.TextContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link nottexParser#funcArgs}.
+	 * Enter a parse tree produced by {@link NottexParser#funcArgs}.
 	 * @param ctx the parse tree
 	 */
-	void enterFuncArgs(nottexParser.FuncArgsContext ctx);
+	void enterFuncArgs(NottexParser.FuncArgsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link nottexParser#funcArgs}.
+	 * Exit a parse tree produced by {@link NottexParser#funcArgs}.
 	 * @param ctx the parse tree
 	 */
-	void exitFuncArgs(nottexParser.FuncArgsContext ctx);
+	void exitFuncArgs(NottexParser.FuncArgsContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code StringArg}
-	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * labeled alternative in {@link NottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 */
-	void enterStringArg(nottexParser.StringArgContext ctx);
+	void enterStringArg(NottexParser.StringArgContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code StringArg}
-	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * labeled alternative in {@link NottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 */
-	void exitStringArg(nottexParser.StringArgContext ctx);
+	void exitStringArg(NottexParser.StringArgContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ExpressionArg}
-	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * labeled alternative in {@link NottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpressionArg(nottexParser.ExpressionArgContext ctx);
+	void enterExpressionArg(NottexParser.ExpressionArgContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code ExpressionArg}
-	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * labeled alternative in {@link NottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpressionArg(nottexParser.ExpressionArgContext ctx);
+	void exitExpressionArg(NottexParser.ExpressionArgContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code FunctionCallArg}
-	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * labeled alternative in {@link NottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunctionCallArg(nottexParser.FunctionCallArgContext ctx);
+	void enterFunctionCallArg(NottexParser.FunctionCallArgContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code FunctionCallArg}
-	 * labeled alternative in {@link nottexParser#funcArg}.
+	 * labeled alternative in {@link NottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunctionCallArg(nottexParser.FunctionCallArgContext ctx);
+	void exitFunctionCallArg(NottexParser.FunctionCallArgContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ExprSubtract}
-	 * labeled alternative in {@link nottexParser#expr}.
+	 * labeled alternative in {@link NottexParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterExprSubtract(nottexParser.ExprSubtractContext ctx);
+	void enterExprSubtract(NottexParser.ExprSubtractContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code ExprSubtract}
-	 * labeled alternative in {@link nottexParser#expr}.
+	 * labeled alternative in {@link NottexParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitExprSubtract(nottexParser.ExprSubtractContext ctx);
+	void exitExprSubtract(NottexParser.ExprSubtractContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code SubExpr}
-	 * labeled alternative in {@link nottexParser#expr}.
+	 * labeled alternative in {@link NottexParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterSubExpr(nottexParser.SubExprContext ctx);
+	void enterSubExpr(NottexParser.SubExprContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code SubExpr}
-	 * labeled alternative in {@link nottexParser#expr}.
+	 * labeled alternative in {@link NottexParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitSubExpr(nottexParser.SubExprContext ctx);
+	void exitSubExpr(NottexParser.SubExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ExprAdd}
-	 * labeled alternative in {@link nottexParser#expr}.
+	 * labeled alternative in {@link NottexParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterExprAdd(nottexParser.ExprAddContext ctx);
+	void enterExprAdd(NottexParser.ExprAddContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code ExprAdd}
-	 * labeled alternative in {@link nottexParser#expr}.
+	 * labeled alternative in {@link NottexParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitExprAdd(nottexParser.ExprAddContext ctx);
+	void exitExprAdd(NottexParser.ExprAddContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ExprMinus}
-	 * labeled alternative in {@link nottexParser#sub}.
+	 * labeled alternative in {@link NottexParser#sub}.
 	 * @param ctx the parse tree
 	 */
-	void enterExprMinus(nottexParser.ExprMinusContext ctx);
+	void enterExprMinus(NottexParser.ExprMinusContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code ExprMinus}
-	 * labeled alternative in {@link nottexParser#sub}.
+	 * labeled alternative in {@link NottexParser#sub}.
 	 * @param ctx the parse tree
 	 */
-	void exitExprMinus(nottexParser.ExprMinusContext ctx);
+	void exitExprMinus(NottexParser.ExprMinusContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ExprDivis}
-	 * labeled alternative in {@link nottexParser#sub}.
+	 * labeled alternative in {@link NottexParser#sub}.
 	 * @param ctx the parse tree
 	 */
-	void enterExprDivis(nottexParser.ExprDivisContext ctx);
+	void enterExprDivis(NottexParser.ExprDivisContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code ExprDivis}
-	 * labeled alternative in {@link nottexParser#sub}.
+	 * labeled alternative in {@link NottexParser#sub}.
 	 * @param ctx the parse tree
 	 */
-	void exitExprDivis(nottexParser.ExprDivisContext ctx);
+	void exitExprDivis(NottexParser.ExprDivisContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code SubSubExpr}
-	 * labeled alternative in {@link nottexParser#sub}.
+	 * labeled alternative in {@link NottexParser#sub}.
 	 * @param ctx the parse tree
 	 */
-	void enterSubSubExpr(nottexParser.SubSubExprContext ctx);
+	void enterSubSubExpr(NottexParser.SubSubExprContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code SubSubExpr}
-	 * labeled alternative in {@link nottexParser#sub}.
+	 * labeled alternative in {@link NottexParser#sub}.
 	 * @param ctx the parse tree
 	 */
-	void exitSubSubExpr(nottexParser.SubSubExprContext ctx);
+	void exitSubSubExpr(NottexParser.SubSubExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ExprMultip}
-	 * labeled alternative in {@link nottexParser#sub}.
+	 * labeled alternative in {@link NottexParser#sub}.
 	 * @param ctx the parse tree
 	 */
-	void enterExprMultip(nottexParser.ExprMultipContext ctx);
+	void enterExprMultip(NottexParser.ExprMultipContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code ExprMultip}
-	 * labeled alternative in {@link nottexParser#sub}.
+	 * labeled alternative in {@link NottexParser#sub}.
 	 * @param ctx the parse tree
 	 */
-	void exitExprMultip(nottexParser.ExprMultipContext ctx);
+	void exitExprMultip(NottexParser.ExprMultipContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ExprParens}
-	 * labeled alternative in {@link nottexParser#factor}.
+	 * labeled alternative in {@link NottexParser#factor}.
 	 * @param ctx the parse tree
 	 */
-	void enterExprParens(nottexParser.ExprParensContext ctx);
+	void enterExprParens(NottexParser.ExprParensContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code ExprParens}
-	 * labeled alternative in {@link nottexParser#factor}.
+	 * labeled alternative in {@link NottexParser#factor}.
 	 * @param ctx the parse tree
 	 */
-	void exitExprParens(nottexParser.ExprParensContext ctx);
+	void exitExprParens(NottexParser.ExprParensContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ExprNumber}
-	 * labeled alternative in {@link nottexParser#factor}.
+	 * labeled alternative in {@link NottexParser#factor}.
 	 * @param ctx the parse tree
 	 */
-	void enterExprNumber(nottexParser.ExprNumberContext ctx);
+	void enterExprNumber(NottexParser.ExprNumberContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code ExprNumber}
-	 * labeled alternative in {@link nottexParser#factor}.
+	 * labeled alternative in {@link NottexParser#factor}.
 	 * @param ctx the parse tree
 	 */
-	void exitExprNumber(nottexParser.ExprNumberContext ctx);
+	void exitExprNumber(NottexParser.ExprNumberContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link nottexParser#string}.
+	 * Enter a parse tree produced by {@link NottexParser#string}.
 	 * @param ctx the parse tree
 	 */
-	void enterString(nottexParser.StringContext ctx);
+	void enterString(NottexParser.StringContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link nottexParser#string}.
+	 * Exit a parse tree produced by {@link NottexParser#string}.
 	 * @param ctx the parse tree
 	 */
-	void exitString(nottexParser.StringContext ctx);
+	void exitString(NottexParser.StringContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link nottexParser#ws}.
+	 * Enter a parse tree produced by {@link NottexParser#ws}.
 	 * @param ctx the parse tree
 	 */
-	void enterWs(nottexParser.WsContext ctx);
+	void enterWs(NottexParser.WsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link nottexParser#ws}.
+	 * Exit a parse tree produced by {@link NottexParser#ws}.
 	 * @param ctx the parse tree
 	 */
-	void exitWs(nottexParser.WsContext ctx);
+	void exitWs(NottexParser.WsContext ctx);
 }

@@ -1,7 +1,7 @@
-import nottex_ast.BlockNode;
-import nottex_ast.FunctionCallNode;
-import nottex_ast.TagUseNode;
-import nottex_ast.TextNode;
+import nottexast.BlockNode;
+import nottexast.FunctionCallNode;
+import nottexast.TagUseNode;
+import nottexast.TextNode;
 import org.junit.Test;
 
 import java.util.Arrays;

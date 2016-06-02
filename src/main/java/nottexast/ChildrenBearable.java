@@ -1,4 +1,4 @@
-package nottex_ast;
+package nottexast;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package nottex_ast.literals;
+package nottexast.literals;
 
 public class IntNode extends NumberNode {
 

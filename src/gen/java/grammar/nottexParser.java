@@ -1,20 +1,16 @@
-// Generated from nottex.g4 by ANTLR 4.5.3
+// Generated from Nottex.g4 by ANTLR 4.5.3
 package grammar;
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNDeserializer;
-import org.antlr.v4.runtime.atn.ParserATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
-import org.antlr.v4.runtime.tree.ParseTreeVisitor;
-import org.antlr.v4.runtime.tree.TerminalNode;
-
-import java.util.ArrayList;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.*;
+import org.antlr.v4.runtime.tree.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class nottexParser extends Parser {
+public class NottexParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.5.3", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -76,7 +72,7 @@ public class nottexParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "nottex.g4"; }
+	public String getGrammarFileName() { return "Nottex.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -87,7 +83,7 @@ public class nottexParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public nottexParser(TokenStream input) {
+	public NottexParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
@@ -116,15 +112,15 @@ public class nottexParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_markupText; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterMarkupText(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterMarkupText(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitMarkupText(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitMarkupText(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitMarkupText(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitMarkupText(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -205,22 +201,22 @@ public class nottexParser extends Parser {
 		public Token ALPHA;
 		public List<Token> name = new ArrayList<Token>();
 		public FuncArgsContext argumentsNode;
-		public TerminalNode FUNCTION_MARKER() { return getToken(nottexParser.FUNCTION_MARKER, 0); }
+		public TerminalNode FUNCTION_MARKER() { return getToken(NottexParser.FUNCTION_MARKER, 0); }
 		public List<WsContext> ws() {
 			return getRuleContexts(WsContext.class);
 		}
 		public WsContext ws(int i) {
 			return getRuleContext(WsContext.class,i);
 		}
-		public TerminalNode LPAREN() { return getToken(nottexParser.LPAREN, 0); }
-		public TerminalNode RPAREN() { return getToken(nottexParser.RPAREN, 0); }
-		public List<TerminalNode> ALPHA() { return getTokens(nottexParser.ALPHA); }
+		public TerminalNode LPAREN() { return getToken(NottexParser.LPAREN, 0); }
+		public TerminalNode RPAREN() { return getToken(NottexParser.RPAREN, 0); }
+		public List<TerminalNode> ALPHA() { return getTokens(NottexParser.ALPHA); }
 		public TerminalNode ALPHA(int i) {
-			return getToken(nottexParser.ALPHA, i);
+			return getToken(NottexParser.ALPHA, i);
 		}
-		public List<TerminalNode> NUMBER() { return getTokens(nottexParser.NUMBER); }
+		public List<TerminalNode> NUMBER() { return getTokens(NottexParser.NUMBER); }
 		public TerminalNode NUMBER(int i) {
-			return getToken(nottexParser.NUMBER, i);
+			return getToken(NottexParser.NUMBER, i);
 		}
 		public FuncArgsContext funcArgs() {
 			return getRuleContext(FuncArgsContext.class,0);
@@ -231,15 +227,15 @@ public class nottexParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_functionCall; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterFunctionCall(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterFunctionCall(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitFunctionCall(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitFunctionCall(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitFunctionCall(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitFunctionCall(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -310,12 +306,12 @@ public class nottexParser extends Parser {
 	public static class TagUseContext extends ParserRuleContext {
 		public TagIdensContext namesNode;
 		public MarkupTextContext content;
-		public TerminalNode TAG_MARKER() { return getToken(nottexParser.TAG_MARKER, 0); }
+		public TerminalNode TAG_MARKER() { return getToken(NottexParser.TAG_MARKER, 0); }
 		public WsContext ws() {
 			return getRuleContext(WsContext.class,0);
 		}
-		public TerminalNode LBRACE() { return getToken(nottexParser.LBRACE, 0); }
-		public TerminalNode RBRACE() { return getToken(nottexParser.RBRACE, 0); }
+		public TerminalNode LBRACE() { return getToken(NottexParser.LBRACE, 0); }
+		public TerminalNode RBRACE() { return getToken(NottexParser.RBRACE, 0); }
 		public TagIdensContext tagIdens() {
 			return getRuleContext(TagIdensContext.class,0);
 		}
@@ -328,15 +324,15 @@ public class nottexParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_tagUse; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterTagUse(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterTagUse(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitTagUse(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitTagUse(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitTagUse(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitTagUse(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -383,9 +379,9 @@ public class nottexParser extends Parser {
 	public static class TagIdensContext extends ParserRuleContext {
 		public Token ALPHA;
 		public List<Token> names = new ArrayList<Token>();
-		public List<TerminalNode> ALPHA() { return getTokens(nottexParser.ALPHA); }
+		public List<TerminalNode> ALPHA() { return getTokens(NottexParser.ALPHA); }
 		public TerminalNode ALPHA(int i) {
-			return getToken(nottexParser.ALPHA, i);
+			return getToken(NottexParser.ALPHA, i);
 		}
 		public List<WsContext> ws() {
 			return getRuleContexts(WsContext.class);
@@ -393,13 +389,13 @@ public class nottexParser extends Parser {
 		public WsContext ws(int i) {
 			return getRuleContext(WsContext.class,i);
 		}
-		public List<TerminalNode> COMMA() { return getTokens(nottexParser.COMMA); }
+		public List<TerminalNode> COMMA() { return getTokens(NottexParser.COMMA); }
 		public TerminalNode COMMA(int i) {
-			return getToken(nottexParser.COMMA, i);
+			return getToken(NottexParser.COMMA, i);
 		}
-		public List<TerminalNode> NUMBER() { return getTokens(nottexParser.NUMBER); }
+		public List<TerminalNode> NUMBER() { return getTokens(NottexParser.NUMBER); }
 		public TerminalNode NUMBER(int i) {
-			return getToken(nottexParser.NUMBER, i);
+			return getToken(NottexParser.NUMBER, i);
 		}
 		public TagIdensContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -407,15 +403,15 @@ public class nottexParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_tagIdens; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterTagIdens(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterTagIdens(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitTagIdens(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitTagIdens(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitTagIdens(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitTagIdens(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -522,61 +518,61 @@ public class nottexParser extends Parser {
 		public Token DIVIS;
 		public Token WS;
 		public Token _tset121;
-		public List<TerminalNode> ALPHA() { return getTokens(nottexParser.ALPHA); }
+		public List<TerminalNode> ALPHA() { return getTokens(NottexParser.ALPHA); }
 		public TerminalNode ALPHA(int i) {
-			return getToken(nottexParser.ALPHA, i);
+			return getToken(NottexParser.ALPHA, i);
 		}
-		public List<TerminalNode> NUMBER() { return getTokens(nottexParser.NUMBER); }
+		public List<TerminalNode> NUMBER() { return getTokens(NottexParser.NUMBER); }
 		public TerminalNode NUMBER(int i) {
-			return getToken(nottexParser.NUMBER, i);
+			return getToken(NottexParser.NUMBER, i);
 		}
-		public List<TerminalNode> COMMA() { return getTokens(nottexParser.COMMA); }
+		public List<TerminalNode> COMMA() { return getTokens(NottexParser.COMMA); }
 		public TerminalNode COMMA(int i) {
-			return getToken(nottexParser.COMMA, i);
+			return getToken(NottexParser.COMMA, i);
 		}
-		public List<TerminalNode> COLON() { return getTokens(nottexParser.COLON); }
+		public List<TerminalNode> COLON() { return getTokens(NottexParser.COLON); }
 		public TerminalNode COLON(int i) {
-			return getToken(nottexParser.COLON, i);
+			return getToken(NottexParser.COLON, i);
 		}
-		public List<TerminalNode> QUOTE() { return getTokens(nottexParser.QUOTE); }
+		public List<TerminalNode> QUOTE() { return getTokens(NottexParser.QUOTE); }
 		public TerminalNode QUOTE(int i) {
-			return getToken(nottexParser.QUOTE, i);
+			return getToken(NottexParser.QUOTE, i);
 		}
-		public List<TerminalNode> LPAREN() { return getTokens(nottexParser.LPAREN); }
+		public List<TerminalNode> LPAREN() { return getTokens(NottexParser.LPAREN); }
 		public TerminalNode LPAREN(int i) {
-			return getToken(nottexParser.LPAREN, i);
+			return getToken(NottexParser.LPAREN, i);
 		}
-		public List<TerminalNode> RPAREN() { return getTokens(nottexParser.RPAREN); }
+		public List<TerminalNode> RPAREN() { return getTokens(NottexParser.RPAREN); }
 		public TerminalNode RPAREN(int i) {
-			return getToken(nottexParser.RPAREN, i);
+			return getToken(NottexParser.RPAREN, i);
 		}
-		public List<TerminalNode> LBRACE() { return getTokens(nottexParser.LBRACE); }
+		public List<TerminalNode> LBRACE() { return getTokens(NottexParser.LBRACE); }
 		public TerminalNode LBRACE(int i) {
-			return getToken(nottexParser.LBRACE, i);
+			return getToken(NottexParser.LBRACE, i);
 		}
-		public List<TerminalNode> RBRACE() { return getTokens(nottexParser.RBRACE); }
+		public List<TerminalNode> RBRACE() { return getTokens(NottexParser.RBRACE); }
 		public TerminalNode RBRACE(int i) {
-			return getToken(nottexParser.RBRACE, i);
+			return getToken(NottexParser.RBRACE, i);
 		}
-		public List<TerminalNode> PLUS() { return getTokens(nottexParser.PLUS); }
+		public List<TerminalNode> PLUS() { return getTokens(NottexParser.PLUS); }
 		public TerminalNode PLUS(int i) {
-			return getToken(nottexParser.PLUS, i);
+			return getToken(NottexParser.PLUS, i);
 		}
-		public List<TerminalNode> MINUS() { return getTokens(nottexParser.MINUS); }
+		public List<TerminalNode> MINUS() { return getTokens(NottexParser.MINUS); }
 		public TerminalNode MINUS(int i) {
-			return getToken(nottexParser.MINUS, i);
+			return getToken(NottexParser.MINUS, i);
 		}
-		public List<TerminalNode> MULTIP() { return getTokens(nottexParser.MULTIP); }
+		public List<TerminalNode> MULTIP() { return getTokens(NottexParser.MULTIP); }
 		public TerminalNode MULTIP(int i) {
-			return getToken(nottexParser.MULTIP, i);
+			return getToken(NottexParser.MULTIP, i);
 		}
-		public List<TerminalNode> DIVIS() { return getTokens(nottexParser.DIVIS); }
+		public List<TerminalNode> DIVIS() { return getTokens(NottexParser.DIVIS); }
 		public TerminalNode DIVIS(int i) {
-			return getToken(nottexParser.DIVIS, i);
+			return getToken(NottexParser.DIVIS, i);
 		}
-		public List<TerminalNode> WS() { return getTokens(nottexParser.WS); }
+		public List<TerminalNode> WS() { return getTokens(NottexParser.WS); }
 		public TerminalNode WS(int i) {
-			return getToken(nottexParser.WS, i);
+			return getToken(NottexParser.WS, i);
 		}
 		public TextContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -584,15 +580,15 @@ public class nottexParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_text; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterText(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterText(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitText(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitText(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitText(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitText(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -660,9 +656,9 @@ public class nottexParser extends Parser {
 		public WsContext ws(int i) {
 			return getRuleContext(WsContext.class,i);
 		}
-		public List<TerminalNode> COMMA() { return getTokens(nottexParser.COMMA); }
+		public List<TerminalNode> COMMA() { return getTokens(NottexParser.COMMA); }
 		public TerminalNode COMMA(int i) {
-			return getToken(nottexParser.COMMA, i);
+			return getToken(NottexParser.COMMA, i);
 		}
 		public FuncArgsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -670,15 +666,15 @@ public class nottexParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_funcArgs; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterFuncArgs(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterFuncArgs(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitFuncArgs(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitFuncArgs(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitFuncArgs(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitFuncArgs(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -747,15 +743,15 @@ public class nottexParser extends Parser {
 		public FunctionCallArgContext(FuncArgContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterFunctionCallArg(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterFunctionCallArg(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitFunctionCallArg(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitFunctionCallArg(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitFunctionCallArg(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitFunctionCallArg(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -766,15 +762,15 @@ public class nottexParser extends Parser {
 		public ExpressionArgContext(FuncArgContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterExpressionArg(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterExpressionArg(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitExpressionArg(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitExpressionArg(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitExpressionArg(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitExpressionArg(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -785,15 +781,15 @@ public class nottexParser extends Parser {
 		public StringArgContext(FuncArgContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterStringArg(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterStringArg(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitStringArg(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitStringArg(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitStringArg(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitStringArg(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -859,7 +855,7 @@ public class nottexParser extends Parser {
 	public static class ExprSubtractContext extends ExprContext {
 		public ExprContext left;
 		public SubContext right;
-		public TerminalNode MINUS() { return getToken(nottexParser.MINUS, 0); }
+		public TerminalNode MINUS() { return getToken(NottexParser.MINUS, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
@@ -869,15 +865,15 @@ public class nottexParser extends Parser {
 		public ExprSubtractContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterExprSubtract(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterExprSubtract(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitExprSubtract(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitExprSubtract(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitExprSubtract(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitExprSubtract(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -888,22 +884,22 @@ public class nottexParser extends Parser {
 		public SubExprContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterSubExpr(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterSubExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitSubExpr(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitSubExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitSubExpr(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitSubExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	public static class ExprAddContext extends ExprContext {
 		public ExprContext left;
 		public SubContext right;
-		public TerminalNode PLUS() { return getToken(nottexParser.PLUS, 0); }
+		public TerminalNode PLUS() { return getToken(NottexParser.PLUS, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
@@ -913,15 +909,15 @@ public class nottexParser extends Parser {
 		public ExprAddContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterExprAdd(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterExprAdd(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitExprAdd(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitExprAdd(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitExprAdd(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitExprAdd(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1025,29 +1021,29 @@ public class nottexParser extends Parser {
 		public FactorContext factor() {
 			return getRuleContext(FactorContext.class,0);
 		}
-		public List<TerminalNode> MINUS() { return getTokens(nottexParser.MINUS); }
+		public List<TerminalNode> MINUS() { return getTokens(NottexParser.MINUS); }
 		public TerminalNode MINUS(int i) {
-			return getToken(nottexParser.MINUS, i);
+			return getToken(NottexParser.MINUS, i);
 		}
 		public ExprMinusContext(SubContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterExprMinus(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterExprMinus(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitExprMinus(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitExprMinus(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitExprMinus(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitExprMinus(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	public static class ExprDivisContext extends SubContext {
 		public SubContext left;
 		public FactorContext right;
-		public TerminalNode DIVIS() { return getToken(nottexParser.DIVIS, 0); }
+		public TerminalNode DIVIS() { return getToken(NottexParser.DIVIS, 0); }
 		public SubContext sub() {
 			return getRuleContext(SubContext.class,0);
 		}
@@ -1057,15 +1053,15 @@ public class nottexParser extends Parser {
 		public ExprDivisContext(SubContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterExprDivis(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterExprDivis(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitExprDivis(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitExprDivis(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitExprDivis(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitExprDivis(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1076,22 +1072,22 @@ public class nottexParser extends Parser {
 		public SubSubExprContext(SubContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterSubSubExpr(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterSubSubExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitSubSubExpr(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitSubSubExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitSubSubExpr(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitSubSubExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	public static class ExprMultipContext extends SubContext {
 		public SubContext left;
 		public FactorContext right;
-		public TerminalNode MULTIP() { return getToken(nottexParser.MULTIP, 0); }
+		public TerminalNode MULTIP() { return getToken(NottexParser.MULTIP, 0); }
 		public SubContext sub() {
 			return getRuleContext(SubContext.class,0);
 		}
@@ -1101,15 +1097,15 @@ public class nottexParser extends Parser {
 		public ExprMultipContext(SubContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterExprMultip(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterExprMultip(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitExprMultip(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitExprMultip(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitExprMultip(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitExprMultip(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1241,40 +1237,40 @@ public class nottexParser extends Parser {
 	}
 	public static class ExprParensContext extends FactorContext {
 		public ExprContext expression;
-		public TerminalNode LPAREN() { return getToken(nottexParser.LPAREN, 0); }
-		public TerminalNode RPAREN() { return getToken(nottexParser.RPAREN, 0); }
+		public TerminalNode LPAREN() { return getToken(NottexParser.LPAREN, 0); }
+		public TerminalNode RPAREN() { return getToken(NottexParser.RPAREN, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public ExprParensContext(FactorContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterExprParens(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterExprParens(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitExprParens(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitExprParens(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitExprParens(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitExprParens(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	public static class ExprNumberContext extends FactorContext {
-		public TerminalNode NUMBER() { return getToken(nottexParser.NUMBER, 0); }
+		public TerminalNode NUMBER() { return getToken(NottexParser.NUMBER, 0); }
 		public ExprNumberContext(FactorContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterExprNumber(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterExprNumber(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitExprNumber(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitExprNumber(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitExprNumber(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitExprNumber(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1338,69 +1334,69 @@ public class nottexParser extends Parser {
 		public Token DIVIS;
 		public Token WS;
 		public Token _tset344;
-		public List<TerminalNode> QUOTE() { return getTokens(nottexParser.QUOTE); }
+		public List<TerminalNode> QUOTE() { return getTokens(NottexParser.QUOTE); }
 		public TerminalNode QUOTE(int i) {
-			return getToken(nottexParser.QUOTE, i);
+			return getToken(NottexParser.QUOTE, i);
 		}
-		public List<TerminalNode> ALPHA() { return getTokens(nottexParser.ALPHA); }
+		public List<TerminalNode> ALPHA() { return getTokens(NottexParser.ALPHA); }
 		public TerminalNode ALPHA(int i) {
-			return getToken(nottexParser.ALPHA, i);
+			return getToken(NottexParser.ALPHA, i);
 		}
-		public List<TerminalNode> NUMBER() { return getTokens(nottexParser.NUMBER); }
+		public List<TerminalNode> NUMBER() { return getTokens(NottexParser.NUMBER); }
 		public TerminalNode NUMBER(int i) {
-			return getToken(nottexParser.NUMBER, i);
+			return getToken(NottexParser.NUMBER, i);
 		}
-		public List<TerminalNode> TAG_MARKER() { return getTokens(nottexParser.TAG_MARKER); }
+		public List<TerminalNode> TAG_MARKER() { return getTokens(NottexParser.TAG_MARKER); }
 		public TerminalNode TAG_MARKER(int i) {
-			return getToken(nottexParser.TAG_MARKER, i);
+			return getToken(NottexParser.TAG_MARKER, i);
 		}
-		public List<TerminalNode> COMMA() { return getTokens(nottexParser.COMMA); }
+		public List<TerminalNode> COMMA() { return getTokens(NottexParser.COMMA); }
 		public TerminalNode COMMA(int i) {
-			return getToken(nottexParser.COMMA, i);
+			return getToken(NottexParser.COMMA, i);
 		}
-		public List<TerminalNode> FUNCTION_MARKER() { return getTokens(nottexParser.FUNCTION_MARKER); }
+		public List<TerminalNode> FUNCTION_MARKER() { return getTokens(NottexParser.FUNCTION_MARKER); }
 		public TerminalNode FUNCTION_MARKER(int i) {
-			return getToken(nottexParser.FUNCTION_MARKER, i);
+			return getToken(NottexParser.FUNCTION_MARKER, i);
 		}
-		public List<TerminalNode> COLON() { return getTokens(nottexParser.COLON); }
+		public List<TerminalNode> COLON() { return getTokens(NottexParser.COLON); }
 		public TerminalNode COLON(int i) {
-			return getToken(nottexParser.COLON, i);
+			return getToken(NottexParser.COLON, i);
 		}
-		public List<TerminalNode> LPAREN() { return getTokens(nottexParser.LPAREN); }
+		public List<TerminalNode> LPAREN() { return getTokens(NottexParser.LPAREN); }
 		public TerminalNode LPAREN(int i) {
-			return getToken(nottexParser.LPAREN, i);
+			return getToken(NottexParser.LPAREN, i);
 		}
-		public List<TerminalNode> RPAREN() { return getTokens(nottexParser.RPAREN); }
+		public List<TerminalNode> RPAREN() { return getTokens(NottexParser.RPAREN); }
 		public TerminalNode RPAREN(int i) {
-			return getToken(nottexParser.RPAREN, i);
+			return getToken(NottexParser.RPAREN, i);
 		}
-		public List<TerminalNode> LBRACE() { return getTokens(nottexParser.LBRACE); }
+		public List<TerminalNode> LBRACE() { return getTokens(NottexParser.LBRACE); }
 		public TerminalNode LBRACE(int i) {
-			return getToken(nottexParser.LBRACE, i);
+			return getToken(NottexParser.LBRACE, i);
 		}
-		public List<TerminalNode> RBRACE() { return getTokens(nottexParser.RBRACE); }
+		public List<TerminalNode> RBRACE() { return getTokens(NottexParser.RBRACE); }
 		public TerminalNode RBRACE(int i) {
-			return getToken(nottexParser.RBRACE, i);
+			return getToken(NottexParser.RBRACE, i);
 		}
-		public List<TerminalNode> PLUS() { return getTokens(nottexParser.PLUS); }
+		public List<TerminalNode> PLUS() { return getTokens(NottexParser.PLUS); }
 		public TerminalNode PLUS(int i) {
-			return getToken(nottexParser.PLUS, i);
+			return getToken(NottexParser.PLUS, i);
 		}
-		public List<TerminalNode> MINUS() { return getTokens(nottexParser.MINUS); }
+		public List<TerminalNode> MINUS() { return getTokens(NottexParser.MINUS); }
 		public TerminalNode MINUS(int i) {
-			return getToken(nottexParser.MINUS, i);
+			return getToken(NottexParser.MINUS, i);
 		}
-		public List<TerminalNode> MULTIP() { return getTokens(nottexParser.MULTIP); }
+		public List<TerminalNode> MULTIP() { return getTokens(NottexParser.MULTIP); }
 		public TerminalNode MULTIP(int i) {
-			return getToken(nottexParser.MULTIP, i);
+			return getToken(NottexParser.MULTIP, i);
 		}
-		public List<TerminalNode> DIVIS() { return getTokens(nottexParser.DIVIS); }
+		public List<TerminalNode> DIVIS() { return getTokens(NottexParser.DIVIS); }
 		public TerminalNode DIVIS(int i) {
-			return getToken(nottexParser.DIVIS, i);
+			return getToken(NottexParser.DIVIS, i);
 		}
-		public List<TerminalNode> WS() { return getTokens(nottexParser.WS); }
+		public List<TerminalNode> WS() { return getTokens(NottexParser.WS); }
 		public TerminalNode WS(int i) {
-			return getToken(nottexParser.WS, i);
+			return getToken(NottexParser.WS, i);
 		}
 		public StringContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1408,15 +1404,15 @@ public class nottexParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_string; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterString(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterString(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitString(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitString(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitString(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitString(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1467,9 +1463,9 @@ public class nottexParser extends Parser {
 	}
 
 	public static class WsContext extends ParserRuleContext {
-		public List<TerminalNode> WS() { return getTokens(nottexParser.WS); }
+		public List<TerminalNode> WS() { return getTokens(NottexParser.WS); }
 		public TerminalNode WS(int i) {
-			return getToken(nottexParser.WS, i);
+			return getToken(NottexParser.WS, i);
 		}
 		public WsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1477,15 +1473,15 @@ public class nottexParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_ws; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).enterWs(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).enterWs(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof nottexListener ) ((nottexListener)listener).exitWs(this);
+			if ( listener instanceof NottexListener ) ((NottexListener)listener).exitWs(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof nottexVisitor ) return ((nottexVisitor<? extends T>)visitor).visitWs(this);
+			if ( visitor instanceof NottexVisitor ) return ((NottexVisitor<? extends T>)visitor).visitWs(this);
 			else return visitor.visitChildren(this);
 		}
 	}

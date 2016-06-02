@@ -1,5 +1,5 @@
-import nottex_ast.BlockNode;
-import nottex_ast.FunctionCallNode;
+import nottexast.BlockNode;
+import nottexast.FunctionCallNode;
 import org.junit.Test;
 
 import static grammar.AstParser.parse;

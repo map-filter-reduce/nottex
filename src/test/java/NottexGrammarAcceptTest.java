@@ -1,5 +1,5 @@
-import grammar.nottexLexer;
-import grammar.nottexParser;
+import grammar.NottexLexer;
+import grammar.NottexParser;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.junit.Assert;
@@ -238,7 +238,7 @@ public class NottexGrammarAcceptTest {
 
     private static ParseTree parseWithExceptions(String program) {
         ANTLRInputStream input = new ANTLRInputStream(program);
-        nottexLexer lexer = new nottexLexer(input);
+        NottexLexer lexer = new NottexLexer(input);
         lexer.addErrorListener(new BaseErrorListener() {
             @Override
             public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line,
@@ -248,7 +248,7 @@ public class NottexGrammarAcceptTest {
         });
 
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        nottexParser parser = new nottexParser(tokens);
+        NottexParser parser = new NottexParser(tokens);
 
         parser.addErrorListener(new BaseErrorListener() {
             @Override

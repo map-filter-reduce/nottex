@@ -1,14 +1,16 @@
-// Generated from nottex.g4 by ANTLR 4.5.3
+// Generated from Nottex.g4 by ANTLR 4.5.3
 package grammar;
+import org.antlr.v4.runtime.Lexer;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNDeserializer;
-import org.antlr.v4.runtime.atn.LexerATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class nottexLexer extends Lexer {
+public class NottexLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.5.3", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -71,13 +73,13 @@ public class nottexLexer extends Lexer {
 	}
 
 
-	public nottexLexer(CharStream input) {
+	public NottexLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "nottex.g4"; }
+	public String getGrammarFileName() { return "Nottex.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
