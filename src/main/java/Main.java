@@ -3,7 +3,7 @@ import grammar.AstParser;
 import grammar.FunctionReducer;
 import nottex_ast.NottexNode;
 import org.w3c.dom.Document;
-import pdf.PDFCreator;
+import pdfgen.PDFCreator;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -14,7 +14,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
 
-import static grammar.XmlTranslator.createDocument;
+import static pdfgen.XmlTranslator.createDocument;
 
 public class Main {
 
@@ -23,9 +23,9 @@ public class Main {
 
         //TODO: line separators not working.
         String input =
-                "UUS:   ,,header{NoTTeX GRAMMAR TEST}\n\n" +
+                "UUS: ::def(\"red\",\"color:red;font-style:italic\")  ,,red{NoTTeX GRAMMAR TEST}\n\n" +
                         "UUS: 5 + 2 = ::testAdd(5,2) ::testAdd(5,2)::testAdd(5,2)  ühel real\n\n" +
-                        "UUS: RIDA ,,footer{ 2016},,footer{ 2016},,footer{ 2016},,footer{ 2016},,footer{ 2016}\n\n" +
+                        "UUS: RIDA ,,footer,juuter,red{ 2016} ,,fffff{}\n\n" +
                         "nasdasdasdasd\n\n\n\n::testAdd(5,2)";
 
 

@@ -1,4 +1,4 @@
-package pdf;
+package pdfgen;
 
 import com.lowagie.text.DocumentException;
 import org.w3c.dom.Document;
@@ -19,8 +19,8 @@ public class PDFCreator {
     /**
      * PConverting Document to the PDF and write to the disk.
      *
-     * @param document   to be converted into pdf
-     * @param outputPath - where the pdf will be created
+     * @param document   to be converted into pdfgen
+     * @param outputPath - where the pdfgen will be created
      */
     public static void convertDocumentToPDF(Document document, String outputPath) throws IOException, DocumentException {
         ITextRenderer renderer = new ITextRenderer();

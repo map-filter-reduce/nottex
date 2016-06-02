@@ -36,7 +36,7 @@ public class StringNode extends LiteralNode {
     }
 
     @Override
-    public String getStringValue() {
+    public String getStringRepr() {
         return value;
     }
 }

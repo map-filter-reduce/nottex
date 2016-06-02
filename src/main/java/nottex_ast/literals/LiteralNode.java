@@ -7,7 +7,7 @@ public abstract class LiteralNode extends NottexNode {
 
     public abstract String toString();
 
-    public abstract String getStringValue();
+    public abstract String getStringRepr();
 
 
 

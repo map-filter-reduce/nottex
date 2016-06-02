@@ -31,7 +31,7 @@ public class DoubleNode extends NumberNode {
     }
 
     @Override
-    public String getStringValue() {
+    public String getStringRepr() {
         return String.valueOf(value);
     }
 

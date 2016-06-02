@@ -1,4 +1,4 @@
-package grammar;
+package pdfgen;
 
 import nottex_ast.BlockNode;
 import nottex_ast.NottexNode;
@@ -29,6 +29,16 @@ public class XmlTranslator {
             Document document = convertXMLtoDocument(xhtmlFile);
 
             Node htmlTag = document.getElementsByTagName("html").item(0);
+
+            // Add styles
+            Element headTag = document.createElement("head");
+            htmlTag.appendChild(headTag);
+            Element styleTag = document.createElement("style");
+            styleTag.setAttribute("type", "text/css");
+            styleTag.setTextContent(StyleManager.getStyles());
+            headTag.appendChild(styleTag);
+
+            // Generate XHTML document from nottexAst
             htmlTag.appendChild(translate(node, document.createElement("body"), document));
             return document;
 
@@ -104,7 +114,7 @@ public class XmlTranslator {
         } else if (nottexNode instanceof LiteralNode) {
             LiteralNode node = (LiteralNode) nottexNode;
             Element stringXml = createTag(document);
-            stringXml.setTextContent(node.getStringValue());
+            stringXml.setTextContent(node.getStringRepr());
             return stringXml;
 
         } else

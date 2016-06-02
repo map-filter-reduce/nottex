@@ -3,6 +3,7 @@ package evaluation;
 import nottex_ast.NottexNode;
 import nottex_ast.literals.IntNode;
 import nottex_ast.literals.StringNode;
+import pdfgen.StyleManager;
 
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -17,6 +18,12 @@ public class FunctionEvaluation {
     //      1) must be static
     //      2) must have a return type of NottexNode or its subclass
     //
+
+
+    public static NottexNode def(StringNode tagName, StringNode styleCss) {
+        StyleManager.addStyle(tagName.getValue(), styleCss.getValue());
+        return new StringNode("");
+    }
 
 
     // TEST FUNCTIONS
