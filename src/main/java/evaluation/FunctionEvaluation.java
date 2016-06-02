@@ -1,6 +1,7 @@
 package evaluation;
 
 import nottex_ast.NottexNode;
+import nottex_ast.literals.DoubleNode;
 import nottex_ast.literals.IntNode;
 import nottex_ast.literals.StringNode;
 import pdfgen.StyleManager;
@@ -25,6 +26,13 @@ public class FunctionEvaluation {
         return new StringNode("");
     }
 
+    public static NottexNode eval(IntNode expression) {
+        return expression;
+    }
+
+    public static NottexNode eval(DoubleNode expression) {
+        return expression;
+    }
 
     // TEST FUNCTIONS
 
@@ -49,6 +57,5 @@ public class FunctionEvaluation {
     public static NottexNode testEmpty() {
         return new StringNode("TEST");
     }
-
 
 }

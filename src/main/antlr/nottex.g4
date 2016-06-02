@@ -16,19 +16,34 @@ tagUse : TAG_MARKER namesNode=tagIdens ws LBRACE content=markupText? RBRACE
 tagIdens : names+=ALPHA(ALPHA|NUMBER)* (ws COMMA ws names+=ALPHA(ALPHA|NUMBER)*)*
          ;
 
-text : content+=(ALPHA|NUMBER|COMMA|COLON|QUOTE|LPAREN|RPAREN|LBRACE|RBRACE|WS)+
+text : content+=(ALPHA|NUMBER|COMMA|COLON|QUOTE|LPAREN|RPAREN|LBRACE|RBRACE|PLUS|MINUS|MULTIP|DIVIS|WS)+
      ;
 
 funcArgs : argumentNodes+=funcArg (ws COMMA ws argumentNodes+=funcArg)*
          ;
 
 funcArg : string        # StringArg
-        | NUMBER        # NumberArg
+        | expr          # ExpressionArg
         | functionCall  # FunctionCallArg
         ;
 
+expr : left=expr PLUS right=sub             # ExprAdd
+     | left=expr MINUS right=sub            # ExprSubtract
+     | sub                                  # SubExpr
+     ;
+
+sub : left=sub MULTIP right=factor              # ExprMultip
+        | left=sub DIVIS right=factor           # ExprDivis
+        | minuses+=MINUS+ expression=factor     # ExprMinus
+        | factor                                # SubSubExpr
+        ;
+
+factor : LPAREN expression=expr RPAREN  # ExprParens
+         | NUMBER                       # ExprNumber
+         ;
+
 // TODO: add escaping
-string : QUOTE content+=(ALPHA|NUMBER|TAG_MARKER|COMMA|FUNCTION_MARKER|COLON|LPAREN|RPAREN|LBRACE|RBRACE|WS)* QUOTE
+string : QUOTE content+=(ALPHA|NUMBER|TAG_MARKER|COMMA|FUNCTION_MARKER|COLON|LPAREN|RPAREN|LBRACE|RBRACE|PLUS|MINUS|MULTIP|DIVIS|WS)* QUOTE
        ;
 
 ws : WS*
@@ -43,7 +58,11 @@ RPAREN : ')';
 LBRACE : '{';
 RBRACE : '}';
 QUOTE : '"';
+PLUS : '+';
+MINUS : '-';
+MULTIP : '*';
+DIVIS : '/';
 WS : [ \n\r\t];
 NUMBER : ('0'|[1-9][0-9]*)('.'[0-9]+)?;
-ALPHA : ~(','|':'|'('|')'|'{'|'}'|'"'|' '|'\n'|'\r'|'\t')+;
+ALPHA : ~(','|':'|'('|')'|'{'|'}'|'"'|' '|'+'|'-'|'*'|'/'|'\n'|'\r'|'\t')+;
 

@@ -54,12 +54,12 @@ public interface nottexVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStringArg(nottexParser.StringArgContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code NumberArg}
+	 * Visit a parse tree produced by the {@code ExpressionArg}
 	 * labeled alternative in {@link nottexParser#funcArg}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNumberArg(nottexParser.NumberArgContext ctx);
+	T visitExpressionArg(nottexParser.ExpressionArgContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code FunctionCallArg}
 	 * labeled alternative in {@link nottexParser#funcArg}.
@@ -67,6 +67,69 @@ public interface nottexVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFunctionCallArg(nottexParser.FunctionCallArgContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExprSubtract}
+	 * labeled alternative in {@link nottexParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprSubtract(nottexParser.ExprSubtractContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code SubExpr}
+	 * labeled alternative in {@link nottexParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSubExpr(nottexParser.SubExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExprAdd}
+	 * labeled alternative in {@link nottexParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprAdd(nottexParser.ExprAddContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExprMinus}
+	 * labeled alternative in {@link nottexParser#sub}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprMinus(nottexParser.ExprMinusContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExprDivis}
+	 * labeled alternative in {@link nottexParser#sub}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprDivis(nottexParser.ExprDivisContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code SubSubExpr}
+	 * labeled alternative in {@link nottexParser#sub}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSubSubExpr(nottexParser.SubSubExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExprMultip}
+	 * labeled alternative in {@link nottexParser#sub}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprMultip(nottexParser.ExprMultipContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExprParens}
+	 * labeled alternative in {@link nottexParser#factor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprParens(nottexParser.ExprParensContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExprNumber}
+	 * labeled alternative in {@link nottexParser#factor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprNumber(nottexParser.ExprNumberContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link nottexParser#string}.
 	 * @param ctx the parse tree

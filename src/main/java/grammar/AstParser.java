@@ -1,9 +1,7 @@
 package grammar;
 
 import nottex_ast.*;
-import nottex_ast.literals.LiteralNode;
-import nottex_ast.literals.NumberNode;
-import nottex_ast.literals.StringNode;
+import nottex_ast.literals.*;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
@@ -15,6 +13,7 @@ import java.util.stream.Collectors;
 
 public class AstParser {
 
+
     public static NottexNode parse(String code) {
         // TODO
         ANTLRInputStream antlrInput = new ANTLRInputStream(code);
@@ -24,6 +23,7 @@ public class AstParser {
         ParseTree tree = parser.markupText();
         return parse(tree);
     }
+
 
     private static NottexNode parse(ParseTree node) {
 
@@ -95,16 +95,73 @@ public class AstParser {
                     .map(Token::getText)
                     .collect(Collectors.joining())
             );
-
-        } else if (node instanceof nottexParser.NumberArgContext) {
-            String numberArg = node.getText();
-            return NumberNode.numberNode(numberArg);
         } else if (node instanceof nottexParser.FuncArgContext) {
-            nottexParser.FuncArgContext argContext = (nottexParser.FuncArgContext) node;
-            return parse(argContext.getChild(0));
-        } else {
-            throw new AssertionError(node.getClass().getName());
-        }
+            return parse(node.getChild(0));
 
+        } else if (node instanceof nottexParser.ExprAddContext) {
+            nottexParser.ExprAddContext addContext = (nottexParser.ExprAddContext) node;
+            return evalExpr((NumberNode) parse(addContext.left), (NumberNode) parse(addContext.right), Operator.ADDITION);
+
+        } else if (node instanceof nottexParser.ExprSubtractContext) {
+            nottexParser.ExprSubtractContext subtractContext = (nottexParser.ExprSubtractContext) node;
+            return evalExpr((NumberNode) parse(subtractContext.left), (NumberNode) parse(subtractContext.right), Operator.SUBTRACTION);
+
+        } else if (node instanceof nottexParser.SubExprContext ||
+                node instanceof nottexParser.SubSubExprContext) {
+            return parse(node.getChild(0));
+
+        } else if (node instanceof nottexParser.ExprMultipContext) {
+            nottexParser.ExprMultipContext multipContext = (nottexParser.ExprMultipContext) node;
+            return evalExpr((NumberNode) parse(multipContext.left), (NumberNode) parse(multipContext.right), Operator.MULTIPLICATION);
+
+        } else if (node instanceof nottexParser.ExprDivisContext) {
+            nottexParser.ExprDivisContext divisContext = (nottexParser.ExprDivisContext) node;
+            return evalExpr((NumberNode) parse(divisContext.left), (NumberNode) parse(divisContext.right), Operator.DIVISION);
+
+        } else if (node instanceof nottexParser.ExprMinusContext) {
+            nottexParser.ExprMinusContext minusContext = (nottexParser.ExprMinusContext) node;
+            return minusContext.minuses.size() % 2 == 0 ?
+                    parse(minusContext.expression) :
+                    evalExpr(new IntNode(-1), (NumberNode) parse(minusContext.expression), Operator.MULTIPLICATION);
+        } else if (node instanceof nottexParser.ExprParensContext) {
+            return parse(((nottexParser.ExprParensContext) node).expression);
+
+        } else if (node instanceof nottexParser.ExprNumberContext) {
+            nottexParser.ExprNumberContext numberContext = (nottexParser.ExprNumberContext) node;
+            return NumberNode.numberNode(numberContext.getText());
+
+        } else {
+            throw new AssertionError();
+        }
     }
+
+    private static NumberNode evalExpr(NumberNode left, NumberNode right, Operator operator) {
+        boolean isDoubleExpr = left instanceof DoubleNode || right instanceof DoubleNode;
+        Number leftValue = left.getNumberValue();
+        Number rightValue = right.getNumberValue();
+
+        switch (operator) {
+            case ADDITION:
+                return isDoubleExpr ? new DoubleNode(leftValue.doubleValue() + rightValue.doubleValue()) :
+                        new IntNode(leftValue.intValue() + rightValue.intValue());
+
+            case SUBTRACTION:
+                return isDoubleExpr ? new DoubleNode(leftValue.doubleValue() - rightValue.doubleValue()) :
+                        new IntNode(leftValue.intValue() - rightValue.intValue());
+
+            case MULTIPLICATION:
+                return isDoubleExpr ? new DoubleNode(leftValue.doubleValue() * rightValue.doubleValue()) :
+                        new IntNode(leftValue.intValue() * rightValue.intValue());
+
+            case DIVISION:
+                return isDoubleExpr ? new DoubleNode(leftValue.doubleValue() / rightValue.doubleValue()) :
+                        new IntNode(leftValue.intValue() / rightValue.intValue());
+
+            default:
+                throw new AssertionError();
+        }
+    }
+
 }
+
+
