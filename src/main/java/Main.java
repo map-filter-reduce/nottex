@@ -13,6 +13,9 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Collectors;
 
 import static pdfgen.XmlTranslator.createDocument;
 
@@ -22,11 +25,7 @@ public class Main {
     public static void main(String[] args) throws IOException, DocumentException, TransformerException {
 
         //TODO: line separators not working.
-        String input =
-                "UUS: ::def(\"red\",\"color:red;font-style:italic\")  ,,red{NoTTeX GRAMMAR TEST}\n\n" +
-                        "UUS: 5 + 2 = ::testAdd(5,2) ::testAdd(5,2)::testAdd(5,2)  ühel real\n\n" +
-                        "UUS: RIDA ,,footer,juuter,red{ 2016} ,,fffff{}\n\n" +
-                        "nasdasdasdasd\n\n\n\n::testAdd(5,2)";
+        String input = getFileContent("src\\main\\resources\\input.ntex");
 
 
         NottexNode astTree = AstParser.parse(input);
@@ -40,5 +39,10 @@ public class Main {
         DOMSource source = new DOMSource(xmlDocument);
         StreamResult result = new StreamResult(new File("src\\main\\resources\\test.xhtml"));
         transformer.transform(source, result);
+    }
+
+
+    public static String getFileContent(String filePath) throws IOException {
+        return Files.readAllLines(Paths.get(filePath)).stream().collect(Collectors.joining("\n"));
     }
 }

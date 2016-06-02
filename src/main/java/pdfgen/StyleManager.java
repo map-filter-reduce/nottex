@@ -9,6 +9,34 @@ import java.util.Map;
 public class StyleManager {
     private static Map<String, String> styleClassMap = new HashMap<>();
 
+    static {
+        styleClassMap.put("h",
+                "display:block;" +
+                        "text-align:center;" +
+                        "font-size:45px;" +
+                        "font-weight:bold;"
+        );
+
+        styleClassMap.put("red",
+                "color:red"
+        );
+
+
+        styleClassMap.put("blue",
+                "color:blue"
+        );
+
+
+        styleClassMap.put("justify",
+                "text-align:justify;" +
+                        "display:block;" +
+                        "text-justify:inter-word;"
+
+
+        );
+
+    }
+
 
     public static void addStyle(String tagName, String style) {
         if (isValidCss(style))
