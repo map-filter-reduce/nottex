@@ -2,6 +2,7 @@ import com.lowagie.text.DocumentException;
 import grammar.AstParser;
 import grammar.FunctionReducer;
 import nottexast.NottexNode;
+import org.apache.commons.cli.*;
 import org.w3c.dom.Document;
 import pdfgen.PDFCreator;
 
@@ -18,43 +19,69 @@ import static pdfgen.XmlTranslator.createDocument;
 
 public class Main {
 
+    private static final boolean inProduction = false;
 
-    public static void main(String[] args) throws IOException, DocumentException, TransformerException {
+    public static void main(String[] args) throws IOException, DocumentException, TransformerException, ParseException {
 
-        compile(args);
+        if (inProduction) {
+            compile(args);
 
-//        String input = getFileContent("src\\main\\resources\\input.ntex");
-//        NottexNode astTree = AstParser.parse(input);
-//        NottexNode reducedTree = FunctionReducer.reduceFunctions(astTree);
-//        Document xmlDocument = createDocument(reducedTree);
-//        PDFCreator.convertDocumentToPDF(xmlDocument, "src\\main\\resources\\test.pdf");
-//
-//        Transformer transformer = TransformerFactory.newInstance().newTransformer();
-//        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-//        //Create XML
-//        DOMSource source = new DOMSource(xmlDocument);
-//        StreamResult result = new StreamResult(new File("src\\main\\resources\\test.xhtml"));
-//        transformer.transform(source, result);
-    }
+        } else {
+            String input = getFileContent("src\\main\\resources\\input.ntex");
+            NottexNode astTree = AstParser.parse(input);
+            NottexNode reducedTree = FunctionReducer.reduceFunctions(astTree);
+            Document xmlDocument = createDocument(reducedTree);
+            PDFCreator.convertDocumentToPDF(xmlDocument, "src\\main\\resources\\test.pdf");
 
-    private static void compile(String[] args) throws IOException, DocumentException, TransformerException {
-        String input = getFileContent(args[0]);
-        NottexNode astTree = AstParser.parse(input);
-        NottexNode reducedTree = FunctionReducer.reduceFunctions(astTree);
-        Document xmlDocument = createDocument(reducedTree);
-        String inFilename = new File(args[0]).getAbsolutePath();
-        String outFilename = inFilename.substring(0, inFilename.lastIndexOf(".")) + ".pdf";
-        PDFCreator.convertDocumentToPDF(xmlDocument, outFilename);
-
-        if (false) {
-            // Create XML
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            //Create XML
             DOMSource source = new DOMSource(xmlDocument);
             StreamResult result = new StreamResult(new File("src\\main\\resources\\test.xhtml"));
             transformer.transform(source, result);
         }
 
+    }
+
+    private static void compile(String[] args) throws IOException, DocumentException, TransformerException, ParseException {
+
+        Options options = new Options();
+        options.addOption("i", "input-file", true, "Path and full name of input .ntex file.");
+        options.addOption("d", "debug", false, "Generates additional debugging files and info.");
+        options.addOption("o", "output-file", true, "Path and full name of output .pdf file.");
+
+        CommandLineParser parser = new DefaultParser();
+        CommandLine cmd = parser.parse(options, args);
+
+        if (!cmd.hasOption("i")) {
+            throw new RuntimeException("Missing input file, provide it with flag -i or --input-file.");
+        }
+
+        String inFilename = new File(cmd.getOptionValue("i")).getAbsolutePath();
+        String input = getFileContent(inFilename);
+        String outDefaultFilename = removeFileExtension(inFilename) + ".pdf";
+        String outFilename = cmd.getOptionValue("o", outDefaultFilename);
+
+        // Parse & generate output
+        NottexNode astTree = AstParser.parse(input);
+        NottexNode reducedTree = FunctionReducer.reduceFunctions(astTree);
+        Document xmlDocument = createDocument(reducedTree);
+        PDFCreator.convertDocumentToPDF(xmlDocument, outFilename);
+
+        // Output debug info
+        if (cmd.hasOption("d")) {
+            // Create XML
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            DOMSource source = new DOMSource(xmlDocument);
+            StreamResult result = new StreamResult(new File(removeFileExtension(outFilename) + ".xhtml"));
+            transformer.transform(source, result);
+        }
+
+    }
+
+    private static String removeFileExtension(String filename) {
+        return filename.substring(0, filename.lastIndexOf("."));
     }
 
 
