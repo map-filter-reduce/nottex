@@ -1,4 +1,4 @@
-grammar nottex;
+grammar Nottex;
 
 
 
