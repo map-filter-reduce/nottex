@@ -39,7 +39,9 @@ public class StyleManager {
 
 
     public static void addStyle(String tagName, String style) {
-        if (isValidCss(style))
+        String css = String.format(".%s {%s}", tagName, style);
+
+        if (isValidCss(css))
             styleClassMap.put(tagName, style);
             //TODO: logging
         else System.err.println("Invalid CSS");

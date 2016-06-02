@@ -3,5 +3,16 @@
 ,,h{NoTTex 2016}
 
 
-Proov ::eval(1+2*3)
+Kaks reavahetust koodis == 1 reavahetus väljundis
 
+Siin kutsutakse välja funktsioon, mis arvutab sisendi väärtuse: ::testRepeat("mul",4+1)
+
+See funktsioon tõstab stringi ülaregistrisse: ::testUpperCase("abcde")
+
+See funktsioon defineerib tagi: ::def("cyan","color:cyan;")
+
+See on ,,cyan{helesinine} minu defineeritud tagi abil.
+
+Mitut tagi saab korraga kasutada: ,,h,cyan{::testUpperCase("mitu tagi, tekst funktsiooni sees") millele järgneb tekst}
+
+Saab kasutada erinevaid sümboleid: { "" \ : , ; ,%@#´´´'*:-_#¤
