@@ -1,18 +1,32 @@
 
 
-,,h{NoTTex 2016}
+,,h{NoTTeX 2016}
 
 
-Kaks reavahetust koodis == 1 reavahetus väljundis
+NoTTeX koodis kahte reavahetust tõlgendatakse ühe reavahetusega.
 
-Siin kutsutakse välja funktsioon, mis arvutab sisendi väärtuse: ::testRepeat("mul",4+1)
 
-See funktsioon tõstab stringi ülaregistrisse: ::testUpperCase("abcde")
 
-See funktsioon defineerib tagi: ::def("cyan","color:cyan;")
 
-See on ,,cyan{helesinine} minu defineeritud tagi abil.
+NoTTeX toetab funktsioone. Näiteks funktsioon ::escape("::eval(9*89-(2+4))") kasutades 9*89-(2+4) = ::eval(9*89-(2+4)).
 
-Mitut tagi saab korraga kasutada: ,,h,cyan{::testUpperCase("mitu tagi, tekst funktsiooni sees") millele järgneb tekst}
+Funktsioonil võib olla ka mitu argumenti. Näiteks ::escape("::testRepeat('not-',4+1)") väljastab not-not-not-not-not-
 
-Saab kasutada erinevaid sümboleid: { "" \ : , ; ,%@#´´´'*:-_#¤
+
+
+NoTTeX on olemas tagid. Tage kasutatakse teksti formaatimiseks. Näiteks ::escape(",,h{TAG}") väljastab ,,h{TAG}
+
+Kasutaja saab ka ise tage defineerida. Selleks on olemas funktsioon ::escape("::def('tagi_nimi', 'CSS'))"). Näiteks
+
+::escape("::def('green','color:#008000';)") ::def("green","color:#008000;") muudab teksti ,,green{roheliseks}.
+
+Tagidest võib mõelda kui CSS klassidest. Seega saab tekstil olla palju tage: näiteks: ::escape(",,h,green{suur & roheline}") korral
+on tekst ,,green,h{suur & roheline}
+
+
+NoTTeX piirab kasutajat väga vähe sisendi suhtes. Escapida tuleb tagid ja funktsioonid, kui kasutaja ei soovi neid välja kutsuda. Selleks on funktsioon
+::escape("::escape('escapitud sisu')").
+
+
+Saab kasutada erinevaid sümboleid:  ".\:,;%@#´'*-_#¤. Lubatud on ka: , , , : :. Ilma funktsioonita
+::escape("::escape('')") on keelatud ::escape(",, ja ::")
