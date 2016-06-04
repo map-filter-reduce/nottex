@@ -12,7 +12,7 @@ Tags are for text formatting. Basically they are CSS 2.1 rules that are applied 
 
 Tag use starts with ,, followed by list of tags separated by comma and ends with {} containing text (and/or tags and/or functions). Example: ,,red, justify{text}
 
-User defines tags with function ::def("tag_name","CSS"). Example: ::def("green","color:#008000;")
+User defines tags with function ::def("tag_name","CSS"). Example: ```::def("green","color:#008000;")```
 
 Currently built-in tags:
 ```
@@ -27,7 +27,7 @@ NoTTeX functions are intended to dynamically generate output. For example create
 Function argument can be string, function call or arithmetic expression. 
 Function call starts with ::function name followed by (arg1,arg2,....,argn).
 
-Example:  ::eval(5+5)
+Example:  ```::eval(5+5)```
 
 Currently built-in functions:
 ```
