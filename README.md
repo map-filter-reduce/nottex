@@ -10,7 +10,7 @@ NoTTeX code consists of text, tags and functions.
 #### Tags:
 Tags are for text formatting. Basically they are CSS 2.1 rules that are applied for text inside tags. There are built-in tags and user defined tags. 
 
-Tag use starts with ,, followed by list of tags separated by comma and ends with {} containing text (and/or tags and/or functions). Example: ,,red, justify{text}
+Tag use starts with ,, followed by list of tags separated by comma and ends with {} containing text (and/or tags and/or functions). Example: ```,,red, justify{text}```
 
 User defines tags with function ::def("tag_name","CSS"). Example: ```::def("green","color:#008000;")```
 
