@@ -10,9 +10,9 @@ NoTTeX code consists of text, tags and functions.
 #### Tags:
 Tags are for text formatting. Basically they are CSS 2.1 rules that are applied for text inside tags. There are built-in tags and user defined tags. 
 
-Tag use starts with ,, followed by list of tags separated by comma and ends with {} containing text (and/or tags and/or functions). Example: ```,,red, justify{text}```
+Tag use starts with ```,```, followed by list of tags separated by ```,``` and ends with ```{}``` containing text (and/or tags and/or functions). Example: ```,,red, justify{text}```
 
-User defines tags with function ::def("tag_name","CSS"). Example: ```::def("green","color:#008000;")```
+User defines tags with function ```::def("tag_name","CSS")```. Example: ```::def("green","color:#008000;")```
 
 Currently built-in tags:
 ```
@@ -25,7 +25,7 @@ Currently built-in tags:
 NoTTeX functions are intended to dynamically generate output. For example create a timestamp or evaluate arithmetic expression.
 
 Function argument can be string, function call or arithmetic expression. 
-Function call starts with ::function name followed by (arg1,arg2,....,argn).
+Function call starts with ```::function_name``` followed by ```(arg1,arg2,....,argn)```.
 
 Example:  ```::eval(5+5)```
 
