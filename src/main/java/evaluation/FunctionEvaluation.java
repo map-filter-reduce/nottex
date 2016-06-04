@@ -6,6 +6,7 @@ import nottexast.literals.IntNode;
 import nottexast.literals.StringNode;
 import pdfgen.StyleManager;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
@@ -73,6 +74,15 @@ public class FunctionEvaluation {
      */
     public static NottexNode escape(StringNode string) {
         return new StringNode(string.getValue());
+    }
+
+
+    /**
+     * Built-in function for creating timestamp:
+     * @return timestamp formatted as dd-MM-yyyy HH:mm
+     */
+    public static NottexNode timeStamp() {
+        return new StringNode(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new java.util.Date()));
     }
 
     // TEST FUNCTIONS
