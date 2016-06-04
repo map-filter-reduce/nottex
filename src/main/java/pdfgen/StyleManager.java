@@ -9,6 +9,7 @@ import java.util.Map;
 public class StyleManager {
     private static Map<String, String> styleClassMap = new HashMap<>();
 
+    // Built-in tags:
     static {
         styleClassMap.put("h",
                 "display:block;" +
@@ -38,6 +39,13 @@ public class StyleManager {
     }
 
 
+    /**
+     * Method for inserting new CSS style into the styleClassMap. Method checks before insertion that CSS is valid.
+     * If CSS is not valid then it will be not inserted into the map.
+     *
+     * @param tagName - will be the class
+     * @param style   - CSS
+     */
     public static void addStyle(String tagName, String style) {
         String css = String.format(".%s {%s}", tagName, style);
 
@@ -57,6 +65,11 @@ public class StyleManager {
     }
 
 
+    /**
+     * Method for getting all tags as CSS that can be inserted between style tags in XHTML.
+     *
+     * @return CSS as String
+     */
     public static String getStyles() {
         StringBuilder sb = new StringBuilder();
 

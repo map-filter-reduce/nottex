@@ -18,7 +18,7 @@ public class FunctionReducer {
      * <p>
      * Method replaces FunctionCallNodes with their evaluated values.
      *
-     * @param node - tree that will
+     * @param node - tree that will reduced
      * @return new instance of the input with evaluated nodes (type NottexNode)
      */
     public static NottexNode reduceFunctions(NottexNode node) {

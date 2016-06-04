@@ -18,13 +18,13 @@ public class IntNode extends NumberNode {
 
         IntNode intNode = (IntNode) o;
 
-        return value != null ? value.equals(intNode.value) : intNode.value == null;
+        return value.equals(intNode.value);
 
     }
 
     @Override
     public int hashCode() {
-        return value != null ? value.hashCode() : 0;
+        return value.hashCode();
     }
 
     @Override

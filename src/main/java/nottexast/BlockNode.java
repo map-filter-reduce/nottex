@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 // TODO: Refactor to BlockNode or something
-public class BlockNode extends NottexNode implements ChildrenBearable {
+public class BlockNode extends NottexNode {
 
     private List<NottexNode> children;
 
@@ -22,9 +22,13 @@ public class BlockNode extends NottexNode implements ChildrenBearable {
         children.add(node);
     }
 
+    /**
+     * Constructor used in test classes
+     */
     public BlockNode(NottexNode... children) {
         this.children = Arrays.asList(children);
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -50,13 +54,9 @@ public class BlockNode extends NottexNode implements ChildrenBearable {
                 .collect(Collectors.joining(",\n"));
     }
 
-    @Override
+
     public List<NottexNode> getChildren() {
         return children;
     }
 
-    @Override
-    public boolean hasChildren() {
-        return !children.isEmpty();
-    }
 }

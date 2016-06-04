@@ -29,7 +29,6 @@ public class StringNode extends LiteralNode {
         return value != null ? value.hashCode() : 0;
     }
 
-
     @Override
     public String toString() {
         return "\"" + value + "\"";

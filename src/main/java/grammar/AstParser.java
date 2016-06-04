@@ -14,17 +14,28 @@ import java.util.stream.Collectors;
 public class AstParser {
 
 
+    /**
+     * Method takes in code written in NoTTeX and generates corresponding AST.
+     * <p>
+     * If NoTTeX function parameters are arithmetic operations, then they will be evaluated.
+     *
+     * @param code - String written in NoTTeX syntax
+     * @return corresponding AST
+     */
     public static NottexNode parse(String code) {
-        // TODO
-        ANTLRInputStream antlrInput = new ANTLRInputStream(code);
-        NottexLexer NottexLexer = new NottexLexer(antlrInput);
+        NottexLexer NottexLexer = new NottexLexer(new ANTLRInputStream(code));
         CommonTokenStream tokens = new CommonTokenStream(NottexLexer);
         NottexParser parser = new NottexParser(tokens);
-        ParseTree tree = parser.markupText();
-        return parse(tree);
+        return parse(parser.markupText());
     }
 
 
+    /**
+     * Method traverses ANTLR generated parse tree and returns AST
+     *
+     * @param node - parse tree node
+     * @return AST tree node
+     */
     private static NottexNode parse(ParseTree node) {
 
         if (node instanceof NottexParser.MarkupTextContext) {
@@ -58,7 +69,8 @@ public class AstParser {
                         functionCall.addArgument(new FunctionArgNode((LiteralNode) argAsNode));
                     else if (argAsNode instanceof FunctionCallNode)
                         functionCall.addArgument(new FunctionArgNode((FunctionCallNode) argAsNode));
-                    else throw new AssertionError();
+                    else
+                        throw new AssertionError("Expected LiteralNode or FunctionCallNode, got: " + argAsNode.getClass());
                 }
             }
             return functionCall;
@@ -99,10 +111,12 @@ public class AstParser {
             return parse(node.getChild(0));
 
         } else if (node instanceof NottexParser.ExprAddContext) {
+            // Evaluate binary operation: addition
             NottexParser.ExprAddContext addContext = (NottexParser.ExprAddContext) node;
             return evalExpr((NumberNode) parse(addContext.left), (NumberNode) parse(addContext.right), Operator.ADDITION);
 
         } else if (node instanceof NottexParser.ExprSubtractContext) {
+            // Evaluate binary operation: subtraction
             NottexParser.ExprSubtractContext subtractContext = (NottexParser.ExprSubtractContext) node;
             return evalExpr((NumberNode) parse(subtractContext.left), (NumberNode) parse(subtractContext.right), Operator.SUBTRACTION);
 
@@ -111,14 +125,17 @@ public class AstParser {
             return parse(node.getChild(0));
 
         } else if (node instanceof NottexParser.ExprMultipContext) {
+            // Evaluate binary operation: multiplication
             NottexParser.ExprMultipContext multipContext = (NottexParser.ExprMultipContext) node;
             return evalExpr((NumberNode) parse(multipContext.left), (NumberNode) parse(multipContext.right), Operator.MULTIPLICATION);
 
         } else if (node instanceof NottexParser.ExprDivisContext) {
+            // Evaluate binary operation: division
             NottexParser.ExprDivisContext divisContext = (NottexParser.ExprDivisContext) node;
             return evalExpr((NumberNode) parse(divisContext.left), (NumberNode) parse(divisContext.right), Operator.DIVISION);
 
         } else if (node instanceof NottexParser.ExprMinusContext) {
+            // Evaluate unary minus. We can think of this as an binary operation: -1 * expression
             NottexParser.ExprMinusContext minusContext = (NottexParser.ExprMinusContext) node;
             return minusContext.minuses.size() % 2 == 0 ?
                     parse(minusContext.expression) :
@@ -131,10 +148,20 @@ public class AstParser {
             return NumberNode.numberNode(numberContext.getText());
 
         } else {
-            throw new AssertionError();
+            throw new AssertionError("Unexpected node found in parse tree traversal: " + node.getClass());
         }
     }
 
+    /**
+     * Method evaluates binary operation between two NumberNodes.
+     * <p>
+     * Supported operations: ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION
+     *
+     * @param left     side of the operand
+     * @param right    side of the operand
+     * @param operator - Enum Operator: determines what kind of operation will be conducted
+     * @return evaluated result
+     */
     private static NumberNode evalExpr(NumberNode left, NumberNode right, Operator operator) {
         boolean isDoubleExpr = left instanceof DoubleNode || right instanceof DoubleNode;
         Number leftValue = left.getNumberValue();
@@ -158,7 +185,7 @@ public class AstParser {
                         new IntNode(leftValue.intValue() / rightValue.intValue());
 
             default:
-                throw new AssertionError();
+                throw new AssertionError("Operation not implemented: " + operator.toString());
         }
     }
 

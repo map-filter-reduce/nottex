@@ -5,7 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TagUseNode extends NottexNode implements ChildrenBearable {
+/**
+ * Tags are defined in grammar as: ,,tag1,tag
+ */
+public class TagUseNode extends NottexNode  {
 
     private List<NottexNode> children;
     private List<String> names;
@@ -36,6 +39,7 @@ public class TagUseNode extends NottexNode implements ChildrenBearable {
 
         if (children != null ? !children.equals(that.children) : that.children != null) return false;
         return names != null ? names.equals(that.names) : that.names == null;
+
     }
 
     @Override
@@ -56,13 +60,9 @@ public class TagUseNode extends NottexNode implements ChildrenBearable {
                 '}';
     }
 
-    @Override
+
     public List<NottexNode> getChildren() {
         return children;
     }
 
-    @Override
-    public boolean hasChildren() {
-        return !children.isEmpty();
-    }
 }

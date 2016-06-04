@@ -25,6 +25,10 @@ public class FunctionArgNode extends NottexNode {
         return funArg;
     }
 
+    /**
+     * Method for checking if FunctionArgNode is holding LiteralNode or FunctionCallNode
+     * @return true if is holding FunctionCallNode
+     */
     public boolean isFunctionCall() {
         return funArg != null;
     }
@@ -38,6 +42,7 @@ public class FunctionArgNode extends NottexNode {
 
         if (literalArg != null ? !literalArg.equals(that.literalArg) : that.literalArg != null) return false;
         return funArg != null ? funArg.equals(that.funArg) : that.funArg == null;
+
     }
 
     @Override

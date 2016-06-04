@@ -21,17 +21,58 @@ public class FunctionEvaluation {
     //
 
 
+    /**
+     * Built-in method for defining custom tags.
+     * <p>
+     * Defined tag will be added into the system memory. Will overwrite tags with the same name (including pre-defined tags)
+     * <p>
+     * Example: ::def("cyan", "color:cyan;")
+     * <p>
+     * If CSS is invalid then tag will be not created, but the PDF will still be generated
+     *
+     * @param tagName  - name of the tag
+     * @param styleCss - CSS 2.1
+     * @return empty StringNode
+     */
     public static NottexNode def(StringNode tagName, StringNode styleCss) {
         StyleManager.addStyle(tagName.getValue(), styleCss.getValue());
         return new StringNode("");
     }
 
+    /**
+     * Built-in method for doing arithmetic operations with integers.
+     * <p>
+     * Example: ::eval(4+1*(8+1)) will return 13
+     *
+     * @param expression - arithmetic operation
+     * @return evaluated expression.
+     */
     public static NottexNode eval(IntNode expression) {
         return expression;
     }
 
+    /**
+     * Built-in method for doing arithmetic operations with doubles.
+     * <p>
+     * Example: ::eval(4+1*(8+1)) will return 13
+     *
+     * @param expression - arithmetic operation
+     * @return evaluated expression.
+     */
     public static NottexNode eval(DoubleNode expression) {
         return expression;
+    }
+
+    /**
+     * Built-in method for writing normally forbidden syntax to PDF
+     * <p>
+     * Example: ::escape("::eval(4+1)") will return ::eval(4+1)
+     *
+     * @param string - that will be converted to text
+     * @return converted text
+     */
+    public static NottexNode escape(StringNode string) {
+        return new StringNode(string.getValue());
     }
 
     // TEST FUNCTIONS

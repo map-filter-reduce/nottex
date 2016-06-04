@@ -17,10 +17,10 @@ import java.io.OutputStream;
 
 public class PDFCreator {
     /**
-     * PConverting Document to the PDF and write to the disk.
+     * Convert Document to the PDF and write on the disk.
      *
      * @param document   to be converted into pdfgen
-     * @param outputPath - where the pdfgen will be created
+     * @param outputPath - where the pdf will be created
      */
     public static void convertDocumentToPDF(Document document, String outputPath) throws IOException, DocumentException {
         ITextRenderer renderer = new ITextRenderer();

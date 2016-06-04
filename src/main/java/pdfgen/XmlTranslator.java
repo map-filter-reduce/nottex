@@ -23,19 +23,31 @@ import java.util.stream.Collectors;
  */
 public class XmlTranslator {
 
+    /**
+     * Method for creating XHTML document from NoTTeX AST (that has been reduces)
+     *
+     * @param node - NoTTeX AST that will be converted to XHTML document
+     * @return NoTTeX AST as XHTML Document
+     */
     public static Document createDocument(NottexNode node) {
         try {
+            // Load XHTML template
             File xhtmlFile = new File(XmlTranslator.class.getClassLoader().getResource("template.xhtml").toURI());
             Document document = convertXMLtoDocument(xhtmlFile);
 
+            // Create html tag
             Node htmlTag = document.getElementsByTagName("html").item(0);
 
-            // Add styles
+            // Create head tag
             Element headTag = document.createElement("head");
+            // Add head tag to html tag
             htmlTag.appendChild(headTag);
+            // Create style tag
             Element styleTag = document.createElement("style");
             styleTag.setAttribute("type", "text/css");
+            // Insert CSS into the style tag
             styleTag.setTextContent(StyleManager.getStyles());
+            // Append style tag to html tag
             headTag.appendChild(styleTag);
 
             // Generate XHTML document from nottexAst
@@ -64,7 +76,14 @@ public class XmlTranslator {
         return document.createElement("span");
     }
 
-
+    /**
+     * Translate nottexAst to XHTML Element
+     *
+     * @param nottexNode - node that will be translated with all subnodes
+     * @param element    - parent element where the translated nodes will be appended
+     * @param document   - that is used to create elements
+     * @return Element
+     */
     private static Element translate(NottexNode nottexNode, Element element, Document document) {
         if (nottexNode instanceof BlockNode) {
             BlockNode node = (BlockNode) nottexNode;
@@ -118,7 +137,7 @@ public class XmlTranslator {
             return stringXml;
 
         } else
-            throw new AssertionError();
+            throw new AssertionError("Unexpected node found while translating document: " + nottexNode.getClass());
     }
 
 }
