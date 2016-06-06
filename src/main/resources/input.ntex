@@ -3,30 +3,31 @@
 ,,h{NoTTeX 2016}
 
 
-NoTTeX koodis kahte reavahetust tõlgendatakse ühe reavahetusega.
+NoTTeX koodis kahte reavahetust tõlgendatakse ühe reavahetusena.
 
 
 
 
-NoTTeX toetab funktsioone. Näiteks funktsioon ::escape("::eval(9*89-(2+4))") kasutades 9*89-(2+4) = ::eval(9*89-(2+4)).
+NoTTeX toetab funktsioone. Funktsioon ::escape("::eval(9*89-(2+4))") annab tulemuseks ::eval(9*89-(2+4)).
 
-Funktsioonil võib olla ka mitu argumenti. Näiteks ::escape("::testRepeat('not-',4+1)") väljastab not-not-not-not-not-
+Näiteks ::escape("::testRepeat('><> ', 4+1)") väljastab ::testRepeat("><> ",4+1)
 
 
 
-NoTTeX on olemas tagid. Tage kasutatakse teksti formaatimiseks. Näiteks ::escape(",,h{TAG}") väljastab ,,h{TAG}
+NoTTeX sisaldab tage. ::escape(",,h{Suur pealkiri}") väljastab pealkirja ,,h{Suur pealkiri}
 
-Kasutaja saab ka ise tage defineerida. Selleks on olemas funktsioon ::escape("::def('tagi_nimi', 'CSS'))"). Näiteks
+Kasutaja saab ka ise tage defineerida. Selleks on olemas funktsioon ::escape("::def(tagi_nimi, CSS)"). Näiteks
 
-::escape("::def('green','color:#008000';)") ::def("green","color:#008000;") muudab teksti ,,green{roheliseks}.
+::escape("::def('green', 'color:#008000';)") ::def("green","color:#008000;") muudab teksti ,,green{roheliseks}.
 
-Tagidest võib mõelda kui CSS klassidest. Seega saab tekstil olla palju tage: näiteks: ::escape(",,h,green{suur & roheline}") korral
+Tagidest võib mõelda kui CSS klassidest. Seega saab tekstil olla palju tage: näiteks: ::escape(",,h, green{suur & roheline}") korral
 on tekst ,,green,h{suur & roheline}
 
 
-NoTTeX piirab kasutajat väga vähe sisendi suhtes. Escapida tuleb tagid ja funktsioonid, kui kasutaja ei soovi neid välja kutsuda. Selleks on funktsioon
-::escape("::escape('escapitud sisu')").
+NoTTeX piirab kasutajat väga vähe sisendi suhtes. Escapida tuleb tagid ja funktsioonid, kui kasutaja ei soovi neid välja kutsuda. Selleks  on funktsioon
+::escape("::escape(escapitud sisu)").
 
 
-Saab kasutada erinevaid sümboleid:  ".\:,;%@#´'*-_#¤. Lubatud on ka: , , , : :. Ilma funktsioonita
-::escape("::escape('')") on keelatud ::escape(",, ja ::")
+Saab kasutada erinevaid sümboleid:  ".\:,;%@#´'*-_#¤. Lubatud on ka: , , , : :.
+
+Ilma funktsioonita ::escape("::escape()") on keelatud ::escape(",, ja ::")
