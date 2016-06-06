@@ -1,14 +1,28 @@
 # NoTTeX
 
-##### NoTTeX is a powerful open-source typesetting system designed for intuitive use for users who need a lightweight but powerful typesetting system that converts user input directly to PDF.
-
+##### NoTTeX is a customizable and lightweight typesetting system designed for intuitive use. NoTTeX .ntex files can be directly compiled to PDF.
 
 ## Quickstart
 
 NoTTeX code consists of text, tags and functions.
+WHUT INSIDE WHUT
 
-#### Tags:
-Tags are for text formatting. Basically they are CSS 2.1 rules that are applied for text inside tags. There are built-in tags and user defined tags. 
+### Tags
+Tags represent formatting rules for content inside the tags. There are some builtin tags that currently enable some limited formatting. Tags can also be user-defined.
+
+Syntax:
+```,,tagNames{content} ```
+* ```tagNames``` is a comma-delimited list of tag names; whitespace around the tag names is ignored
+* ```content``` is any content containing a mixture of text, tags and functions
+
+
+#### Defining tags
+Tags can be defined anywhere in the NoTTeX file using the ```::def(tagName, styleCSS)``` function and will affect all tag uses regardless of their position relative to the definition. If a tag is defined multiple times, the last definition will always take effect in the whole document.
+
+The ```::def(tagName, styleCSS)``` function must be provided with 2 string-type arguments:
+* ```tagName``` - name of the defined tag
+* ```styleCSS``` - CSS 2.1 rules delimited by ```;``` for styling the tag's content
+
 
 Tag use starts with ```,```, followed by list of tags separated by ```,``` and ends with ```{}``` containing text (and/or tags and/or functions). Example: ```,,red, justify{text}```
 
