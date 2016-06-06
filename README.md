@@ -5,7 +5,6 @@
 ## Quickstart
 
 NoTTeX code consists of text, tags and functions.
-WHUT INSIDE WHUT
 
 ### Tags
 Tags represent formatting rules for content inside the tags. There are builtin tags that currently enable some limited formatting. Tags can also be user-defined.
