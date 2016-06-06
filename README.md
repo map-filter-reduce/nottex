@@ -30,20 +30,21 @@ The ```::def(tagName, styleCSS)``` function must be provided with 2 string-type 
 
 
 ### Functions:
-NoTTeX functions are intended to dynamically generate output. For example create a timestamp or evaluate arithmetic expression.
+NoTTeX functions are intended for dynamically generating content. Functions can have 0 or more parameters.
 
-Function argument can be string, function call or arithmetic expression. 
-Function call starts with ```::function_name``` followed by ```(arg1,arg2,....,argn)```.
+A parameter can be 
+* a valid numerical expression using operators ```+```, ```-```, ```*```, ```/``` and parentheses ```(```, ```)``` or
+* a string contained in quotes, e.g. ```"NoTTeX 4 laif"```
 
-Example:  ```::eval(5+5)```
+[Full list of builtin functions](https://github.com/NoTTeX/nottex/wiki/Builtin-Functions)
 
-Currently built-in functions:
-```
-::eval(arithmetic expression)   - function evaluates arithmetic operations
-::def("tag_name","CSS")         - function for user to define tags
-::escape("fuction or tag call") - function for writing NoTTeX function and tag calls without actual call.
-::timeStamp()                   - function for timestamp creation
-```
+#### Using functions
+Syntax:
+```::funcName(arguments) ```
+* ```funcName``` is the name of the function to be called
+* ```arguments``` is a comma-delimited list of positional arguments; whitespace around the arguments is ignored
 
-#### Text:
-Everything is allowed except ```,,``` and ```::```. Some unicode symbols are not supported and will not be inserted into the output PDF. 
+
+
+### Text:
+All characters are allowed except ```,,``` and ```::```. Some special unicode symbols may not be supported.
