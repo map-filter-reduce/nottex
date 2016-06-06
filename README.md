@@ -8,7 +8,9 @@ NoTTeX code consists of text, tags and functions.
 WHUT INSIDE WHUT
 
 ### Tags
-Tags represent formatting rules for content inside the tags. There are some builtin tags that currently enable some limited formatting. Tags can also be user-defined.
+Tags represent formatting rules for content inside the tags. There are builtin tags that currently enable some limited formatting. Tags can also be user-defined.
+
+[Full list of builtin tags](https://github.com/NoTTeX/nottex/wiki/Builtin-Tags)
 
 #### Using tags
 Syntax:
@@ -25,17 +27,8 @@ The ```::def(tagName, styleCSS)``` function must be provided with 2 string-type 
 * ```styleCSS``` - CSS 2.1 rules delimited by ```;``` for styling the tag's content
 
 
-Tag use starts with ```,```, followed by list of tags separated by ```,``` and ends with ```{}``` containing text (and/or tags and/or functions). Example: ```,,red, justify{text}```
 
-User defines tags with function ```::def("tag_name","CSS")```. Example: ```::def("green","color:#008000;")```
 
-Currently built-in tags:
-```
-* h
-* red
-* blue
-* justify
-```
 #### Functions:
 NoTTeX functions are intended to dynamically generate output. For example create a timestamp or evaluate arithmetic expression.
 
