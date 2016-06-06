@@ -6,6 +6,8 @@
 
 NoTTeX code consists of text, tags and functions.
 
+
+
 ### Tags
 Tags represent formatting rules for content inside the tags. There are builtin tags that currently enable some limited formatting. Tags can also be user-defined.
 
@@ -27,8 +29,7 @@ The ```::def(tagName, styleCSS)``` function must be provided with 2 string-type 
 
 
 
-
-#### Functions:
+### Functions:
 NoTTeX functions are intended to dynamically generate output. For example create a timestamp or evaluate arithmetic expression.
 
 Function argument can be string, function call or arithmetic expression. 
