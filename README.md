@@ -10,6 +10,7 @@ WHUT INSIDE WHUT
 ### Tags
 Tags represent formatting rules for content inside the tags. There are some builtin tags that currently enable some limited formatting. Tags can also be user-defined.
 
+#### Using tags
 Syntax:
 ```,,tagNames{content} ```
 * ```tagNames``` is a comma-delimited list of tag names; whitespace around the tag names is ignored
