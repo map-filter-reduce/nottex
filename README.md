@@ -1,22 +1,50 @@
 # NoTTeX
 
-##### NoTTeX is a open-source typesetting system designed for intuitive use for users who need a lightweight but powerful typesetting system.
-
+##### NoTTeX is a customizable and lightweight typesetting system designed for intuitive use. NoTTeX .ntex files can be directly compiled to PDF.
 
 ## Quickstart
 
 NoTTeX code consists of text, tags and functions.
 
-#### Tags:
-Tags are for text formatting. Basically they are CSS 2.1 rules that are applied for text inside tags. There are built-in tags and user defined tags. 
-
-Tag use starts with ,, followed by list of tags separated by comma and ends with {} containing text (and/or tags and/or functions). Example: ,,tag1, tag2{text}
-
-User defines tags with function ::def("tag_name","CSS"). Example: ::def("green","color:#008000;")
-
-#### Functions:
-NoTTeX functions are intended to dynamically generate output. For example create a timestamp. 
 
 
+### Tags
+Tags represent formatting rules for content inside the tags. There are builtin tags that currently enable some limited formatting. Tags can also be user-defined.
+
+[Full list of builtin tags](https://github.com/NoTTeX/nottex/wiki/Builtin-Tags)
+
+#### Using tags
+Syntax:
+```,,tagNames{content} ```
+* ```tagNames``` is a comma-delimited list of tag names; whitespace around the tag names is ignored
+* ```content``` is any content containing a mixture of text, tags and functions
 
 
+#### Defining tags
+Tags can be defined anywhere in the NoTTeX file using the ```::def(tagName, styleCSS)``` function and will affect all tag uses regardless of their position relative to the definition. If a tag is defined multiple times, the last definition will always take effect in the whole document.
+
+The ```::def(tagName, styleCSS)``` function must be provided with 2 string-type arguments:
+* ```tagName``` - name of the defined tag
+* ```styleCSS``` - CSS 2.1 rules delimited by ```;``` for styling the tag's content
+
+
+
+### Functions:
+NoTTeX functions are intended for dynamically generating content. Functions can have 0 or more parameters.
+
+A parameter can be 
+* a valid numerical expression using operators ```+```, ```-```, ```*```, ```/``` and parentheses ```(```, ```)``` or
+* a string contained in quotes, e.g. ```"NoTTeX 4 laif"```
+
+[Full list of builtin functions](https://github.com/NoTTeX/nottex/wiki/Builtin-Functions)
+
+#### Using functions
+Syntax:
+```::funcName(arguments) ```
+* ```funcName``` is the name of the function to be called
+* ```arguments``` is a comma-delimited list of positional arguments; whitespace around the arguments is ignored
+
+
+
+### Text:
+All characters are allowed except ```,,``` and ```::```. Some special unicode symbols may not be supported.
