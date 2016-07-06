@@ -107,4 +107,33 @@ public class NottexAstFunctionTest {
         TestUtil.assertEquals(expected3, parse(input3));
     }
 
+    @Test
+    public void testQuoteEscape1() {
+        String input3 = "::func(\"af\\\"fas \")";
+        BlockNode expected3 = new BlockNode(
+                new FunctionCallNode("func",
+                        TestUtil.stringArg("af\\\"fas "))
+        );
+        TestUtil.assertEquals(expected3, parse(input3));
+    }
+
+    @Test
+    public void testQuoteEscape2() {
+        String input3 = "::func(\"\\\"\")";
+        BlockNode expected3 = new BlockNode(
+                new FunctionCallNode("func",
+                        TestUtil.stringArg("\\\""))
+        );
+        TestUtil.assertEquals(expected3, parse(input3));
+    }
+
+    @Test
+    public void testQuoteEscape3() {
+        String input3 = "::func(\"\\\\\")";
+        BlockNode expected3 = new BlockNode(
+                new FunctionCallNode("func",
+                        TestUtil.stringArg("\\\\"))
+        );
+        TestUtil.assertEquals(expected3, parse(input3));
+    }
 }
