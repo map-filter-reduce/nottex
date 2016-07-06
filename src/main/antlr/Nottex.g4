@@ -16,7 +16,7 @@ tagUse : TAG_MARKER namesNode=tagIdens ws LBRACE content=markupText? RBRACE
 tagIdens : names+=ALPHA(ALPHA|NUMBER)* (ws COMMA ws names+=ALPHA(ALPHA|NUMBER)*)*
          ;
 
-text : content+=(ALPHA|NUMBER|COMMA|COLON|QUOTE|LPAREN|RPAREN|LBRACE|RBRACE|PLUS|MINUS|MULTIP|DIVIS|WS)+
+text : content+=(ALPHA|NUMBER|COMMA|COLON|QUOTE|LPAREN|RPAREN|LBRACE|RBRACE|PLUS|MINUS|MULTIP|DIVIS|ESCAPED_QUOTE|BACKSLASH|WS)+
      ;
 
 funcArgs : argumentNodes+=funcArg (ws COMMA ws argumentNodes+=funcArg)*
@@ -42,8 +42,7 @@ factor : LPAREN expression=expr RPAREN  # ExprParens
          | NUMBER                       # ExprNumber
          ;
 
-// TODO: add escaping
-string : QUOTE content+=(ALPHA|NUMBER|TAG_MARKER|COMMA|FUNCTION_MARKER|COLON|LPAREN|RPAREN|LBRACE|RBRACE|PLUS|MINUS|MULTIP|DIVIS|WS)* QUOTE
+string : QUOTE content+=(ALPHA|NUMBER|TAG_MARKER|COMMA|FUNCTION_MARKER|COLON|LPAREN|RPAREN|LBRACE|RBRACE|PLUS|MINUS|MULTIP|DIVIS|ESCAPED_QUOTE|BACKSLASH|WS)* QUOTE
        ;
 
 ws : WS*
@@ -52,11 +51,13 @@ ws : WS*
 TAG_MARKER : ',,';
 COMMA : ',';
 FUNCTION_MARKER : '::';
-COLON : ':';    // This is needed because ELSE can't match a single colon; this must be matched separately
+COLON : ':';    // This is needed because ALPHA can't match a single colon; this must be matched separately
 LPAREN : '(';
 RPAREN : ')';
 LBRACE : '{';
 RBRACE : '}';
+ESCAPED_QUOTE : '\\"';
+BACKSLASH : '\\';
 QUOTE : '"';
 PLUS : '+';
 MINUS : '-';
@@ -64,5 +65,5 @@ MULTIP : '*';
 DIVIS : '/';
 WS : [ \n\r\t];
 NUMBER : ('0'|[1-9][0-9]*)('.'[0-9]+)?;
-ALPHA : ~(','|':'|'('|')'|'{'|'}'|'"'|' '|'+'|'-'|'*'|'/'|'\n'|'\r'|'\t')+;
+ALPHA : ~(','|':'|'('|')'|'{'|'}'|'"'|' '|'+'|'-'|'*'|'/'|'\n'|'\r'|'\t'|'\\')+;
 
