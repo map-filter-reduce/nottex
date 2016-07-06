@@ -1,11 +1,12 @@
 package nottexast.literals;
 
+
 public class StringNode extends LiteralNode {
 
     private final String value;
 
     public StringNode(String value) {
-        this.value = value;
+        this.value = value.replace("\\\\", "\\").replace("\\\"", "\"");
     }
 
     public String getValue() {

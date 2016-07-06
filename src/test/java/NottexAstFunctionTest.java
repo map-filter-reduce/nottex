@@ -112,7 +112,7 @@ public class NottexAstFunctionTest {
         String input3 = "::func(\"af\\\"fas \")";
         BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
-                        TestUtil.stringArg("af\\\"fas "))
+                        TestUtil.stringArg("af\"fas "))
         );
         TestUtil.assertEquals(expected3, parse(input3));
     }
@@ -122,7 +122,7 @@ public class NottexAstFunctionTest {
         String input3 = "::func(\"\\\"\")";
         BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
-                        TestUtil.stringArg("\\\""))
+                        TestUtil.stringArg("\""))
         );
         TestUtil.assertEquals(expected3, parse(input3));
     }
@@ -132,7 +132,7 @@ public class NottexAstFunctionTest {
         String input3 = "::func(\"\\\\\")";
         BlockNode expected3 = new BlockNode(
                 new FunctionCallNode("func",
-                        TestUtil.stringArg("\\\\"))
+                        TestUtil.stringArg("\\"))
         );
         TestUtil.assertEquals(expected3, parse(input3));
     }
