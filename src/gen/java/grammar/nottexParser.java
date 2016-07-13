@@ -1351,7 +1351,6 @@ public class NottexParser extends Parser {
 		public Token MULTIP;
 		public Token DIVIS;
 		public Token ESCAPED_QUOTE;
-		public Token BACKSLASH;
 		public Token WS;
 		public Token ESCAPED_BACKSLASH;
 		public Token _tset348;
@@ -1419,10 +1418,6 @@ public class NottexParser extends Parser {
 		public TerminalNode ESCAPED_QUOTE(int i) {
 			return getToken(NottexParser.ESCAPED_QUOTE, i);
 		}
-		public List<TerminalNode> BACKSLASH() { return getTokens(NottexParser.BACKSLASH); }
-		public TerminalNode BACKSLASH(int i) {
-			return getToken(NottexParser.BACKSLASH, i);
-		}
 		public List<TerminalNode> WS() { return getTokens(NottexParser.WS); }
 		public TerminalNode WS(int i) {
 			return getToken(NottexParser.WS, i);
@@ -1462,13 +1457,13 @@ public class NottexParser extends Parser {
 			setState(146);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TAG_MARKER) | (1L << COMMA) | (1L << FUNCTION_MARKER) | (1L << COLON) | (1L << LPAREN) | (1L << RPAREN) | (1L << LBRACE) | (1L << RBRACE) | (1L << ESCAPED_QUOTE) | (1L << ESCAPED_BACKSLASH) | (1L << BACKSLASH) | (1L << PLUS) | (1L << MINUS) | (1L << MULTIP) | (1L << DIVIS) | (1L << WS) | (1L << NUMBER) | (1L << ALPHA))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TAG_MARKER) | (1L << COMMA) | (1L << FUNCTION_MARKER) | (1L << COLON) | (1L << LPAREN) | (1L << RPAREN) | (1L << LBRACE) | (1L << RBRACE) | (1L << ESCAPED_QUOTE) | (1L << ESCAPED_BACKSLASH) | (1L << PLUS) | (1L << MINUS) | (1L << MULTIP) | (1L << DIVIS) | (1L << WS) | (1L << NUMBER) | (1L << ALPHA))) != 0)) {
 				{
 				{
 				setState(143);
 				((StringContext)_localctx)._tset348 = _input.LT(1);
 				_la = _input.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TAG_MARKER) | (1L << COMMA) | (1L << FUNCTION_MARKER) | (1L << COLON) | (1L << LPAREN) | (1L << RPAREN) | (1L << LBRACE) | (1L << RBRACE) | (1L << ESCAPED_QUOTE) | (1L << ESCAPED_BACKSLASH) | (1L << BACKSLASH) | (1L << PLUS) | (1L << MINUS) | (1L << MULTIP) | (1L << DIVIS) | (1L << WS) | (1L << NUMBER) | (1L << ALPHA))) != 0)) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TAG_MARKER) | (1L << COMMA) | (1L << FUNCTION_MARKER) | (1L << COLON) | (1L << LPAREN) | (1L << RPAREN) | (1L << LBRACE) | (1L << RBRACE) | (1L << ESCAPED_QUOTE) | (1L << ESCAPED_BACKSLASH) | (1L << PLUS) | (1L << MINUS) | (1L << MULTIP) | (1L << DIVIS) | (1L << WS) | (1L << NUMBER) | (1L << ALPHA))) != 0)) ) {
 					((StringContext)_localctx)._tset348 = (Token)_errHandler.recoverInline(this);
 				} else {
 					consume();
@@ -1596,7 +1591,7 @@ public class NottexParser extends Parser {
 		"\7\n\u0085\n\n\f\n\16\n\u0088\13\n\3\13\3\13\3\13\3\13\3\13\5\13\u008f"+
 		"\n\13\3\f\3\f\7\f\u0093\n\f\f\f\16\f\u0096\13\f\3\f\3\f\3\r\7\r\u009b"+
 		"\n\r\f\r\16\r\u009e\13\r\3\r\2\4\20\22\16\2\4\6\b\n\f\16\20\22\24\26\30"+
-		"\2\5\3\2\24\25\4\2\4\4\6\25\4\2\3\r\17\25\u00a9\2\35\3\2\2\2\4!\3\2\2"+
+		"\2\5\3\2\24\25\4\2\4\4\6\25\4\2\3\f\17\25\u00a9\2\35\3\2\2\2\4!\3\2\2"+
 		"\2\6\62\3\2\2\2\b;\3\2\2\2\nR\3\2\2\2\fV\3\2\2\2\16d\3\2\2\2\20f\3\2\2"+
 		"\2\22|\3\2\2\2\24\u008e\3\2\2\2\26\u0090\3\2\2\2\30\u009c\3\2\2\2\32\36"+
 		"\5\4\3\2\33\36\5\6\4\2\34\36\5\n\6\2\35\32\3\2\2\2\35\33\3\2\2\2\35\34"+
