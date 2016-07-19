@@ -1,5 +1,7 @@
 package grammar;
 
 public enum StyleType {
-    TYPE1
+    FONT_SIZE,
+    FONT_FAMILY,
+    TEXT_COLOR
 }

@@ -10,6 +10,15 @@ import java.util.stream.Collectors;
 
 public class TagReducer {
 
+
+    /**
+     * @param node function-reduced tree
+     * @return tag-reduced list
+     */
+    public static List<Text> reduceTags(NottexNode node) {
+        return reduceTags(node,new HashMap<>());
+    }
+
     /**
      * @param node function-reduced tree
      * @return tag-reduced list
@@ -36,7 +45,8 @@ public class TagReducer {
 
         } else if (node instanceof TextNode) {
             TextNode textNode = (TextNode) node;
-            //TODO
+            Text text = new Text(textNode.getParagraphs(), styles);
+            result.add(text);
         }
         return result;
     }
