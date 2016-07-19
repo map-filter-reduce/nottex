@@ -9,6 +9,15 @@ public class TextNode extends NottexNode {
 
     private List<String> paragraphs;
 
+
+
+    public static List<TextNode> createTextNodes(String content) {
+
+        System.out.println("asldasdasda\n\n red".replaceAll("(?s)^((?!red).)*$",""));
+        //TODO
+        throw new UnsupportedOperationException();
+    }
+
     public TextNode(String content) {
         this.paragraphs = new ArrayList<>();
         // Parse into paragraphs
