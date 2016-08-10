@@ -1,7 +1,7 @@
 import com.lowagie.text.DocumentException;
 import grammar.AstParser;
 import grammar.FunctionReducer;
-import nottexast.NottexNode;
+import nottexast.NottexAstNode;
 import org.apache.commons.cli.*;
 import org.w3c.dom.Document;
 import pdfgen.PDFCreator;
@@ -28,8 +28,8 @@ public class Main {
 
         } else {
             String input = getFileContent("src\\main\\resources\\input.ntex");
-            NottexNode astTree = AstParser.parse(input);
-            NottexNode reducedTree = FunctionReducer.reduceFunctions(astTree);
+            NottexAstNode astTree = AstParser.parse(input);
+            NottexAstNode reducedTree = FunctionReducer.reduceFunctions(astTree);
             Document xmlDocument = createDocument(reducedTree);
             PDFCreator.convertDocumentToPDF(xmlDocument, "src\\main\\resources\\test.pdf");
 
@@ -63,8 +63,8 @@ public class Main {
         String outFilename = cmd.getOptionValue("o", outDefaultFilename);
 
         // Parse & generate output
-        NottexNode astTree = AstParser.parse(input);
-        NottexNode reducedTree = FunctionReducer.reduceFunctions(astTree);
+        NottexAstNode astTree = AstParser.parse(input);
+        NottexAstNode reducedTree = FunctionReducer.reduceFunctions(astTree);
         Document xmlDocument = createDocument(reducedTree);
         PDFCreator.convertDocumentToPDF(xmlDocument, outFilename);
 

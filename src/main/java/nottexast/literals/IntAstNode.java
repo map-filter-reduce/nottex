@@ -1,10 +1,10 @@
 package nottexast.literals;
 
-public class IntNode extends NumberNode {
+public class IntAstNode extends NumberAstNode {
 
     private final Integer value;
 
-    public IntNode(Integer value) {
+    public IntAstNode(Integer value) {
         if (value == null)
             throw new AssertionError();
 
@@ -16,7 +16,7 @@ public class IntNode extends NumberNode {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        IntNode intNode = (IntNode) o;
+        IntAstNode intNode = (IntAstNode) o;
 
         return value.equals(intNode.value);
 

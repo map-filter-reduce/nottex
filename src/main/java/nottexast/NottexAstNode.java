@@ -1,6 +1,6 @@
 package nottexast;
 
-public abstract class NottexNode {
+public abstract class NottexAstNode {
 
     protected final String INDENT = "    ";
 

@@ -5,17 +5,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FunctionCallNode extends NottexNode {
+public class FunctionCallAstNode extends NottexAstNode {
 
     private final String name;
-    private List<FunctionArgNode> arguments;
+    private List<FunctionArgAstNode> arguments;
 
-    public FunctionCallNode(String name) {
+    public FunctionCallAstNode(String name) {
         this.name = name;
         this.arguments = new ArrayList<>();
     }
 
-    public FunctionCallNode(String name, FunctionArgNode... arguments) {
+    public FunctionCallAstNode(String name, FunctionArgAstNode... arguments) {
         this.name = name;
         this.arguments = Arrays.asList(arguments);
     }
@@ -28,11 +28,11 @@ public class FunctionCallNode extends NottexNode {
         return arguments.size();
     }
 
-    public void addArgument(FunctionArgNode arg) {
+    public void addArgument(FunctionArgAstNode arg) {
         arguments.add(arg);
     }
 
-    public List<FunctionArgNode> getArguments() {
+    public List<FunctionArgAstNode> getArguments() {
         return arguments;
     }
 
@@ -41,7 +41,7 @@ public class FunctionCallNode extends NottexNode {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        FunctionCallNode that = (FunctionCallNode) o;
+        FunctionCallAstNode that = (FunctionCallAstNode) o;
 
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         return arguments != null ? arguments.equals(that.arguments) : that.arguments == null;

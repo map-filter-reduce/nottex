@@ -1,9 +1,9 @@
 package grammar;
 
-import nottexast.BlockNode;
-import nottexast.NottexNode;
-import nottexast.TagUseNode;
-import nottexast.TextNode;
+import nottexast.BlockAstNode;
+import nottexast.NottexAstNode;
+import nottexast.TagUseAstNode;
+import nottexast.TextAstNode;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -15,7 +15,7 @@ public class TagReducer {
      * @param node function-reduced tree
      * @return tag-reduced list
      */
-    public static List<Text> reduceTags(NottexNode node) {
+    public static List<Text> reduceTags(NottexAstNode node) {
         return reduceTags(node,new HashMap<>());
     }
 
@@ -23,16 +23,16 @@ public class TagReducer {
      * @param node function-reduced tree
      * @return tag-reduced list
      */
-    public static List<Text> reduceTags(NottexNode node, Map<StyleType, Style> styles) {
+    public static List<Text> reduceTags(NottexAstNode node, Map<StyleType, Style> styles) {
         List<Text> result = new ArrayList<>();
 
-        if (node instanceof BlockNode) {
-            ((BlockNode) node).getChildren().stream()
+        if (node instanceof BlockAstNode) {
+            ((BlockAstNode) node).getChildren().stream()
                     .map(n -> reduceTags(n, new HashMap<>()))
                     .forEach(result::addAll);
 
-        } else if (node instanceof TagUseNode) {
-            TagUseNode tagUseNode = (TagUseNode) node;
+        } else if (node instanceof TagUseAstNode) {
+            TagUseAstNode tagUseNode = (TagUseAstNode) node;
             Map<StyleType, Style> styleMap = tagUseNode.getNames().stream()
                     .map(Style::new)
                     .collect(Collectors.toMap(Style::getStyleType, style -> style));
@@ -43,8 +43,8 @@ public class TagReducer {
                     .map(useNode -> reduceTags(useNode, stylesCopy))
                     .forEach(result::addAll);
 
-        } else if (node instanceof TextNode) {
-            TextNode textNode = (TextNode) node;
+        } else if (node instanceof TextAstNode) {
+            TextAstNode textNode = (TextAstNode) node;
             Text text = new Text(textNode.getParagraphs(), styles);
             result.add(text);
         }

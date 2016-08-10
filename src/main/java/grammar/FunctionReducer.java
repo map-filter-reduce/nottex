@@ -2,7 +2,7 @@ package grammar;
 
 import evaluation.FunctionEvaluation;
 import nottexast.*;
-import nottexast.literals.LiteralNode;
+import nottexast.literals.LiteralAstNode;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -19,41 +19,41 @@ public class FunctionReducer {
      * Method replaces FunctionCallNodes with their evaluated values.
      *
      * @param node - tree that will reduced
-     * @return new instance of the input with evaluated nodes (type NottexNode)
+     * @return new instance of the input with evaluated nodes (type NottexAstNode)
      */
-    public static NottexNode reduceFunctions(NottexNode node) {
-        if (node instanceof BlockNode) {
-            return new BlockNode(
-                    ((BlockNode) node).getChildren()
+    public static NottexAstNode reduceFunctions(NottexAstNode node) {
+        if (node instanceof BlockAstNode) {
+            return new BlockAstNode(
+                    ((BlockAstNode) node).getChildren()
                             .stream()
                             .map(FunctionReducer::reduceFunctions)
                             .collect(Collectors.toList())
             );
 
-        } else if (node instanceof TagUseNode) {
-            return new TagUseNode(
-                    ((TagUseNode) node).getChildren()
+        } else if (node instanceof TagUseAstNode) {
+            return new TagUseAstNode(
+                    ((TagUseAstNode) node).getChildren()
                             .stream()
                             .map(FunctionReducer::reduceFunctions)
                             .collect(Collectors.toList()),
-                    ((TagUseNode) node).getNames()
+                    ((TagUseAstNode) node).getNames()
             );
 
-        } else if (node instanceof TextNode) {
-            return new TextNode(((TextNode) node).getParagraphs());
+        } else if (node instanceof TextAstNode) {
+            return new TextAstNode(((TextAstNode) node).getParagraphs());
 
-        } else if (node instanceof FunctionCallNode) {
-            return evaluate((FunctionCallNode) node);
+        } else if (node instanceof FunctionCallAstNode) {
+            return evaluate((FunctionCallAstNode) node);
 
         } else {
-            throw new AssertionError("Expected {BlockNode, TagUseNode, TextNode, FunctionCallNode} but got: "
+            throw new AssertionError("Expected {BlockAstNode, TagUseAstNode, TextAstNode, FunctionCallAstNode} but got: "
                     + node.getClass().getName());
         }
     }
 
-    private static NottexNode evaluate(FunctionCallNode node) {
+    private static NottexAstNode evaluate(FunctionCallAstNode node) {
 
-        List<NottexNode> evaldArgs = node.getArguments()
+        List<NottexAstNode> evaldArgs = node.getArguments()
                 .stream()
                 .map(FunctionReducer::evaluateArgument)
                 .collect(Collectors.toList());
@@ -83,15 +83,15 @@ public class FunctionReducer {
         Method method = potentialMethods.get(0);
 
         try {
-            return (NottexNode) method.invoke(null, evaldArgs.toArray());
+            return (NottexAstNode) method.invoke(null, evaldArgs.toArray());
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static NottexNode evaluateArgument(FunctionArgNode argument) {
+    private static NottexAstNode evaluateArgument(FunctionArgAstNode argument) {
         return argument.isFunctionCall() ?
-                evaluate(argument.getFunArg()) : LiteralNode.copy(argument.getLiteralArg());
+                evaluate(argument.getFunArg()) : LiteralAstNode.copy(argument.getLiteralArg());
     }
 
 }

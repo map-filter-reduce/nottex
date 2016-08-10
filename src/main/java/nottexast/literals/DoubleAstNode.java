@@ -1,10 +1,10 @@
 package nottexast.literals;
 
-public class DoubleNode extends NumberNode {
+public class DoubleAstNode extends NumberAstNode {
 
     private final Double value;
 
-    public DoubleNode(Double value) {
+    public DoubleAstNode(Double value) {
         if (value == null)
             throw new AssertionError();
         this.value = value;
@@ -15,7 +15,7 @@ public class DoubleNode extends NumberNode {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DoubleNode that = (DoubleNode) o;
+        DoubleAstNode that = (DoubleAstNode) o;
 
         return value.equals(that.value);
 

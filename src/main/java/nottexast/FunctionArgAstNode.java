@@ -1,33 +1,33 @@
 package nottexast;
 
-import nottexast.literals.LiteralNode;
+import nottexast.literals.LiteralAstNode;
 
-public class FunctionArgNode extends NottexNode {
+public class FunctionArgAstNode extends NottexAstNode {
 
-    private final LiteralNode literalArg;
-    private final FunctionCallNode funArg;
+    private final LiteralAstNode literalArg;
+    private final FunctionCallAstNode funArg;
 
-    public FunctionArgNode(FunctionCallNode funArg) {
+    public FunctionArgAstNode(FunctionCallAstNode funArg) {
         this.funArg = funArg;
         this.literalArg = null;
     }
 
-    public FunctionArgNode(LiteralNode stringArg) {
+    public FunctionArgAstNode(LiteralAstNode stringArg) {
         this.literalArg = stringArg;
         this.funArg = null;
     }
 
-    public LiteralNode getLiteralArg() {
+    public LiteralAstNode getLiteralArg() {
         return literalArg;
     }
 
-    public FunctionCallNode getFunArg() {
+    public FunctionCallAstNode getFunArg() {
         return funArg;
     }
 
     /**
-     * Method for checking if FunctionArgNode is holding LiteralNode or FunctionCallNode
-     * @return true if is holding FunctionCallNode
+     * Method for checking if FunctionArgAstNode is holding LiteralAstNode or FunctionCallAstNode
+     * @return true if is holding FunctionCallAstNode
      */
     public boolean isFunctionCall() {
         return funArg != null;
@@ -38,7 +38,7 @@ public class FunctionArgNode extends NottexNode {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        FunctionArgNode that = (FunctionArgNode) o;
+        FunctionArgAstNode that = (FunctionArgAstNode) o;
 
         if (literalArg != null ? !literalArg.equals(that.literalArg) : that.literalArg != null) return false;
         return funArg != null ? funArg.equals(that.funArg) : that.funArg == null;

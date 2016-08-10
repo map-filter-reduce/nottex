@@ -5,27 +5,27 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// TODO: Refactor to BlockNode or something
-public class BlockNode extends NottexNode {
+// TODO: Refactor to BlockAstNode or something
+public class BlockAstNode extends NottexAstNode {
 
-    private List<NottexNode> children;
+    private List<NottexAstNode> children;
 
-    public BlockNode() {
+    public BlockAstNode() {
         this.children = new ArrayList<>();
     }
 
-    public BlockNode(List<NottexNode> children) {
+    public BlockAstNode(List<NottexAstNode> children) {
         this.children = children;
     }
 
-    public void addChild(NottexNode node) {
+    public void addChild(NottexAstNode node) {
         children.add(node);
     }
 
     /**
      * Constructor used in test classes
      */
-    public BlockNode(NottexNode... children) {
+    public BlockAstNode(NottexAstNode... children) {
         this.children = Arrays.asList(children);
     }
 
@@ -35,7 +35,7 @@ public class BlockNode extends NottexNode {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        BlockNode blockNode = (BlockNode) o;
+        BlockAstNode blockNode = (BlockAstNode) o;
 
         return children != null ? children.equals(blockNode.children) : blockNode.children == null;
 
@@ -55,7 +55,7 @@ public class BlockNode extends NottexNode {
     }
 
 
-    public List<NottexNode> getChildren() {
+    public List<NottexAstNode> getChildren() {
         return children;
     }
 

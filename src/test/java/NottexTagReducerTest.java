@@ -2,10 +2,9 @@ import grammar.Style;
 import grammar.StyleType;
 import grammar.TagReducer;
 import grammar.Text;
-import nottexast.BlockNode;
-import nottexast.NottexNode;
-import nottexast.TagUseNode;
-import nottexast.TextNode;
+import nottexast.*;
+import nottexast.BlockAstNode;
+import nottexast.NottexAstNode;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,9 +14,9 @@ public class NottexTagReducerTest {
 
     @Test
     public void tagRed() {
-        NottexNode root = new BlockNode(
-                new TagUseNode(
-                        Collections.singletonList(new TextNode(Arrays.asList("Test", "test"))),
+        NottexAstNode root = new BlockAstNode(
+                new TagUseAstNode(
+                        Collections.singletonList(new TextAstNode(Arrays.asList("Test", "test"))),
                         "red")
         );
         List<Text> textLst = TagReducer.reduceTags(root);
@@ -32,8 +31,8 @@ public class NottexTagReducerTest {
 
     @Test
     public void testNoStyle() throws Exception {
-        NottexNode root = new BlockNode(
-                new TextNode("Test")
+        NottexAstNode root = new BlockAstNode(
+                new TextAstNode("Test")
         );
         List<Text> textLst = TagReducer.reduceTags(root);
         Assert.assertEquals(1, textLst.size());
@@ -46,10 +45,10 @@ public class NottexTagReducerTest {
 
     @Test
     public void testOverwriteStyles() throws Exception {
-        NottexNode root = new BlockNode(
-                new TagUseNode(
-                        Collections.singletonList(new TagUseNode(
-                                Collections.singletonList(new TextNode("Test")),
+        NottexAstNode root = new BlockAstNode(
+                new TagUseAstNode(
+                        Collections.singletonList(new TagUseAstNode(
+                                Collections.singletonList(new TextAstNode("Test")),
                                 "blue"
                         )),
                         "red")
@@ -66,10 +65,10 @@ public class NottexTagReducerTest {
 
     @Test
     public void testMultipleTags() throws Exception {
-        NottexNode root = new BlockNode(
-                new TagUseNode(
-                        Collections.singletonList(new TagUseNode(
-                                Collections.singletonList(new TextNode("Test")),
+        NottexAstNode root = new BlockAstNode(
+                new TagUseAstNode(
+                        Collections.singletonList(new TagUseAstNode(
+                                Collections.singletonList(new TextAstNode("Test")),
                                 "garamond"
                         )),
                         "red")

@@ -1,10 +1,9 @@
 package pdfgen;
 
-import nottexast.BlockNode;
-import nottexast.NottexNode;
-import nottexast.TagUseNode;
-import nottexast.TextNode;
-import nottexast.literals.LiteralNode;
+import nottexast.*;
+import nottexast.BlockAstNode;
+import nottexast.NottexAstNode;
+import nottexast.literals.LiteralAstNode;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -29,7 +28,7 @@ public class XmlTranslator {
      * @param node - NoTTeX AST that will be converted to XHTML document
      * @return NoTTeX AST as XHTML Document
      */
-    public static Document createDocument(NottexNode node) {
+    public static Document createDocument(NottexAstNode node) {
         try {
             // Load XHTML template
             File xhtmlFile = new File(XmlTranslator.class.getClassLoader().getResource("template.xhtml").toURI());
@@ -84,9 +83,9 @@ public class XmlTranslator {
      * @param document   - that is used to create elements
      * @return Element
      */
-    private static Element translate(NottexNode nottexNode, Element element, Document document) {
-        if (nottexNode instanceof BlockNode) {
-            BlockNode node = (BlockNode) nottexNode;
+    private static Element translate(NottexAstNode nottexNode, Element element, Document document) {
+        if (nottexNode instanceof BlockAstNode) {
+            BlockAstNode node = (BlockAstNode) nottexNode;
 
             node.getChildren()
                     .stream()
@@ -95,8 +94,8 @@ public class XmlTranslator {
 
             return element;
 
-        } else if (nottexNode instanceof TagUseNode) {
-            TagUseNode node = (TagUseNode) nottexNode;
+        } else if (nottexNode instanceof TagUseAstNode) {
+            TagUseAstNode node = (TagUseAstNode) nottexNode;
             Element tagXml = createTag(document);
             tagXml.setAttribute("class", node.getNames()
                     .stream()
@@ -109,8 +108,8 @@ public class XmlTranslator {
 
             return tagXml;
 
-        } else if (nottexNode instanceof TextNode) {
-            TextNode node = (TextNode) nottexNode;
+        } else if (nottexNode instanceof TextAstNode) {
+            TextAstNode node = (TextAstNode) nottexNode;
             Element textXml = createTag(document);
 
 
@@ -130,8 +129,8 @@ public class XmlTranslator {
 
             return textXml;
 
-        } else if (nottexNode instanceof LiteralNode) {
-            LiteralNode node = (LiteralNode) nottexNode;
+        } else if (nottexNode instanceof LiteralAstNode) {
+            LiteralAstNode node = (LiteralAstNode) nottexNode;
             Element stringXml = createTag(document);
             stringXml.setTextContent(node.getStringRepr());
             return stringXml;

@@ -1,11 +1,11 @@
 
 
 import grammar.FunctionReducer;
-import nottexast.BlockNode;
-import nottexast.TagUseNode;
-import nottexast.TextNode;
-import nottexast.literals.IntNode;
-import nottexast.literals.StringNode;
+import nottexast.BlockAstNode;
+import nottexast.TagUseAstNode;
+import nottexast.TextAstNode;
+import nottexast.literals.IntAstNode;
+import nottexast.literals.StringAstNode;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -18,8 +18,8 @@ public class NottexFunctionEvalTest {
     @Test
     public void testSimpleNoArgs() {
         String input = "::testEmpty()";
-        BlockNode expected = new BlockNode(
-                new StringNode("TEST")
+        BlockAstNode expected = new BlockAstNode(
+                new StringAstNode("TEST")
         );
         TestUtil.assertEquals(expected, FunctionReducer.reduceFunctions(parse(input)));
     }
@@ -28,8 +28,8 @@ public class NottexFunctionEvalTest {
     @Test
     public void testSimpleArgs1() {
         String input1 = "::testUpperCase(\"\")";
-        BlockNode expected1 = new BlockNode(
-                new StringNode(""));
+        BlockAstNode expected1 = new BlockAstNode(
+                new StringAstNode(""));
         TestUtil.assertEquals(expected1, FunctionReducer.reduceFunctions(parse(input1)));
     }
 
@@ -37,8 +37,8 @@ public class NottexFunctionEvalTest {
     @Test
     public void testSimpleArgs2() {
         String input2 = "::testUpperCase(\"abc\")";
-        BlockNode expected2 = new BlockNode(
-                new StringNode("ABC")
+        BlockAstNode expected2 = new BlockAstNode(
+                new StringAstNode("ABC")
         );
         TestUtil.assertEquals(expected2, FunctionReducer.reduceFunctions(parse(input2)));
     }
@@ -47,8 +47,8 @@ public class NottexFunctionEvalTest {
     @Test
     public void testSimpleArgs3() {
         String input3 = "::testRepeat(\"g\",5)";
-        BlockNode expected3 = new BlockNode(
-                new StringNode("ggggg")
+        BlockAstNode expected3 = new BlockAstNode(
+                new StringAstNode("ggggg")
         );
         TestUtil.assertEquals(expected3, FunctionReducer.reduceFunctions(parse(input3)));
     }
@@ -57,8 +57,8 @@ public class NottexFunctionEvalTest {
     @Test
     public void testSimpleArgs4() {
         String input3 = "::testAdd(::testAdd(1,3),5)";
-        BlockNode expected3 = new BlockNode(
-                new IntNode(9)
+        BlockAstNode expected3 = new BlockAstNode(
+                new IntAstNode(9)
         );
         TestUtil.assertEquals(expected3, FunctionReducer.reduceFunctions(parse(input3)));
     }
@@ -66,18 +66,18 @@ public class NottexFunctionEvalTest {
     @Test
     public void testSimpleArgs5() {
         String input3 = "::testRepeat(\"af\",::testAdd(1,4))";
-        BlockNode expected3 = new BlockNode(
-                new StringNode("afafafafaf"));
+        BlockAstNode expected3 = new BlockAstNode(
+                new StringAstNode("afafafafaf"));
         TestUtil.assertEquals(expected3, FunctionReducer.reduceFunctions(parse(input3)));
     }
 
     @Test
     public void testFunctionInTag6() {
         String input3 = ",,tag{::testRepeat(\"af\",::testAdd(1,4))text}";
-        BlockNode expected3 = new BlockNode(
-                new TagUseNode(
+        BlockAstNode expected3 = new BlockAstNode(
+                new TagUseAstNode(
                         Arrays.asList(
-                                new StringNode("afafafafaf"), new TextNode("text")), "tag")
+                                new StringAstNode("afafafafaf"), new TextAstNode("text")), "tag")
         );
 
         TestUtil.assertEquals(expected3, FunctionReducer.reduceFunctions(parse(input3)));
@@ -87,8 +87,8 @@ public class NottexFunctionEvalTest {
     @Test
     public void testWhitespace1() {
         String input3 = "::testUpperCase  (  \"af\")";
-        BlockNode expected3 = new BlockNode(
-                new StringNode("AF")
+        BlockAstNode expected3 = new BlockAstNode(
+                new StringAstNode("AF")
         );
         TestUtil.assertEquals(expected3, FunctionReducer.reduceFunctions(parse(input3)));
     }
@@ -97,8 +97,8 @@ public class NottexFunctionEvalTest {
     @Test
     public void testWhitespace2() {
         String input3 = "::testUpperCase  (  \"af\"  )";
-        BlockNode expected3 = new BlockNode(
-                new StringNode("AF")
+        BlockAstNode expected3 = new BlockAstNode(
+                new StringAstNode("AF")
         );
         TestUtil.assertEquals(expected3, FunctionReducer.reduceFunctions(parse(input3)));
     }

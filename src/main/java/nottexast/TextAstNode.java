@@ -5,19 +5,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TextNode extends NottexNode {
+public class TextAstNode extends NottexAstNode {
     private List<String> paragraphs;
     private String content;
 
-    public static List<TextNode> createTextNodes(String content) {
+    public static List<TextAstNode> createTextNodes(String content) {
         // TODO: 10/08/2016 object ParagraphNode that contains only 1 paragraph, need to convert TextNodes -> ParagraphNodes at some point
         String replacedContent = content.replaceAll("\\n\\n", "\u13E0"); // Assuming no Indians
         List<String> tmp = new ArrayList<>();
-        List<TextNode> result = new ArrayList<>();
+        List<TextAstNode> result = new ArrayList<>();
         for (char c : replacedContent.toCharArray()) {
             if (c == '\u13E0') {
-                result.add(new TextNode(tmp.stream().collect(Collectors.joining())));
-                result.add(new TextNode("\n\n"));
+                result.add(new TextAstNode(tmp.stream().collect(Collectors.joining())));
+                result.add(new TextAstNode("\n\n"));
                 tmp.clear();
             } else {
                 tmp.add(String.valueOf(c));
@@ -25,13 +25,13 @@ public class TextNode extends NottexNode {
         }
 
         if (!tmp.isEmpty()) {
-            result.add(new TextNode(tmp.stream().collect(Collectors.joining())));
+            result.add(new TextAstNode(tmp.stream().collect(Collectors.joining())));
         }
 
         return result;
     }
 
-    public TextNode(String content) {
+    public TextAstNode(String content) {
         this.content = content; // TODO: 10/08/2016 check usages
         this.paragraphs = new ArrayList<>(); // TODO: 10/08/2016 check usages
         this.paragraphs = Arrays.asList(content.split("\n\n"))
@@ -40,7 +40,7 @@ public class TextNode extends NottexNode {
                 .collect(Collectors.toList());
     }
 
-    public TextNode(List<String> paragraphs) {
+    public TextAstNode(List<String> paragraphs) {
         this.paragraphs = paragraphs;
     }
 
@@ -58,7 +58,7 @@ public class TextNode extends NottexNode {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TextNode textNode = (TextNode) o;
+        TextAstNode textNode = (TextAstNode) o;
 
         return paragraphs != null ? paragraphs.equals(textNode.paragraphs) : textNode.paragraphs == null;
 
@@ -76,7 +76,7 @@ public class TextNode extends NottexNode {
 
     @Override
     public String toString() {
-        return "TextNode{" +
+        return "TextAstNode{" +
                 "paragraphs=" + paragraphs +
                 '}';
     }

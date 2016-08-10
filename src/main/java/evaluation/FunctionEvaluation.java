@@ -1,9 +1,9 @@
 package evaluation;
 
-import nottexast.NottexNode;
-import nottexast.literals.DoubleNode;
-import nottexast.literals.IntNode;
-import nottexast.literals.StringNode;
+import nottexast.NottexAstNode;
+import nottexast.literals.DoubleAstNode;
+import nottexast.literals.IntAstNode;
+import nottexast.literals.StringAstNode;
 import pdfgen.StyleManager;
 
 import java.text.SimpleDateFormat;
@@ -18,7 +18,7 @@ public class FunctionEvaluation {
     //
     // NB! All methods
     //      1) must be static
-    //      2) must have a return type of NottexNode or its subclass
+    //      2) must have a return type of NottexAstNode or its subclass
     //
 
 
@@ -33,11 +33,11 @@ public class FunctionEvaluation {
      *
      * @param tagName  - name of the tag
      * @param styleCss - CSS 2.1
-     * @return empty StringNode
+     * @return empty StringAstNode
      */
-    public static NottexNode def(StringNode tagName, StringNode styleCss) {
+    public static NottexAstNode def(StringAstNode tagName, StringAstNode styleCss) {
         StyleManager.addStyle(tagName.getValue(), styleCss.getValue());
-        return new StringNode("");
+        return new StringAstNode("");
     }
 
     /**
@@ -48,7 +48,7 @@ public class FunctionEvaluation {
      * @param expression - arithmetic operation
      * @return evaluated expression.
      */
-    public static NottexNode eval(IntNode expression) {
+    public static NottexAstNode eval(IntAstNode expression) {
         return expression;
     }
 
@@ -60,7 +60,7 @@ public class FunctionEvaluation {
      * @param expression - arithmetic operation
      * @return evaluated expression.
      */
-    public static NottexNode eval(DoubleNode expression) {
+    public static NottexAstNode eval(DoubleAstNode expression) {
         return expression;
     }
 
@@ -72,8 +72,8 @@ public class FunctionEvaluation {
      * @param string - that will be converted to text
      * @return converted text
      */
-    public static NottexNode escape(StringNode string) {
-        return new StringNode(string.getValue());
+    public static NottexAstNode escape(StringAstNode string) {
+        return new StringAstNode(string.getValue());
     }
 
 
@@ -81,32 +81,32 @@ public class FunctionEvaluation {
      * Built-in function for creating timestamp:
      * @return timestamp formatted as dd-MM-yyyy HH:mm
      */
-    public static NottexNode timeStamp() {
-        return new StringNode(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new java.util.Date()));
+    public static NottexAstNode timeStamp() {
+        return new StringAstNode(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new java.util.Date()));
     }
 
     // TEST FUNCTIONS
 
 
-    public static NottexNode testUpperCase(StringNode string) {
-        return new StringNode(string.getValue().toUpperCase());
+    public static NottexAstNode testUpperCase(StringAstNode string) {
+        return new StringAstNode(string.getValue().toUpperCase());
     }
 
-    public static NottexNode testAdd(IntNode number1, IntNode number2) {
-        return new IntNode(
+    public static NottexAstNode testAdd(IntAstNode number1, IntAstNode number2) {
+        return new IntAstNode(
                 number1.getNumberValue().intValue() +
                         number2.getNumberValue().intValue()
         );
     }
 
-    public static NottexNode testRepeat(StringNode string, IntNode integer) {
-        return new StringNode(Collections.nCopies(integer.getValue(), string.getValue())
+    public static NottexAstNode testRepeat(StringAstNode string, IntAstNode integer) {
+        return new StringAstNode(Collections.nCopies(integer.getValue(), string.getValue())
                 .stream()
                 .collect(Collectors.joining()));
     }
 
-    public static NottexNode testEmpty() {
-        return new StringNode("TEST");
+    public static NottexAstNode testEmpty() {
+        return new StringAstNode("TEST");
     }
 
 }
