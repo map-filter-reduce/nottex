@@ -6,26 +6,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TextNode extends NottexNode {
-
     private List<String> paragraphs;
-
-    public static void main(String[] args) {
-        createTextNodes("abc\n\nabc").forEach(System.out::println);
-    }
-
+    private String content;
 
     public static List<TextNode> createTextNodes(String content) {
-        //
-        //System.out.println("red asldasdasda\n\n red".replaceAll("(?s)^((?!red).)*$","*"));
-        //System.out.println("red asldasdasda\n\nkl\n\n red".replaceAll("\\n\\n","*"));
-        //TODO
-        //throw new UnsupportedOperationException();
-
-        String replacedContent = content.replaceAll("\\n\\n", "*");
+        // TODO: 10/08/2016 object ParagraphNode that contains only 1 paragraph, need to convert TextNodes -> ParagraphNodes at some point
+        String replacedContent = content.replaceAll("\\n\\n", "\u13E0"); // Assuming no Indians
         List<String> tmp = new ArrayList<>();
         List<TextNode> result = new ArrayList<>();
         for (char c : replacedContent.toCharArray()) {
-            if (c == '*') {
+            if (c == '\u13E0') {
                 result.add(new TextNode(tmp.stream().collect(Collectors.joining())));
                 result.add(new TextNode("\n\n"));
                 tmp.clear();
@@ -42,11 +32,8 @@ public class TextNode extends NottexNode {
     }
 
     public TextNode(String content) {
-        // TODO: remove paragraphs field, 1 TextNode is 1 paragraph (or empty line)
-        this.paragraphs = new ArrayList<>();
-        // Parse into paragraphs
-        // TODO: "asd\n\nasdasdasdasd\n\n\n\n" should leave 2 empty paragraphs in the end
-        // TODO: bitinikerdus
+        this.content = content; // TODO: 10/08/2016 check usages
+        this.paragraphs = new ArrayList<>(); // TODO: 10/08/2016 check usages
         this.paragraphs = Arrays.asList(content.split("\n\n"))
                 .stream()
                 .map(str -> str.replace("\n", ""))
