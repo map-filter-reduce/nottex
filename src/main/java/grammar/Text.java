@@ -3,6 +3,7 @@ package grammar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Text {
     private final List<String> paragraphs;
@@ -10,12 +11,8 @@ public class Text {
 
 
     public Text(List<String> paragraphs, Map<StyleType, Style> styles) {
-        if (styles == null)
-            throw new NullPointerException("Styles == null");
-
-        if (paragraphs == null)
-            throw new NullPointerException("Paragraphs == null");
-
+        Objects.requireNonNull(styles, "Styles == null");
+        Objects.requireNonNull(paragraphs, "Paragraphs == null");
         this.styles = Collections.unmodifiableMap(styles);
         this.paragraphs = Collections.unmodifiableList(paragraphs);
     }
