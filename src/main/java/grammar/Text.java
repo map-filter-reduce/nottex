@@ -1,27 +1,41 @@
 package grammar;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class Text {
-    private final List<String> paragraphs;
+public class Text implements Textable {
+    private final String content;
     private final Map<StyleType, Style> styles;
 
 
-    public Text(List<String> paragraphs, Map<StyleType, Style> styles) {
+    public Text(String content, Map<StyleType, Style> styles) {
         Objects.requireNonNull(styles, "Styles == null");
-        Objects.requireNonNull(paragraphs, "Paragraphs == null");
+        Objects.requireNonNull(content, "Paragraphs == null");
         this.styles = Collections.unmodifiableMap(styles);
-        this.paragraphs = Collections.unmodifiableList(paragraphs);
+        this.content = content;
     }
 
-    public List<String> getParagraphs() {
-        return paragraphs;
+    public String getContent() {
+        return content;
     }
 
+    @Override
     public Map<StyleType, Style> getStyles() {
         return styles;
+    }
+
+    @Override
+    public boolean isLinefeed() {
+        return false;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Text{" +
+                "content='" + content + '\'' +
+                ", styles=" + styles +
+                '}';
     }
 }

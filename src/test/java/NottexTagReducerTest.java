@@ -26,7 +26,7 @@ public class NottexTagReducerTest {
         expectedStyles.put(StyleType.TEXT_COLOR, new Style("red"));
 
         Assert.assertEquals(expectedStyles, textLst.get(0).getStyles());
-        Assert.assertEquals(Arrays.asList("Test", "test"), textLst.get(0).getParagraphs());
+        Assert.assertEquals(Arrays.asList("Test", "test"), textLst.get(0).getContent());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class NottexTagReducerTest {
         Map<StyleType, Style> expectedStyles = new HashMap<>();
 
         Assert.assertEquals(expectedStyles, textLst.get(0).getStyles());
-        Assert.assertEquals(Collections.singletonList("Test"), textLst.get(0).getParagraphs());
+        Assert.assertEquals(Collections.singletonList("Test"), textLst.get(0).getContent());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class NottexTagReducerTest {
         expectedStyles.put(StyleType.TEXT_COLOR, new Style("blue"));
 
         Assert.assertEquals(expectedStyles, textLst.get(0).getStyles());
-        Assert.assertEquals(Collections.singletonList("Test"), textLst.get(0).getParagraphs());
+        Assert.assertEquals(Collections.singletonList("Test"), textLst.get(0).getContent());
     }
 
     @Test
@@ -81,6 +81,6 @@ public class NottexTagReducerTest {
         expectedStyles.put(StyleType.FONT_FAMILY, new Style("garamond"));
 
         Assert.assertEquals(expectedStyles, textLst.get(0).getStyles());
-        Assert.assertEquals(Collections.singletonList("Test"), textLst.get(0).getParagraphs());
+        Assert.assertEquals(Collections.singletonList("Test"), textLst.get(0).getContent());
     }
 }

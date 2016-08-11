@@ -4,8 +4,12 @@ import nottexast.BlockAstNode;
 import nottexast.NottexAstNode;
 import nottexast.TagUseAstNode;
 import nottexast.TextAstNode;
+import nottexast.literals.LiteralAstNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class TagReducer {
@@ -16,7 +20,7 @@ public class TagReducer {
      * @return tag-reduced list
      */
     public static List<Text> reduceTags(NottexAstNode node) {
-        return reduceTags(node,new HashMap<>());
+        return reduceTags(node, new HashMap<>());
     }
 
     /**
@@ -45,9 +49,14 @@ public class TagReducer {
 
         } else if (node instanceof TextAstNode) {
             TextAstNode textNode = (TextAstNode) node;
-            Text text = new Text(textNode.getParagraphs(), styles);
+            Text text = new Text(textNode.getContent(), styles);
             result.add(text);
-        }
+
+        } else if (node instanceof LiteralAstNode) {
+            result.add(new Text(((LiteralAstNode) node).getStringRepr(), styles));
+
+        } else throw new AssertionError();
+
         return result;
     }
 

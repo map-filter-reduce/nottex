@@ -40,7 +40,7 @@ public class FunctionReducer {
             );
 
         } else if (node instanceof TextAstNode) {
-            return new TextAstNode(((TextAstNode) node).getParagraphs());
+            return new TextAstNode(((TextAstNode) node).getContent());
 
         } else if (node instanceof FunctionCallAstNode) {
             return evaluate((FunctionCallAstNode) node);

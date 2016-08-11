@@ -3,11 +3,11 @@ import grammar.AstParser;
 import grammar.FunctionReducer;
 import nottexast.NottexAstNode;
 import org.apache.commons.cli.*;
-import org.w3c.dom.Document;
-import pdfgen.PDFCreator;
 
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +15,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
-import static pdfgen.XmlTranslator.createDocument;
 
 public class Main {
 
@@ -30,15 +29,15 @@ public class Main {
             String input = getFileContent("src\\main\\resources\\input.ntex");
             NottexAstNode astTree = AstParser.parse(input);
             NottexAstNode reducedTree = FunctionReducer.reduceFunctions(astTree);
-            Document xmlDocument = createDocument(reducedTree);
-            PDFCreator.convertDocumentToPDF(xmlDocument, "src\\main\\resources\\test.pdf");
+            //Document xmlDocument = createDocument(reducedTree);
+            //PDFCreator.convertDocumentToPDF(xmlDocument, "src\\main\\resources\\test.pdf");
 
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             //Create XML
-            DOMSource source = new DOMSource(xmlDocument);
+            //DOMSource source = new DOMSource(xmlDocument);
             StreamResult result = new StreamResult(new File("src\\main\\resources\\test.xhtml"));
-            transformer.transform(source, result);
+            //transformer.transform(source, result);
         }
 
     }
@@ -65,17 +64,17 @@ public class Main {
         // Parse & generate output
         NottexAstNode astTree = AstParser.parse(input);
         NottexAstNode reducedTree = FunctionReducer.reduceFunctions(astTree);
-        Document xmlDocument = createDocument(reducedTree);
-        PDFCreator.convertDocumentToPDF(xmlDocument, outFilename);
+        //Document xmlDocument = createDocument(reducedTree);
+        //PDFCreator.convertDocumentToPDF(xmlDocument, outFilename);
 
         // Output debug info
         if (cmd.hasOption("d")) {
             // Create XML
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            DOMSource source = new DOMSource(xmlDocument);
+           // DOMSource source = new DOMSource(xmlDocument);
             StreamResult result = new StreamResult(new File(removeFileExtension(outFilename) + ".xhtml"));
-            transformer.transform(source, result);
+            //transformer.transform(source, result);
         }
 
     }
