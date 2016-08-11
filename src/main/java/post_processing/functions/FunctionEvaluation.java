@@ -1,10 +1,10 @@
-package evaluation;
+package post_processing.functions;
 
 import nottexast.NottexAstNode;
 import nottexast.literals.DoubleAstNode;
 import nottexast.literals.IntAstNode;
 import nottexast.literals.StringAstNode;
-import pdfgen.StyleManager;
+import post_processing.pdfgen.StyleManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Collections;

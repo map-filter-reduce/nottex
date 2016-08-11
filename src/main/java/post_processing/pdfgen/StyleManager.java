@@ -1,4 +1,4 @@
-package pdfgen;
+package post_processing.pdfgen;
 
 import com.jcabi.w3c.ValidatorBuilder;
 

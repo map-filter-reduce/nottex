@@ -1,10 +1,11 @@
-package grammar;
+package post_processing.style_management;
 
 import nottexast.BlockAstNode;
 import nottexast.NottexAstNode;
 import nottexast.TagUseAstNode;
 import nottexast.TextAstNode;
 import nottexast.literals.LiteralAstNode;
+import post_processing.text_structuring.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;

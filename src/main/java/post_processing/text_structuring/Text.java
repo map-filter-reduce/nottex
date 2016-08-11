@@ -1,4 +1,7 @@
-package grammar;
+package post_processing.text_structuring;
+
+import post_processing.style_management.Style;
+import post_processing.style_management.StyleType;
 
 import java.util.Collections;
 import java.util.Map;

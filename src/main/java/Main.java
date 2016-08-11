@@ -1,6 +1,6 @@
 import com.lowagie.text.DocumentException;
 import grammar.AstParser;
-import grammar.FunctionReducer;
+import post_processing.functions.FunctionReducer;
 import nottexast.NottexAstNode;
 import org.apache.commons.cli.*;
 

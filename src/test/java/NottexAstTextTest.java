@@ -2,8 +2,6 @@ import nottexast.BlockAstNode;
 import nottexast.TextAstNode;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static grammar.AstParser.parse;
 
 public class NottexAstTextTest {
@@ -16,7 +14,7 @@ public class NottexAstTextTest {
         );
         TestUtil.assertEquals(expected, parse(input));
     }
-
+/*
     @Test
     public void testSimpleText2() {
         String input = "text\n\nline";
@@ -24,7 +22,7 @@ public class NottexAstTextTest {
                 new TextAstNode(Arrays.asList("text", "line"))
         );
         TestUtil.assertEquals(expected, parse(input));
-    }
+    }*/
 
 
 }

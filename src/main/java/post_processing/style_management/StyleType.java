@@ -1,4 +1,4 @@
-package grammar;
+package post_processing.style_management;
 
 public enum StyleType {
     FONT_SIZE,

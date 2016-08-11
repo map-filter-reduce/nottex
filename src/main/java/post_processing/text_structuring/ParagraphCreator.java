@@ -1,4 +1,4 @@
-package grammar;
+package post_processing.text_structuring;
 
 import java.util.*;
 import java.util.stream.Collectors;

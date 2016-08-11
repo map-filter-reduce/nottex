@@ -1,4 +1,4 @@
-package grammar;
+package post_processing.text_structuring;
 
 import java.util.ArrayList;
 import java.util.Collections;
