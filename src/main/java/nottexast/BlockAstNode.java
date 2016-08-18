@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// TODO: Refactor to BlockAstNode or something
 public class BlockAstNode extends NottexAstNode {
 
     private List<NottexAstNode> children;

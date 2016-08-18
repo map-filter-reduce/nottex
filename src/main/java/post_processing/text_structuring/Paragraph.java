@@ -7,8 +7,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Represents a paragraph in the PDF document.
+ */
 public class Paragraph {
-    private List<Text> texts;
+    private final List<Text> texts;
 
     public Paragraph(List<Text> texts) {
         this.texts = Collections.unmodifiableList(new ArrayList<>(texts));
@@ -17,7 +20,9 @@ public class Paragraph {
 
     public List<Word> getWords() {
         List<Word> out = new ArrayList<>();
-        texts.stream().map(text -> Measurer.createWords(text.getContent(), text.getStyles())).forEach(out::addAll);
+        texts.stream()
+                .map(Measurer::createWords)
+                .forEach(out::addAll);
         return out;
     }
 

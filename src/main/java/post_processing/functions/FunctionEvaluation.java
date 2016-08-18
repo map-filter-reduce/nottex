@@ -29,7 +29,7 @@ public class FunctionEvaluation {
      * <p>
      * Example: ::def("cyan", "color:cyan;")
      * <p>
-     * If CSS is invalid then tag will be not created, but the PDF will still be generated
+     * If CSS is invalid then tag will not be created, but the PDF will still be generated
      *
      * @param tagName  - name of the tag
      * @param styleCss - CSS 2.1

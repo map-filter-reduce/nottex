@@ -4,16 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
-    private final Unit maxLineLength;
+    private final Size maxLineLength;
     private List<Word> words;
-    private Unit remainingSpace;
-    private Unit height;
+    private Size remainingSpace;
+    private Size height;
 
 
-    public Line(Unit maxLineLength) {
-        this.maxLineLength = Unit.of(maxLineLength);
-        this.remainingSpace = Unit.of(maxLineLength);
-        this.height = Unit.of(0);
+    public Line() {
+        this(Size.of(210));
+    }
+
+    public Size getMaxLineLength() {
+        return maxLineLength;
+    }
+
+    public Line(Size maxLineLength) {
+        this.maxLineLength = Size.of(maxLineLength);
+        this.remainingSpace = Size.of(maxLineLength);
+        this.height = Size.of(0);
         this.words = new ArrayList<>();
     }
 
@@ -29,12 +37,12 @@ public class Line {
         }
     }
 
-    public Unit getRemainingSpace() {
+    public Size getRemainingSpace() {
         return remainingSpace;
     }
 
     //TODO: implement
-    private boolean hasEnoughSpace(Word word) {
+    public boolean hasEnoughSpace(Word word) {
         throw new UnsupportedOperationException();
     }
 

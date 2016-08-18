@@ -7,6 +7,9 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Text represents a string with a common style.
+ */
 public class Text implements Textable {
     private final String content;
     private final Map<StyleType, Style> styles;

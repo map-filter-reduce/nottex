@@ -28,7 +28,7 @@ public class TagReducer {
      * @param node function-reduced tree
      * @return tag-reduced list
      */
-    public static List<Text> reduceTags(NottexAstNode node, Map<StyleType, Style> styles) {
+    private static List<Text> reduceTags(NottexAstNode node, Map<StyleType, Style> styles) {
         List<Text> result = new ArrayList<>();
 
         if (node instanceof BlockAstNode) {

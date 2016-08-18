@@ -1,23 +1,34 @@
 package post_processing.pdfgen;
 
-public class Unit {
+public class Size implements Comparable<Size> {
+    private int size;
+
+    public Size() {
+    }
+
     //TODO: implement
-    public static Unit of(int i) {
+    public static Size of(int i) {
         throw new UnsupportedOperationException();
     }
 
     //TODO: implement
-    public static Unit of(Unit unit) {
+    public static Size of(Size size) {
         throw new UnsupportedOperationException();
     }
 
     //TODO: implement
-    public void minus(Unit unit) {
+    public void minus(Size size) {
         throw new UnsupportedOperationException();
     }
 
     //TODO: implement
-    public boolean isGreater(Unit unit) {
+    public boolean isGreater(Size size) {
+        throw new UnsupportedOperationException();
+    }
+
+    //TODO: implement
+    @Override
+    public int compareTo(Size o) {
         throw new UnsupportedOperationException();
     }
 

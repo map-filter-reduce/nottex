@@ -1,7 +1,12 @@
 package post_processing.text_structuring;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import post_processing.style_management.Style;
+import post_processing.style_management.StyleType;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 public class ParagraphCreator {
 
@@ -30,13 +35,15 @@ public class ParagraphCreator {
 
 
     private static List<Textable> createTextNodes(Text text) {
-        String replacedContent = text.getContent().replaceAll("\\n\\n", "\u13E0"); // Assuming no Indians
+        String replacedContent = text.getContent()
+                .replaceAll("\\n\\n", "\u13E0") // Assuming no Indians
+                .replaceAll("\\n"," ");
         List<String> tmp = new ArrayList<>();
         List<Textable> result = new ArrayList<>();
         for (char c : replacedContent.toCharArray()) {
             if (c == '\u13E0') {
                 if (!tmp.isEmpty()) {
-                    result.add(new Text(tmp.stream().collect(Collectors.joining()), text.getStyles()));
+                    result.add(new Text(String.join("", tmp), text.getStyles()));
                 }
                 result.add(new Linefeed(text.getStyles()));
                 tmp.clear();
@@ -46,10 +53,28 @@ public class ParagraphCreator {
         }
 
         if (!tmp.isEmpty()) {
-            result.add(new Text(tmp.stream().collect(Collectors.joining()), text.getStyles()));
+            result.add(new Text(String.join("", tmp), text.getStyles()));
         }
 
         return result;
     }
 
+    private static class Linefeed implements Textable {
+        private Map<StyleType, Style> styleMap;
+
+        public Linefeed(Map<StyleType, Style> styles) {
+            styleMap = Collections.unmodifiableMap(styles);
+
+        }
+
+        @Override
+        public Map<StyleType, Style> getStyles() {
+            return styleMap;
+        }
+
+        @Override
+        public boolean isLinefeed() {
+            return true;
+        }
+    }
 }

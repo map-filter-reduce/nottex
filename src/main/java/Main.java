@@ -1,8 +1,14 @@
 import com.lowagie.text.DocumentException;
 import grammar.AstParser;
-import post_processing.functions.FunctionReducer;
 import nottexast.NottexAstNode;
 import org.apache.commons.cli.*;
+import post_processing.functions.FunctionReducer;
+import post_processing.pdfgen.Line;
+import post_processing.pdfgen.LineCreator;
+import post_processing.style_management.TagReducer;
+import post_processing.text_structuring.Paragraph;
+import post_processing.text_structuring.ParagraphCreator;
+import post_processing.text_structuring.Text;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -13,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -29,6 +36,10 @@ public class Main {
             String input = getFileContent("src\\main\\resources\\input.ntex");
             NottexAstNode astTree = AstParser.parse(input);
             NottexAstNode reducedTree = FunctionReducer.reduceFunctions(astTree);
+            List<Text> textLst = TagReducer.reduceTags(reducedTree);
+            List<Paragraph> paragraphs = ParagraphCreator.createParagraphs(textLst);
+            List<Line> lines = LineCreator.createLines(paragraphs);
+
             //Document xmlDocument = createDocument(reducedTree);
             //PDFCreator.convertDocumentToPDF(xmlDocument, "src\\main\\resources\\test.pdf");
 
