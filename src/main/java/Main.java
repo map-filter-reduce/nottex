@@ -22,7 +22,13 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+/**
+ * List<Text> text
+ * | ParagraphCreator
+ * List<Paragraph> paragraphs
+ * | LineCreator -- Measurer (returns Words)
+ * List<Line> lines
+ */
 public class Main {
 
     private static final boolean inProduction = false;

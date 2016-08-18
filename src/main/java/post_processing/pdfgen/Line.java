@@ -3,6 +3,10 @@ package post_processing.pdfgen;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a single line in the PDF document.
+ * Can be empty.
+ */
 public class Line {
     private final Size maxLineLength;
     private List<Word> words;
@@ -29,7 +33,7 @@ public class Line {
         if (hasEnoughSpace(word)) {
             words.add(word);
             remainingSpace.minus(word.getLength());
-            if (word.getHeight().isGreater(height)) {
+            if (word.getHeight().isGreaterThan(height)) {
                 this.height = word.getHeight();
             }
         } else {

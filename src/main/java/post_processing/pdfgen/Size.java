@@ -1,7 +1,9 @@
 package post_processing.pdfgen;
 
+/**
+ * Should be useful. Remains to be seen...
+ */
 public class Size implements Comparable<Size> {
-    private int size;
 
     public Size() {
     }
@@ -21,9 +23,8 @@ public class Size implements Comparable<Size> {
         throw new UnsupportedOperationException();
     }
 
-    //TODO: implement
-    public boolean isGreater(Size size) {
-        throw new UnsupportedOperationException();
+    public boolean isGreaterThan(Size size) {
+        return this.compareTo(size) > 0;
     }
 
     //TODO: implement
@@ -32,6 +33,4 @@ public class Size implements Comparable<Size> {
         throw new UnsupportedOperationException();
     }
 
-
-    //TODO: what unit? px? smth else?
 }

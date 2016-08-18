@@ -20,7 +20,7 @@ public class LineCreator {
             for (int i = 0; i < words.size(); ) {
                 Line line = new Line();
                 while (line.hasEnoughSpace(words.get(i))){
-                    if (words.get(i).getLength().compareTo(line.getMaxLineLength()) > 0){
+                    if (words.get(i).getLength().isGreaterThan(line.getMaxLineLength())){
                         throw new AssertionError();
                     }
                     line.addWord(words.get(i));

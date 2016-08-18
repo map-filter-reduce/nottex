@@ -7,6 +7,9 @@ import java.util.stream.Stream;
 
 import static java.util.AbstractMap.SimpleEntry;
 
+/**
+ * Styleable elements can't be assigned different styles with equal styleTypes.
+ */
 public class Style {
     private String name;
     private StyleType styleType;
