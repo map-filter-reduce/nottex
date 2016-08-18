@@ -28,6 +28,12 @@ import java.util.stream.Collectors;
  * List<Paragraph> paragraphs
  * | LineCreator -- Measurer (returns Words)
  * List<Line> lines
+ *
+ * Text: String (may contain whitespace and paragraph delimiters), has defined Styles
+ * Paragraph: List<Text>, every Text may contain whitespace but does not contain paragraph delimiters. Each Text has defined Styles.
+ * Word: may be whitespace character or string without whitespaces and paragraph delimiters. Has defined Styles, height and length.
+ * Line: List<Word>, knows its length and remaining space
+ * TODO: class Page
  */
 public class Main {
 
