@@ -8,12 +8,12 @@ import java.util.stream.Collectors;
 /**
  * Tags are defined in grammar as: ,,tag1,tag
  */
-public class TagUseNode extends NottexNode  {
+public class TagUseAstNode extends NottexAstNode {
 
-    private List<NottexNode> children;
+    private List<NottexAstNode> children;
     private List<String> names;
 
-    public TagUseNode(List<NottexNode> children, List<String> tagNames) {
+    public TagUseAstNode(List<NottexAstNode> children, List<String> tagNames) {
         if (children == null)
             this.children = new ArrayList<>();
         else
@@ -22,7 +22,7 @@ public class TagUseNode extends NottexNode  {
         this.names = tagNames;
     }
 
-    public TagUseNode(List<NottexNode> children, String... tagNames) {
+    public TagUseAstNode(List<NottexAstNode> children, String... tagNames) {
         this(children, Arrays.asList(tagNames));
     }
 
@@ -35,7 +35,7 @@ public class TagUseNode extends NottexNode  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TagUseNode that = (TagUseNode) o;
+        TagUseAstNode that = (TagUseAstNode) o;
 
         if (children != null ? !children.equals(that.children) : that.children != null) return false;
         return names != null ? names.equals(that.names) : that.names == null;
@@ -61,7 +61,7 @@ public class TagUseNode extends NottexNode  {
     }
 
 
-    public List<NottexNode> getChildren() {
+    public List<NottexAstNode> getChildren() {
         return children;
     }
 

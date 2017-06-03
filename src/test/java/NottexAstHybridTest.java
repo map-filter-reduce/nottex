@@ -1,6 +1,6 @@
-import nottexast.BlockNode;
-import nottexast.TagUseNode;
-import nottexast.TextNode;
+import nottexast.BlockAstNode;
+import nottexast.TagUseAstNode;
+import nottexast.TextAstNode;
 import org.junit.Test;
 
 import static grammar.AstParser.parse;
@@ -11,9 +11,9 @@ public class NottexAstHybridTest {
     @Test
     public void testSimpleTextTag() {
         String input = "text,,tamm{}";
-        BlockNode expected = new BlockNode(
-                new TextNode("text"),
-                new TagUseNode(null, "tamm")
+        BlockAstNode expected = new BlockAstNode(
+                new TextAstNode("text"),
+                new TagUseAstNode(null, "tamm")
         );
         TestUtil.assertEquals(expected, parse(input));
     }

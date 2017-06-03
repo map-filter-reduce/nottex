@@ -1,7 +1,6 @@
-import nottexast.BlockNode;
-import nottexast.FunctionCallNode;
-import nottexast.TagUseNode;
-import nottexast.TextNode;
+import nottexast.*;
+import nottexast.BlockAstNode;
+import nottexast.FunctionCallAstNode;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -14,43 +13,43 @@ public class NottexAstTagTest {
 
     @Test
     public void emptyTag1() {
-        BlockNode expected1 = new BlockNode(
-                new TagUseNode(null, "tag")
+        BlockAstNode expected1 = new BlockAstNode(
+                new TagUseAstNode(null, "tag")
         );
         TestUtil.assertEquals(expected1, parse(",,tag{}"));
     }
 
     @Test
     public void emptyTag2() {
-        BlockNode expected = new BlockNode(
-                new TagUseNode(null, "tag1", "tag2", "tag3")
+        BlockAstNode expected = new BlockAstNode(
+                new TagUseAstNode(null, "tag1", "tag2", "tag3")
         );
         TestUtil.assertEquals(expected, parse(",,tag1 , tag2  , \n tag3 {}"));
     }
 
     @Test
     public void emptyTag3() {
-        BlockNode expected2 = new BlockNode(
-                new TagUseNode(null, "tag1", "tag2", "tag3")
+        BlockAstNode expected2 = new BlockAstNode(
+                new TagUseAstNode(null, "tag1", "tag2", "tag3")
         );
         TestUtil.assertEquals(expected2, parse(",,tag1,tag2,tag3{}"));
     }
 
     @Test
     public void emptyTag4() {
-        BlockNode expected = new BlockNode(
-                new TagUseNode(null, "tag1", "tag2", "tag3"),
-                new TagUseNode(null, "tag3", "tag5", "tag6")
+        BlockAstNode expected = new BlockAstNode(
+                new TagUseAstNode(null, "tag1", "tag2", "tag3"),
+                new TagUseAstNode(null, "tag3", "tag5", "tag6")
         );
         TestUtil.assertEquals(expected, parse(",,tag1 , tag2  , tag3 {},,tag3 , tag5  , tag6 {}"));
     }
 
     @Test
     public void tagsWithEmptyTags1() {
-        BlockNode expected1 = new BlockNode(
-                new TagUseNode(
+        BlockAstNode expected1 = new BlockAstNode(
+                new TagUseAstNode(
                         Collections.singletonList(
-                                new TagUseNode(
+                                new TagUseAstNode(
                                         null, "tag4", "tag5", "tag6"
                                 ))
                         , "tag1", "tag2", "tag3")
@@ -61,14 +60,14 @@ public class NottexAstTagTest {
 
     @Test
     public void tagsWithEmptyTags2() {
-        BlockNode expected2 = new BlockNode(
-                new TagUseNode(
+        BlockAstNode expected2 = new BlockAstNode(
+                new TagUseAstNode(
                         Collections.singletonList(
-                                new TagUseNode(
+                                new TagUseAstNode(
                                         null, "tag4", "tag5", "tag6"
                                 )),
                         "tag1", "tag2", "tag3"),
-                new TagUseNode(
+                new TagUseAstNode(
                         null, "second"
                 )
         );
@@ -78,25 +77,25 @@ public class NottexAstTagTest {
 
     @Test
     public void testTagsWithText1() {
-        BlockNode expected1 = new BlockNode(
-                new TagUseNode(
+        BlockAstNode expected1 = new BlockAstNode(
+                new TagUseAstNode(
                         Collections.singletonList(
-                                new TextNode("text")), "tag1")
+                                new TextAstNode("text")), "tag1")
         );
         TestUtil.assertEquals(expected1, parse(",,tag1{text}"));
     }
 
     @Test
     public void testTagsWithText2() {
-        BlockNode expected2 = new BlockNode(
-                new TagUseNode(
+        BlockAstNode expected2 = new BlockAstNode(
+                new TagUseAstNode(
                         Arrays.asList(
-                                new TagUseNode(
+                                new TagUseAstNode(
                                         null, "tag4", "tag5", "tag6"
                                 ),
-                                new TextNode("text")),
+                                new TextAstNode("text")),
                         "tag1", "tag2", "tag3"),
-                new TagUseNode(
+                new TagUseAstNode(
                         null, "second"
                 )
         );
@@ -105,19 +104,19 @@ public class NottexAstTagTest {
 
     @Test
     public void testTagsWithText3() {
-        BlockNode expected3 = new BlockNode(
-                new TagUseNode(
+        BlockAstNode expected3 = new BlockAstNode(
+                new TagUseAstNode(
                         Arrays.asList(
-                                new TagUseNode(
+                                new TagUseAstNode(
                                         null, "tag4", "tag5", "tag6"
                                 ),
-                                new TextNode("text"),
-                                new TagUseNode(
+                                new TextAstNode("text"),
+                                new TagUseAstNode(
                                         Collections.singletonList(
-                                                new TextNode("s")
+                                                new TextAstNode("s")
                                         ), "tag")),
                         "tag1", "tag2", "tag3"),
-                new TagUseNode(
+                new TagUseAstNode(
                         null, "second"
                 )
         );
@@ -126,19 +125,19 @@ public class NottexAstTagTest {
 
     @Test
     public void testTagsWithText4() {
-        BlockNode expected4 = new BlockNode(
-                new TagUseNode(
+        BlockAstNode expected4 = new BlockAstNode(
+                new TagUseAstNode(
                         Arrays.asList(
-                                new TagUseNode(
+                                new TagUseAstNode(
                                         null, "tag4", "tag5", "tag6"
                                 ),
-                                new TextNode("text"),
-                                new TagUseNode(
+                                new TextAstNode("text"),
+                                new TagUseAstNode(
                                         Collections.singletonList(
-                                                new TextNode("s")
+                                                new TextAstNode("s")
                                         ), "tag")),
                         "tag1", "tag2", "tag3"),
-                new TagUseNode(
+                new TagUseAstNode(
                         null, "second"
                 )
         );
@@ -147,22 +146,22 @@ public class NottexAstTagTest {
 
     @Test
     public void testTagFunction1() {
-        BlockNode expected1 = new BlockNode(
-                new TagUseNode(
+        BlockAstNode expected1 = new BlockAstNode(
+                new TagUseAstNode(
                         Collections.singletonList(
-                                new FunctionCallNode("fun")), "tag")
+                                new FunctionCallAstNode("fun")), "tag")
         );
         TestUtil.assertEquals(expected1, parse(",,tag{::fun()}"));
     }
 
     @Test
     public void testTagFunction2() {
-        BlockNode expected2 = new BlockNode(
-                new TagUseNode(
+        BlockAstNode expected2 = new BlockAstNode(
+                new TagUseAstNode(
                         Arrays.asList(
-                                new TagUseNode(null, "tagBefore"),
-                                new FunctionCallNode("fun"),
-                                new TagUseNode(null, "tagAfter")
+                                new TagUseAstNode(null, "tagBefore"),
+                                new FunctionCallAstNode("fun"),
+                                new TagUseAstNode(null, "tagAfter")
                         )
                         , "tag"));
         TestUtil.assertEquals(expected2, parse(",,tag{,,tagBefore{}::fun(),,tagAfter{}}"));

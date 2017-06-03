@@ -4,6 +4,5 @@ public enum Operator {
     ADDITION,
     SUBTRACTION,
     MULTIPLICATION,
-    DIVISION,
-    NOOP
+    DIVISION
 }
