@@ -8,7 +8,7 @@ NoTTeX code consists of text, tags and functions.
 
 
 
-### Functions:
+### Functions
 NoTTeX functions are intended for dynamically generating content. Functions can have 0 or more parameters.
 
 [Full list of builtin functions](https://github.com/NoTTeX/nottex/wiki/Builtin-Functions)
@@ -26,7 +26,7 @@ An argument can be
 
 
 ### Tags
-Tags represent formatting rules for content inside the tags. There are builtin tags that currently enable some limited formatting. Tags can also be user-defined.
+Tags represent formatting rules for content inside the tags. There are builtin tags that enable text formatting. Tags can also be user-defined.
 
 [Full list of builtin tags](https://github.com/NoTTeX/nottex/wiki/Builtin-Tags)
 
@@ -46,5 +46,5 @@ The ```::def(<tagName>, <styleCSS>)``` function must be provided with 2 string-t
 
 
 
-### Text:
+### Text
 All characters are allowed except ```,,``` and ```::```. Some special unicode symbols may not be supported.
