@@ -1,12 +1,16 @@
 import com.lowagie.text.DocumentException;
 import grammar.AstParser;
 import grammar.FunctionReducer;
+import lombok.extern.slf4j.Slf4j;
 import nottexast.NottexNode;
 import org.apache.commons.cli.*;
 import org.w3c.dom.Document;
 import pdfgen.PDFCreator;
 
-import javax.xml.transform.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
@@ -17,30 +21,16 @@ import java.util.stream.Collectors;
 
 import static pdfgen.XmlTranslator.createDocument;
 
+@Slf4j
 public class Main {
-
     private static final boolean inProduction = false;
 
     public static void main(String[] args) throws IOException, DocumentException, TransformerException, ParseException {
-
         if (inProduction) {
             compile(args);
-
         } else {
-            String input = getFileContent("src/main/resources/input.ntex".replace("/", File.separator));
-            NottexNode astTree = AstParser.parse(input);
-            NottexNode reducedTree = FunctionReducer.reduceFunctions(astTree);
-            Document xmlDocument = createDocument(reducedTree);
-            PDFCreator.convertDocumentToPDF(xmlDocument, "src/main/resources/test.pdf".replace("/", File.separator));
-
-            Transformer transformer = TransformerFactory.newInstance().newTransformer();
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            //Create XML
-            DOMSource source = new DOMSource(xmlDocument);
-            StreamResult result = new StreamResult(new File("src/main/resources/test.xhtml".replace("/", File.separator)));
-            transformer.transform(source, result);
+            compile(new String[]{"-i", "src/main/resources/input.ntex", "-o", "src/main/resources/test.pdf", "-d"});
         }
-
     }
 
     private static void compile(String[] args) throws IOException, DocumentException, TransformerException, ParseException {
@@ -58,15 +48,21 @@ public class Main {
         }
 
         String inFilename = new File(cmd.getOptionValue("i")).getAbsolutePath();
+        log.info("Reading code from file");
         String input = getFileContent(inFilename);
         String outDefaultFilename = removeFileExtension(inFilename) + ".pdf";
         String outFilename = cmd.getOptionValue("o", outDefaultFilename);
 
         // Parse & generate output
+        log.info("Generating AST from code");
         NottexNode astTree = AstParser.parse(input);
+        log.info("Evaluating functions");
         NottexNode reducedTree = FunctionReducer.reduceFunctions(astTree);
+        log.info("Generating XML");
         Document xmlDocument = createDocument(reducedTree);
+        log.info("Generating PDF");
         PDFCreator.convertDocumentToPDF(xmlDocument, outFilename);
+        log.info("Done");
 
         // Output debug info
         if (cmd.hasOption("d")) {
@@ -83,7 +79,6 @@ public class Main {
     private static String removeFileExtension(String filename) {
         return filename.substring(0, filename.lastIndexOf("."));
     }
-
 
 
     private static String getFileContent(String filePath) throws IOException {

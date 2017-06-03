@@ -10,7 +10,6 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class AstParser {
 
 
@@ -23,9 +22,8 @@ public class AstParser {
      * @return corresponding AST
      */
     public static NottexNode parse(String code) {
-        NottexLexer NottexLexer = new NottexLexer(CharStreams.fromString(code));
-        CommonTokenStream tokens = new CommonTokenStream(NottexLexer);
-        NottexParser parser = new NottexParser(tokens);
+        NottexLexer lexer = new NottexLexer(CharStreams.fromString(code));
+        NottexParser parser = new NottexParser(new CommonTokenStream(lexer));
         return parse(parser.markupText());
     }
 
