@@ -27,17 +27,17 @@ public class Main {
             compile(args);
 
         } else {
-            String input = getFileContent("src\\main\\resources\\input.ntex");
+            String input = getFileContent("src/main/resources/input.ntex".replaceAll("/", File.separator));
             NottexNode astTree = AstParser.parse(input);
             NottexNode reducedTree = FunctionReducer.reduceFunctions(astTree);
             Document xmlDocument = createDocument(reducedTree);
-            PDFCreator.convertDocumentToPDF(xmlDocument, "src\\main\\resources\\test.pdf");
+            PDFCreator.convertDocumentToPDF(xmlDocument, "src/main/resources/test.pdf".replaceAll("/", File.separator));
 
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             //Create XML
             DOMSource source = new DOMSource(xmlDocument);
-            StreamResult result = new StreamResult(new File("src\\main\\resources\\test.xhtml"));
+            StreamResult result = new StreamResult(new File("src/main/resources/test.xhtml".replaceAll("/", File.separator)));
             transformer.transform(source, result);
         }
 
