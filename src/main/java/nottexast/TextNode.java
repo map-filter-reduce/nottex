@@ -35,5 +35,4 @@ public class TextNode extends NottexNode {
     public String prettyPrint(String n) {
         return n + "Text: " + paragraphs;
     }
-
 }

@@ -13,5 +13,4 @@ public abstract class NottexNode {
     public String prettyPrint() {
         return prettyPrint("");
     }
-
 }

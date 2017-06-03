@@ -1,7 +1,11 @@
 package nottexast.literals;
 
-public class IntNode extends NumberNode {
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
+@EqualsAndHashCode(callSuper = false)
+@Getter
+public class IntNode extends NumberNode {
     private final Integer value;
 
     public IntNode(Integer value) {
@@ -9,22 +13,6 @@ public class IntNode extends NumberNode {
             throw new AssertionError();
 
         this.value = value;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        IntNode intNode = (IntNode) o;
-
-        return value.equals(intNode.value);
-
-    }
-
-    @Override
-    public int hashCode() {
-        return value.hashCode();
     }
 
     @Override
@@ -39,11 +27,6 @@ public class IntNode extends NumberNode {
 
     @Override
     public Number getNumberValue() {
-        return value;
-    }
-
-
-    public Integer getValue() {
         return value;
     }
 }
