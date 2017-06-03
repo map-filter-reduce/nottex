@@ -237,7 +237,7 @@ public class NottexGrammarAcceptTest {
     }
 
     private static ParseTree parseWithExceptions(String program) {
-        ANTLRInputStream input = new ANTLRInputStream(program);
+        CodePointCharStream input = CharStreams.fromString(program);
         NottexLexer lexer = new NottexLexer(input);
         lexer.addErrorListener(new BaseErrorListener() {
             @Override
