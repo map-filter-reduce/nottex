@@ -2,7 +2,7 @@ package grammar;
 
 import nottexast.*;
 import nottexast.literals.*;
-import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -23,7 +23,7 @@ public class AstParser {
      * @return corresponding AST
      */
     public static NottexNode parse(String code) {
-        NottexLexer NottexLexer = new NottexLexer(new ANTLRInputStream(code));
+        NottexLexer NottexLexer = new NottexLexer(CharStreams.fromString(code));
         CommonTokenStream tokens = new CommonTokenStream(NottexLexer);
         NottexParser parser = new NottexParser(tokens);
         return parse(parser.markupText());

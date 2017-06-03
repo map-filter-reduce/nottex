@@ -64,8 +64,7 @@ public class FunctionReducer {
         List<Method> potentialMethods = methods.stream()
                 .filter(m -> m.getName().equals(functionName))
                 .filter(m -> m.getParameterCount() == node.getArgCount())
-                .filter(m -> Arrays.asList(m.getGenericParameterTypes())
-                        .stream()
+                .filter(m -> Arrays.stream(m.getGenericParameterTypes())
                         .map(Type::getTypeName)
                         .collect(Collectors.toList())
                         .equals(

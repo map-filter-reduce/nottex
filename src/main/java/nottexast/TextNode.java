@@ -1,12 +1,16 @@
 package nottexast;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@EqualsAndHashCode(callSuper = false)
+@Getter
 public class TextNode extends NottexNode {
-
     private List<String> paragraphs;
 
     public TextNode(String content) {
@@ -14,8 +18,7 @@ public class TextNode extends NottexNode {
         // Parse into paragraphs
         // TODO: "asd\n\nasdasdasdasd\n\n\n\n" should leave 2 empty paragraphs in the end
         // TODO: bitinikerdus
-        this.paragraphs = Arrays.asList(content.split("\n\n"))
-                .stream()
+        this.paragraphs = Arrays.stream(content.split("\n\n"))
                 .map(str -> str.replace("\n", ""))
                 .collect(Collectors.toList());
     }
@@ -24,29 +27,8 @@ public class TextNode extends NottexNode {
         this.paragraphs = paragraphs;
     }
 
-
-    public List<String> getParagraphs() {
-        return paragraphs;
-    }
-
     public int getParagraphCount() {
         return paragraphs.size();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        TextNode textNode = (TextNode) o;
-
-        return paragraphs != null ? paragraphs.equals(textNode.paragraphs) : textNode.paragraphs == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        return paragraphs != null ? paragraphs.hashCode() : 0;
     }
 
     @Override
