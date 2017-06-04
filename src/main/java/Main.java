@@ -23,10 +23,10 @@ import static pdfgen.XmlTranslator.createDocument;
 
 @Slf4j
 public class Main {
-    private static final boolean inProduction = false;
+    private static final boolean IN_PRODUCTION = false;
 
     public static void main(String[] args) throws IOException, DocumentException, TransformerException, ParseException {
-        if (inProduction) {
+        if (IN_PRODUCTION) {
             compile(args);
         } else {
             compile(new String[]{"-i", "src/main/resources/input.ntex", "-o", "src/main/resources/test.pdf", "-d"});
