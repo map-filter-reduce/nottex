@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/map-filter-reduce/nottex.svg?branch=master)](https://travis-ci.org/map-filter-reduce/nottex)
+
 # NoTTeX
 
 ##### NoTTeX is a customizable and lightweight typesetting system designed for intuitive use. NoTTeX .ntex files can be directly compiled to PDF.
