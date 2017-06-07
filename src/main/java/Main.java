@@ -62,11 +62,11 @@ public class Main {
         Document xmlDocument = createDocument(reducedTree);
         log.info("Generating PDF");
         PDFCreator.convertDocumentToPDF(xmlDocument, outFilename);
-        log.info("Done");
 
         // Output debug info
         if (cmd.hasOption("d")) {
             // Create XML
+            log.info("Generating debug info");
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(xmlDocument);
@@ -74,6 +74,7 @@ public class Main {
             transformer.transform(source, result);
         }
 
+        log.info("Done");
     }
 
     private static String removeFileExtension(String filename) {
