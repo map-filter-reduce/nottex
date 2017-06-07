@@ -20,8 +20,7 @@ Kasutaja saab ka ise tage defineerida. Selleks on olemas funktsioon ::escape("::
 
 ::escape("::def('green', 'color:#008000';)") ::def("green","color:#008000;") muudab teksti ,,green{roheliseks}.
 
-Tagidest võib mõelda kui CSS klassidest. Seega saab tekstil olla palju tage: näiteks: ::escape(",,h, green{suur & roheline}") korral
-on tekst ,,green,h{suur & roheline}
+Tagidest võib mõelda kui CSS klassidest. Seega saab tekstil olla palju tage: näiteks: ::escape(",,h, green{suur & roheline}") korral on tekst ,,green,h{suur & roheline}
 
 
 NoTTeX piirab kasutajat väga vähe sisendi suhtes. Escapida tuleb tagid ja funktsioonid, kui kasutaja ei soovi neid välja kutsuda. Selleks  on funktsioon
